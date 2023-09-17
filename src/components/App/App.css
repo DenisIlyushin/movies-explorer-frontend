@@ -1,7 +1,7 @@
 .app {
   min-height: 100vh;
   background-color: var(--background-color, #2f2f2f);
-  /*position: relative;*/
+  font-family: 'Inter', Arial, sans-serif;
 }
 
 .app__content {
