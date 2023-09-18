@@ -31,7 +31,7 @@ function App() {
             <Route
               path={'/'}
               element={
-                <Landing/>
+                <Landing />
               }
             />
           </Routes>

@@ -24,7 +24,7 @@
   justify-content: space-between;
   color: var(--font-color, #fff);
   text-decoration: none;
-  cursor: pointer;
+  cursor: default;
 }
 
 .footer__copyright {
@@ -48,6 +48,7 @@
 }
 
 .footer__link {
+  color: var(--font-color, #fff);
   text-decoration: none;
   cursor: pointer;
   transition: opacity 0.2s linear;
