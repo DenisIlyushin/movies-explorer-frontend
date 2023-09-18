@@ -1,4 +1,5 @@
 import './Footer.css';
+import {Link} from 'react-router-dom';
 
 function Footer() {
   const currentYear = new Date().getFullYear()
@@ -18,26 +19,26 @@ function Footer() {
         >
           &copy; {currentYear}
         </p>
-        <div
+        <nav
           className={'footer__links'}
         >
-          <a
+          <Link
             className={'footer__link'}
-            href={'https://practicum.yandex.ru'}
+            to={'https://practicum.yandex.ru'}
             target={'_blank'}
             rel={'noreferrer'}
           >
             Яндекс.Практикум
-          </a>
-          <a
+          </Link>
+          <Link
             className={'footer__link'}
-            href={'https://github.com/DenisIlyushin/movies-explorer-frontend'}
+            to={'https://github.com/DenisIlyushin/movies-explorer-frontend'}
             target={'_blank'}
             rel={'noreferrer'}
           >
             Github
-          </a>
-        </div>
+          </Link>
+        </nav>
       </div>
     </footer>
   )

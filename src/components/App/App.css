@@ -3,7 +3,6 @@
   flex-direction: column;
   background-color: var(--background-color, #2f2f2f);
   font-family: 'Inter', Arial, sans-serif;
-  position: relative;
 }
 
 .app__content {

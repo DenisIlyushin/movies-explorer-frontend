@@ -51,7 +51,7 @@ function Header({authorized}) {
               alt={'логотип'}
             />
           </Link>
-          <div
+          <nav
             className={'header__app_navigation'}
           >
             <Link
@@ -66,8 +66,8 @@ function Header({authorized}) {
             >
               Сохранённые фильмы
             </Link>
-          </div>
-          <div
+          </nav>
+          <nav
             className={'header__auth_navigation'}
           >
             <Link
@@ -76,7 +76,7 @@ function Header({authorized}) {
             >
               Аккаунт
             </Link>
-          </div>
+          </nav>
         </header>
       )
 
