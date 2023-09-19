@@ -36,11 +36,11 @@ function AboutMe() {
             факультет МГУ, после&nbsp;&mdash; аспирантуру в&nbsp;РАН, защитил
             степень кандидата биологических наук. В&nbsp;ИТ&nbsp;занесла нелегкая.
             Курс закончил в&nbsp;рамках самообразования. Среди прочего&nbsp;&mdash;
-            фанат типографики. Верстать этот макет было больно.
+            фанат типографики.
           </p>
           <Link
             className={'about-me__github-link'}
-            to={'Github'}
+            to={'https://github.com/DenisIlyushin'}
             target={'_blank'}
             rel={'noreferrer'}
           >
