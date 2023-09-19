@@ -1,0 +1,98 @@
+.about-me {
+  width: 100%;
+}
+
+.about-me__content {
+  margin: 110px 70px 0;
+}
+
+.about-me__title {
+  margin: 0;
+  padding: 0 0 23px;
+  color: var(--font-color, #fff);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.88px;
+  border-bottom: 1px solid var(--title-separator-color, #dadada);
+}
+
+.about-me__info {
+  max-height: 327px;;
+  margin-top: 66px;
+  display: grid;
+  grid-template-areas:
+    "name photo"
+    "job  photo"
+    "bio  photo"
+    "link photo";
+  grid-template-columns: 600px 540px;
+  grid-template-rows: 58px 38px auto 17px;
+  row-gap: 0;
+  column-gap: 0;
+}
+
+.about-me__name {
+  grid-area: name;
+  max-height: 58px;
+  margin: 0;
+  padding: 0;
+  color: var(--font-color, #fff);
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+}
+
+.about-me__description {
+  grid-area: job;
+  margin: 18px 0 0 0;
+  padding: 0;
+  color: var(--font-color, #fff);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.about-me__bio {
+  grid-area: bio;
+  margin: 26px 0 0 0;
+  padding: 0;
+  color: var(--font-color, #fff);
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.about-me__github-link {
+  grid-area: link;
+  margin: 0;
+  padding: 0;
+  color: var(--font-color, #fff);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.about-me__github-link:hover {
+  opacity: 0.7;
+}
+
+.about-me__photo {
+  grid-area: photo;
+  justify-self: end;
+  width: 270px;
+  height: 327px;
+  border-radius: 10px;
+  object-fit: cover;
+}
