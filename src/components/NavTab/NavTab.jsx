@@ -9,9 +9,9 @@ function NavTab() {
       <Link
         className={'nav-tab__item'}
         /*todo разобраться с навигацией*/
-        to={'#about-project'}
-        smooth={true}
-        duration={90}
+        to={''}
+        // smooth={true}
+        // duration={90}
       >
         О проекте
       <
@@ -19,8 +19,8 @@ function NavTab() {
       <Link
         className={'nav-tab__item'}
         to={''}
-        smooth={true}
-        duration={90}
+        // smooth={true}
+        // duration={90}
       >
         Технологии
       <
@@ -28,8 +28,8 @@ function NavTab() {
       <Link
         className={'nav-tab__item'}
         to={''}
-        smooth={true}
-        duration={90}
+        // smooth={true}
+        // duration={90}
       >
         Студент
       <
