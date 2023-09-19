@@ -1,6 +1,8 @@
 .footer {
-  width: 100%;
+  width: calc(100% - 140px);
   margin-bottom: 20px;
+  margin-right: 70px;
+  margin-left: 70px;
   flex-shrink: 0;
   color: var(--font-color, #fff);
 }

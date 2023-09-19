@@ -9,11 +9,13 @@
 
 .header__logo {
   min-height: 38px;
+  margin-left: 70px;
   width: 38px;
 }
 
 .header__auth_navigation {
   display: flex;
+  margin-right: 70px;
   align-items: center;
   gap: 8px;
 }

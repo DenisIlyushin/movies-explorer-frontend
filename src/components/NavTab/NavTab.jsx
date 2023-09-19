@@ -8,7 +8,8 @@ function NavTab() {
     >
       <Link
         className={'nav-tab__item'}
-        to={''}
+        /*todo разобраться с навигацией*/
+        to={'#about-project'}
         smooth={true}
         duration={90}
       >
