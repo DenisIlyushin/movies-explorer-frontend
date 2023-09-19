@@ -8,28 +8,24 @@ function NavTab() {
     >
       <Link
         className={'nav-tab__item'}
-        /*todo разобраться с навигацией*/
-        to={''}
-        // smooth={true}
-        // duration={90}
+        to={'#about-project'}
+        onClick={() => document.querySelector('#about-project').scrollIntoView()}
       >
         О проекте
       <
       /Link>
       <Link
         className={'nav-tab__item'}
-        to={''}
-        // smooth={true}
-        // duration={90}
+        to={'#techs'}
+        onClick={() => document.querySelector('#techs').scrollIntoView()}
       >
         Технологии
       <
       /Link>
       <Link
         className={'nav-tab__item'}
-        to={''}
-        // smooth={true}
-        // duration={90}
+        to={'#about-me'}
+        onClick={() => document.querySelector('#about-me').scrollIntoView()}
       >
         Студент
       <
