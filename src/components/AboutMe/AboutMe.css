@@ -27,7 +27,7 @@
     "job  photo"
     "bio  photo"
     "link photo";
-  grid-template-columns: 600px 540px;
+  grid-template-columns: 600px 1fr;
   grid-template-rows: 58px 38px auto 17px;
   row-gap: 0;
   column-gap: 0;
