@@ -44,7 +44,7 @@ function Portfolio() {
           <li className={'portfolio__item'}>
             <Link
               className={'portfolio__item-link'}
-              to={'https://denisilyushin.github.io/sign-in'}
+              to={'https://denisilyushin.github.io/react-mesto-auth'}
               target={'_blank'}
               rel={'noreferrer'}
             >
