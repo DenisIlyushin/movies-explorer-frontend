@@ -67,3 +67,27 @@
   letter-spacing: -0.56px;
   list-style-type: none;
 }
+
+@media screen and (max-width: 1023px) {
+  .techs__content  {
+    margin: 90px 50px 0;
+  }
+
+  .techs__description {
+    font-size: 12px;
+    line-height: 18px;
+    letter-spacing: -0.48px;
+  }
+
+  .techs__list {
+    margin: 0 0 90px;
+    grid-template-columns: repeat(auto-fit, 84px);
+  }
+
+  .techs__item {
+    height: 57px;
+    font-size: 12px;
+    letter-spacing: -0.48px;
+    list-style-type: none;
+  }
+}

@@ -93,3 +93,27 @@
   font-weight: 500;
   line-height: 17px;
 }
+
+@media screen and (max-width: 1023px) {
+  .about-project__content {
+    margin: 90px 50px 0;
+  }
+
+  .about-project__statements {
+    gap: 30px;
+  }
+
+  .about-project__statement_title {
+    margin: 0 0 22px 0;
+    min-height: 48px;
+  }
+
+  .about-project__statement_text {
+    min-height: 54px;
+  }
+
+  .about-project__statement_text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}

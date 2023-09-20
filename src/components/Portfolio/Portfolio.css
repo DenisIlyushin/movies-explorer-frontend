@@ -3,7 +3,7 @@
 }
 
 .portfolio__content {
-  margin: 100px 70px 0;
+  margin: 100px 70px 125px;
 }
 
 .portfolio__title {
@@ -32,7 +32,7 @@
   border-bottom: 1px solid var(--portfolio-separatpr-color, #424242);
   background-image: url('../../images/portfolio_nav.svg');
   background-repeat: no-repeat;
-  background-position: top right;
+  background-position: top 19px right;
 }
 
 .portfolio__item:first-of-type {
@@ -57,4 +57,16 @@
   line-height: 50px;
   letter-spacing: -1.2px;
   text-decoration: none;
+}
+
+@media screen and (max-width: 1023px) {
+  .portfolio__content {
+    margin: 90px 50px 90px;
+  }
+
+  .portfolio__item-link {
+    font-size: 28px;
+    line-height: 50px;
+    letter-spacing: -1.12px;
+  }
 }
