@@ -96,3 +96,39 @@
   border-radius: 10px;
   object-fit: cover;
 }
+
+@media screen and (max-width: 1023px) {
+  .about-me__content {
+    margin: 90px 50px 0;
+  }
+
+  .about-me__info {
+    grid-template-columns: 348px 1fr;
+    column-gap: 65px;
+  }
+
+  .about-me__photo {
+    width: 255px;
+    height: 307px;
+  }
+
+  .about-me__bio {
+    margin: 16px 0 0 0;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .about-me__description {
+    margin: 18px 0 0 0;
+    font-size: 12px;
+    line-height: 28px;
+  }
+
+  .about-me__name {
+    max-height: 40px;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: -1.6px;
+  }
+}
