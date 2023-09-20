@@ -10,13 +10,20 @@ function Navigation({ handleClose }) {
   }
 
   return (
-    <div className={'navigation'} onClick={handleCloseOnOverlay}>
-      <div className={'navigation__content'}>
+    <div
+      className={'navigation'}
+      onClick={handleCloseOnOverlay}
+    >
+      <div
+        className={'navigation__content'}
+      >
         <button
           className={'navigation__close-button'}
           onClick={ handleClose }
         />
-        <nav className={'navigation__menu'}>
+        <nav
+          className={'navigation__menu'}
+        >
           <NavLink
             className={'navigation__link'}
             to={'/'}
