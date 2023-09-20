@@ -8,7 +8,7 @@ function NavTab() {
     >
       <Link
         className={'nav-tab__item'}
-        to={'#about-project'}
+        to={'/#about-project'}
         onClick={() => document.querySelector('#about-project').scrollIntoView()}
       >
         О проекте
@@ -16,7 +16,7 @@ function NavTab() {
       /Link>
       <Link
         className={'nav-tab__item'}
-        to={'#techs'}
+        to={'/#techs'}
         onClick={() => document.querySelector('#techs').scrollIntoView()}
       >
         Технологии
@@ -24,7 +24,7 @@ function NavTab() {
       /Link>
       <Link
         className={'nav-tab__item'}
-        to={'#about-me'}
+        to={'/#about-me'}
         onClick={() => document.querySelector('#about-me').scrollIntoView()}
       >
         Студент
