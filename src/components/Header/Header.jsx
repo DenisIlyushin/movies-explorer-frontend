@@ -6,7 +6,7 @@ import logo from '../../images/logo.svg';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
 import Navigation from '../Navigation/Navigation.jsx';
 
-function Header({authorized}) {
+function Header({ authorized }) {
   //todo
   authorized = true
 
