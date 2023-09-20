@@ -41,6 +41,7 @@
   background-color: var(--theme-color, #3ddc84);
   color: #000;
 }
+
 .header__auth_nav_button {
   padding: 8px 20px;
   border-radius: 20px;
@@ -72,8 +73,27 @@
   color: var(--font-color, #fff);
   text-decoration: none;
   cursor: pointer;
+  transition: opacity 0.2s linear;
 }
 
 .header__app_nav_button:hover {
   opacity: 0.7;
+}
+
+@media screen and (max-width: 1023px) {
+  .header__logo {
+    margin-left: 30px;
+  }
+
+  .header__auth_navigation {
+    margin-right: 30px;
+  }
+
+  .header__auth_nav_button {
+    display: none;
+  }
+
+  .header__app_navigation {
+    display: none;
+  }
 }

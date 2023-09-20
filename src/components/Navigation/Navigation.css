@@ -1,0 +1,100 @@
+.navigation {
+  display: none;
+}
+
+@media screen and (max-width: 1023px) {
+  .navigation {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: right;
+  }
+
+  .navigation__content {
+    z-index: 100;
+    width: 520px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-color, #202020);
+    box-sizing: border-box;
+  }
+
+  .navigation__close-button {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    background-image: url('../../images/navigation_close_button.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: opacity 0.2s linear;
+  }
+
+  .navigation__close-button:hover {
+    opacity: 0.7;
+  }
+
+  .navigation__menu {
+    margin: 150px 90px 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px
+  }
+
+  .navigation__link {
+    text-decoration: none;
+    padding-bottom: 4px;
+    color: var(--font-color, #fff);
+    text-align: center;
+    font-feature-settings: 'clig' off, 'liga' off;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s linear;
+  }
+
+  .navigation__link:hover {
+    border-bottom: 2px solid var(--font-color, #fff);
+  }
+
+  .navigation__account-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 90px;
+    width: 100px;
+    height: 32px;
+    border-radius: 20px;
+    background: var(--background-nav-color, #313131);
+    text-decoration: none;
+    color: var(--font-color, #fff);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    cursor: pointer;
+    transition: opacity 0.2s linear;
+  }
+
+  .navigation__account-button:hover {
+    opacity: 0.7;
+  }
+}
