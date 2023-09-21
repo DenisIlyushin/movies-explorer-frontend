@@ -92,6 +92,12 @@
 }
 
 @media screen and (max-width: 767px) {
+  .techs__list {
+    margin: 0 50px 90px;
+  }
+}
+
+@media screen and (max-width: 619px) {
   .techs__content  {
     margin: 70px 18px 0;
   }

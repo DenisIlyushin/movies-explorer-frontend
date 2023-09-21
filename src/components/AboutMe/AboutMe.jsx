@@ -32,7 +32,7 @@ function AboutMe() {
           <p
             className={'about-me__description'}
           >
-            Специалист по информационным технологиям, 36 лет
+            Специалист по информационным технологиям, 36&nbsp;лет
           </p>
           <p
             className={'about-me__bio'}

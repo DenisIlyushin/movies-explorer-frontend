@@ -134,6 +134,18 @@
 }
 
 @media screen and (max-width: 767px) {
+  .about-me__info {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 58px 38px auto 17px;
+    column-gap: 10px;
+  }
+
+  .about-me__description {
+    line-height: 16px;
+  }
+}
+
+@media screen and (max-width: 619px) {
   .about-me__content {
     margin: 70px 14px 0;
   }
