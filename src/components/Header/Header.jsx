@@ -1,13 +1,13 @@
-import {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 
 import './Header.css'
 import logo from '../../images/logo.svg';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
 
-function Header({ isLoggedIn }) {
+function Header({isLoggedIn}) {
   //todo
   isLoggedIn = true
+  const location = useLocation()
 
   return (
     !isLoggedIn
@@ -62,13 +62,21 @@ function Header({ isLoggedIn }) {
           >
             <Link
               to={'/movies'}
-              className={'header__app_nav_button'}
+              className={
+                location.pathname === '/movies'
+                  ? 'header__app_nav_button header__app_nav_button_active'
+                  : 'header__app_nav_button'
+              }
             >
               Фильмы
             </Link>
             <Link
               to={'/saved-movies'}
-              className={'header__app_nav_button'}
+              className={
+                location.pathname === '/saved-movies'
+                  ? 'header__app_nav_button header__app_nav_button_active'
+                  : 'header__app_nav_button'
+              }
             >
               Сохранённые фильмы
             </Link>

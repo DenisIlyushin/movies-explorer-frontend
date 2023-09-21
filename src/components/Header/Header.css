@@ -53,6 +53,7 @@
   color: var(--font-color, #fff);
   text-decoration: none;
   cursor: pointer;
+  transition: opacity 0.2s linear;
 }
 
 .header__auth_nav_button:hover {
@@ -74,6 +75,10 @@
   text-decoration: none;
   cursor: pointer;
   transition: opacity 0.2s linear;
+}
+
+.header__app_nav_button_active {
+  font-weight: 500;
 }
 
 .header__app_nav_button:hover {
