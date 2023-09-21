@@ -19,6 +19,11 @@ function AboutMe() {
         <div
           className={'about-me__info'}
         >
+          <img
+            className={'about-me__photo'}
+            src={me}
+            alt={'Портрет'}
+          />
           <p
             className={'about-me__name'}
           >
@@ -46,11 +51,6 @@ function AboutMe() {
           >
             Github
           </Link>
-          <img
-            className={'about-me__photo'}
-            src={me}
-            alt={'Портрет'}
-          />
         </div>
       </div>
     </section>

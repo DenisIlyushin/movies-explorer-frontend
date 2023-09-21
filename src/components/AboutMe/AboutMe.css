@@ -132,3 +132,43 @@
     letter-spacing: -1.6px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .about-me__content {
+    margin: 70px 14px 0;
+  }
+
+  .about-me__info {
+    max-height: none;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-me__name {
+    margin: 40px 0 0 0;
+    max-height: 36px;
+    font-size: 30px;
+    letter-spacing: -1.2px;
+  }
+
+  .about-me__description {
+    margin: 20px 0 0 0;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__description {
+    margin: 20px 0 0 0;
+    font-size: 11px;
+    line-height: 16px;
+  }
+
+  .about-me__photo {
+    width: 292px;
+  }
+
+  .about-me__github-link {
+    margin: 40px 0 0 0;
+  }
+}
