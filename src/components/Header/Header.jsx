@@ -4,21 +4,10 @@ import {Link} from 'react-router-dom';
 import './Header.css'
 import logo from '../../images/logo.svg';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
-import Navigation from '../Navigation/Navigation.jsx';
 
 function Header({ authorized }) {
   //todo
-  authorized = true
-
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  function openNavigationMenu() {
-    setIsMenuOpen(true);
-  }
-
-  function closeNavigationMenu() {
-    setIsMenuOpen(false);
-  }
+  authorized = false
 
   return (
     !authorized
@@ -94,14 +83,8 @@ function Header({ authorized }) {
               Аккаунт
             </Link>
             <BurgerMenu
-              handleClick={ openNavigationMenu }
             />
           </nav>
-          {
-            isMenuOpen
-              ? <Navigation handleClose={ closeNavigationMenu } isOpen={ isMenuOpen }/>
-              : ''
-          }
         </header>
       )
   )
