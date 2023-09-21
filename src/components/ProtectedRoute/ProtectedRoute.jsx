@@ -1,10 +1,21 @@
 import React from 'react';
 import {Navigate} from 'react-router-dom';
 
-export default function ProtectedRoute({component: Component, isLoggedIn, ...props}) {
+function ProtectedRoute(
+  {
+    component: Component,
+    isLoggedIn,
+    ...props
+  }
+) {
+  //todo
+  isLoggedIn = true
+
   return (
     isLoggedIn
       ? <Component {...props}/>
-      : <Navigate to="/sign-in"/>
+      : <Navigate to='/'/>
   )
 }
+
+export default ProtectedRoute

@@ -5,12 +5,12 @@ import './Header.css'
 import logo from '../../images/logo.svg';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
 
-function Header({ authorized }) {
+function Header({ isLoggedIn }) {
   //todo
-  authorized = true
+  isLoggedIn = true
 
   return (
-    !authorized
+    !isLoggedIn
       ? (
         <header
           id="header"

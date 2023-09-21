@@ -6,6 +6,8 @@ import {CurrentUserContext} from '../../context/CurrentUserContext.jsx';
 import Header from '../Header/Header.jsx';
 import Landing from '../Landing/Landing.jsx';
 import Footer from '../Footer/Footer.jsx'
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.jsx';
+import Movies from '../Movies/Movies.jsx';
 
 
 // const [user, setUser] = useState(null);
@@ -25,13 +27,23 @@ function App() {
           className={'app__content'}
         >
           <Header
-            authorized={isLoggedIn}
+            isLoggedIn={isLoggedIn}
           />
           <Routes>
             <Route
               path={'/'}
               element={
-                <Landing />
+                <Landing/>
+              }
+            />
+            <Route
+              path={'/movies'}
+              element={
+                <ProtectedRoute
+                  component={Movies}
+                  isLoggedIn={isLoggedIn}
+
+                />
               }
             />
           </Routes>
