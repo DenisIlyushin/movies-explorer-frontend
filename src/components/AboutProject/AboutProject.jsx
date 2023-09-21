@@ -21,7 +21,7 @@ function AboutProject() {
             <h3
               className={'about-project__statement_title'}
             >
-              Дипломный проект включал 5 этапов
+              Дипломный проект включал 5&nbsp;этапов
             </h3>
             <p
               className={'about-project__statement_text'}
@@ -36,7 +36,7 @@ function AboutProject() {
             <h3
               className={'about-project__statement_title'}
             >
-              На выполнение диплома ушло 5 недель
+              На выполнение диплома ушло 5&nbsp;недель
             </h3>
             <p
               className={'about-project__statement_text'}

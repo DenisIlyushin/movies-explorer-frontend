@@ -70,3 +70,20 @@
     letter-spacing: -1.12px;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .portfolio__content {
+    margin: 70px 14px 70px;
+  }
+
+  .portfolio__item {
+    background-size: 14px;
+    background-position: top 10px right;
+  }
+
+  .portfolio__item-link {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.72px;
+  }
+}

@@ -28,6 +28,17 @@
   opacity: 0.8;
 }
 
-@media screen and (max-width: 1023px) {
-  /*todo*/
+@media screen and (max-width: 767px) {
+  .nav-tab {
+    margin-bottom: 17px;
+    gap: 6px;
+  }
+
+  .nav-tab__item {
+    width: 82px;
+    height: 26px;
+    border-radius: 6px;
+    font-size: 10px;
+    line-height: 16px;
+  }
 }

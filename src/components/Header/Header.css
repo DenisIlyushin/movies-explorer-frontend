@@ -97,3 +97,19 @@
     display: none;
   }
 }
+
+@media screen and (max-width: 767px) {
+  .header__logo {
+    margin-left: 14px;
+  }
+
+  .header__auth_navigation {
+    margin-right: 14px;
+  }
+
+  .header__auth_button {
+    padding: 5px 12px;
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
