@@ -7,7 +7,7 @@ import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
 
 function Header({ authorized }) {
   //todo
-  authorized = false
+  authorized = true
 
   return (
     !authorized
