@@ -2,9 +2,9 @@ import './Movies.css'
 
 function Movies({}) {
   return (
-    <section className={'movies'}>
+    <div className={'movies'}>
 
-    </section>
+    </div>
   )
 }
 
