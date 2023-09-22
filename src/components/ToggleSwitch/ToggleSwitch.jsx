@@ -3,7 +3,7 @@ import './ToggleSwitch.css'
 function ToggleSwitch(
   {
     initialState,
-    onClick
+    onChange
   })
 {
   return (
@@ -11,7 +11,7 @@ function ToggleSwitch(
       <input
         checked={ initialState }
         type={'checkbox'}
-        onChange={ () => onClick(!initialState) }
+        onChange={ () => onChange(!initialState) }
       />
         <span className={'slider'}/>
     </label>

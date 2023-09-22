@@ -34,7 +34,7 @@ function SearchForm(
       >
         <ToggleSwitch
           initialState={ switchState }
-          onClick={ onSwitchClick }
+          onChange={ onSwitchClick }
         />
         <p
           className={'search-form__switch-label'}
