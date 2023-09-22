@@ -4,7 +4,8 @@ import ToggleSwitch from '../ToggleSwitch/ToggleSwitch.jsx';
 function SearchForm(
   {
     onSubmit,
-    onSwitchClick
+    onSwitchClick,
+    switchState
   }
 ) {
   return (
@@ -32,6 +33,7 @@ function SearchForm(
         className={'search-form__switch-container'}
       >
         <ToggleSwitch
+          // initialState={ switchState }
           onClick={ onSwitchClick }
         />
         <p
