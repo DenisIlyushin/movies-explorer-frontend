@@ -25,6 +25,7 @@ function Movies({}) {
       />
       <MoviesCardList
         movies={ moviesTestStartArray }
+        maxMoviesPerInteration={ 6 }
       />
     </div>
   )

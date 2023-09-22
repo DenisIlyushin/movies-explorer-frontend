@@ -4,6 +4,7 @@ import MoviesCard from '../MoviesCard/MoviesCard.jsx';
 function MoviesCardList(
   {
     movies,
+    maxMoviesPerInteration
   }
 ) {
   return (
@@ -11,7 +12,7 @@ function MoviesCardList(
       className={'movies-card-list'}
       id={'movies'}
     >
-      {movies.slice(0, 6).map((movieCard) => (
+      {movies.slice(0, maxMoviesPerInteration).map((movieCard) => (
         <MoviesCard card={movieCard} />
       ))}
     </section>
