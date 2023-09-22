@@ -33,7 +33,7 @@ function SearchForm(
         className={'search-form__switch-container'}
       >
         <ToggleSwitch
-          // initialState={ switchState }
+          initialState={ switchState }
           onClick={ onSwitchClick }
         />
         <p

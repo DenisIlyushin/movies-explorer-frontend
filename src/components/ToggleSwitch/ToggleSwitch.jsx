@@ -2,19 +2,16 @@ import './ToggleSwitch.css'
 
 function ToggleSwitch(
   {
-    //todo
-    // не ясное поведение initialState. Пока логгируется здесь, все ок
-    // initialState,
+    initialState,
     onClick
   })
 {
-  // console.log(initialState)
   return (
     <label className={'switch'}>
       <input
-        // checked={ initialState }
+        checked={ initialState }
         type={'checkbox'}
-        onChange={ onClick }
+        onChange={ () => onClick(!initialState) }
       />
         <span className={'slider'}/>
     </label>
