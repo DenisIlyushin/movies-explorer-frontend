@@ -1,6 +1,8 @@
 import './Movies.css'
 import SearchForm from '../SearchForm/SearchForm.jsx';
 import {useEffect, useState} from 'react';
+import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
+import moviesTestStartArray from '../../utils/constants.js';
 
 function Movies({}) {
   const [isShortMovies, setIsShortMovies] = useState(false)
@@ -21,7 +23,9 @@ function Movies({}) {
         onSubmit={ handleSearchFormSubmit }
         onSwitchChange={ setIsShortMovies }
       />
-
+      <MoviesCardList
+        movies={ moviesTestStartArray }
+      />
     </div>
   )
 }

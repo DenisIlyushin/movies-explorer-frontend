@@ -1,0 +1,11 @@
+.movies-card-list {
+  margin: 80px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px 30px;
+  justify-content: center;
+}
+
+.movies-card-list__more-button {
+
+}

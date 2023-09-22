@@ -42,7 +42,6 @@ function App() {
                 <ProtectedRoute
                   component={Movies}
                   isLoggedIn={isLoggedIn}
-
                 />
               }
             />
