@@ -19,7 +19,7 @@ function Movies({}) {
       <SearchForm
         switchState={ isShortMovies }
         onSubmit={ handleSearchFormSubmit }
-        onSwitchClick={ setIsShortMovies }
+        onSwitchChage={ setIsShortMovies }
       />
 
     </div>

@@ -4,7 +4,7 @@ import ToggleSwitch from '../ToggleSwitch/ToggleSwitch.jsx';
 function SearchForm(
   {
     onSubmit,
-    onSwitchClick,
+    onSwitchChange,
     switchState
   }
 ) {
