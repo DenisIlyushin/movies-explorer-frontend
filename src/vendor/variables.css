@@ -15,7 +15,6 @@
 
 /*
 todo
- - 1023, 767, 619
  - Искусственно установлены
  авторизованные состояния
  для Header, Movies
@@ -27,6 +26,8 @@ todo
 
 */
 
+/* Переходы экрана в приложении */
 @media screen and (max-width: 1023px) {}
+@media screen and (max-width: 1184px) {}
 @media screen and (max-width: 767px) {}
 @media screen and (max-width: 619px) {}
