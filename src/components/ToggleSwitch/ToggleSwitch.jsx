@@ -7,13 +7,14 @@ function ToggleSwitch(
   })
 {
   return (
-    <label className={'switch'}>
+    <label className={'toggle-switch'}>
       <input
+        className={'toggle-switch__input'}
         checked={ initialState }
         type={'checkbox'}
         onChange={ () => onChange(!initialState) }
       />
-        <span className={'slider'}/>
+        <span className={'toggle-switch__slider'}/>
     </label>
   )
 }
