@@ -26,3 +26,7 @@ todo
 
 
 */
+
+@media screen and (max-width: 1023px) {}
+@media screen and (max-width: 767px) {}
+@media screen and (max-width: 619px) {}

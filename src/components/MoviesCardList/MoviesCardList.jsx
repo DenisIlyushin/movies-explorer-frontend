@@ -20,26 +20,31 @@ function MoviesCardList(
   function getMoviesOnPage() {
     const displayWidth = getDisplayWidth();
 
-    switch (displayWidth) {
-      default:
-        setMoviesOnPage(12)
+    if (displayWidth < 1184 && displayWidth > 767) {
+      setMoviesOnPage(maxMoviesPerPage.tablet)
+    } else if (displayWidth <= 767) {
+      setMoviesOnPage(maxMoviesPerPage.mobile)
+    } else {
+      setMoviesOnPage(maxMoviesPerPage.desktop)
+    }
+  }
+
+  function handleMovieListExtend() {
+    const displayWidth = getDisplayWidth();
+
+    if (displayWidth < 1184 && displayWidth > 767) {
+      setMoviesOnPage(moviesOnPage + maxMoviesPerPage.tablet)
+    } else if (displayWidth <= 767) {
+      setMoviesOnPage(moviesOnPage + maxMoviesPerPage.mobile)
+    } else {
+      setMoviesOnPage(moviesOnPage + maxMoviesPerPage.desktop)
     }
   }
 
   useEffect(() => {
     getMoviesOnPage()
+    window.addEventListener('resize', getMoviesOnPage)
   }, [])
-
-
-  function handleMovieListExtend() {
-    const displayWidth = getDisplayWidth();
-
-    switch (displayWidth) {
-      default:
-        setMoviesOnPage(moviesOnPage + maxMoviesPerPage.desktop)
-    }
-    console.log('Отображаемых фильмов стало больше')
-  }
 
   return (
     <section
