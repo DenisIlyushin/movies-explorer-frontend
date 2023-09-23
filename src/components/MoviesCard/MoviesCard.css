@@ -16,6 +16,7 @@
   height: 201px;
   border-radius: 5px;
   object-fit: cover;
+
 }
 
 .movie-card:hover .movie-card__button {

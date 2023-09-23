@@ -98,64 +98,62 @@ const moviesTestStartArray = [
     thumbnail: 'https://legatomusic.ru/nas/img/cdimg2/00/30/01/31.jpg',
     movieId: '234235',
     nameRu: 'Страх и ненависть в Лас-Вегасе',
-    nameEN: 'Fear and Loathing in Las Vegas'
   },
-  // {
-  //   director: 'Флориан Давид Фиц',
-  //   duration: '111',
-  //   country: 'Германия',
-  //   year: '2018',
-  //   description: 'Лучшие друзья Пауль и Тони, находясь буквально в шаге ' +
-  //     'от богатства, на спор отказываются от всего своего имущества, ' +
-  //     'чтобы доказать – вещи не имеют на парней никакого влияния. Ставки ' +
-  //     'высоки, а их пари оказывается под угрозой, когда на горизонте появляется ' +
-  //     'симпатичная девушка, ведь сложно произвести впечатление, когда ты ' +
-  //     'миллионер без штанов…',
-  //   image: 'https://avatars.mds.yandex.net/i?id=78c8a4efa3c994f9c0949ee26810bd19_l-5305442-images-thumbs&n=13',
-  //   trailerLink: 'https://www.youtube.com/watch?v=zU2vtD7npd0',
-  //   thumbnail: 'https://avatars.mds.yandex.net/get-kinopoisk-image/4716873/0aa5f954-fa3d-4a2a-8894-02590a0921d1/300x450',
-  //   movieId: '853453',
-  //   nameRu: '100 вещей и ничего лишнего',
-  //   nameEN: '100 Dinge'
-  // },
-  // {
-  //   director: 'Пегги Холмс, Хавьер Абад',
-  //   duration: '105',
-  //   country: 'США, Испания',
-  //   year: '2022',
-  //   description: 'Выпускница детского дома Сэм больше всего на свете хочет, ' +
-  //     'чтобы её подружке, маленькой Хэйзел, улыбнулась удача, и девочка наконец ' +
-  //     'обрела семью. Сама Сэм везучестью не отличается, но однажды она угощает ' +
-  //     'бродячего кота, находит счастливую монетку, и с этого момента ей начинает ' +
-  //     'сопутствовать удача буквально во всём. Решив отдать монетку Хэйзел, ' +
-  //     'девушка случайно смывает её в унитаз, а когда снова сталкивается с тем ' +
-  //     'котом, понимает, что это не обычное животное. Пытаясь выпросить у котейки ' +
-  //     'новую монетку, Сэм начинает его преследовать и попадает в волшебную Страну ' +
-  //     'Удачи..',
-  //   image: 'https://www.mirf.ru/wp-content/uploads/2022/05/Luck-_-Apple-Original-Film-Announcement-image-1536x864-1.png',
-  //   trailerLink: 'https://www.youtube.com/watch?v=4B_0KRKsDQY',
-  //   thumbnail: 'https://avatars.mds.yandex.net/get-kinopoisk-image/4303601/4bfeded2-8d0f-40d6-ab0c-b06ea80bca84/300x',
-  //   movieId: '85234230',
-  //   nameRu: 'Удача',
-  //   nameEN: 'Luck'
-  // },
-  // {
-  //   director: 'Дмитрий Высоцкий',
-  //   duration: '65',
-  //   country: 'Россия',
-  //   year: '2022',
-  //   description: 'Коржик, Карамелька и Компот вместе с родителями отправляются ' +
-  //     'отдыхать на морской курорт, где их ждут яркие события, полные весёлой ' +
-  //     'суматохи и встреч с новыми друзьями.',
-  //   image: 'https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/b4f8d337-de5d-44e2-8f6b-bc81a4bdb796/300x450',
-  //   trailerLink: 'https://www.youtube.com/watch?v=onoR4BD5FKw',
-  //   thumbnail: 'https://avatars.mds.yandex.net/get-kinopoisk-image/4774061/b4f8d337-de5d-44e2-8f6b-bc81a4bdb796/300x450',
-  //   movieId: '823424730',
-  //   nameRu: 'Три кота и море приключений',
-  //   nameEN: ''
-  // },
+  {
+    duration: '149',
+    image: 'https://avatars.mds.yandex.net/i?id=e2fe6a0836a5e3eaf624edcfad98a331_l-8497350-images-thumbs&n=13',
+    trailerLink: 'https://youtu.be/jT4xq46iNiQ',
+    movieId: '564238',
+    nameRu: '2001 год: Космическая одиссея '
+  },
+  {
+    duration: '114',
+    image: 'https://avatars.mds.yandex.net/i?id=7991f1c215734e7690ea5ca7f71348fd_l-5208510-images-thumbs&n=13',
+    trailerLink: 'https://youtu.be/JBcRg0g5Y4I',
+    movieId: '5344677',
+    nameRu: 'Столетний старик, который вылез в окно и исчез'
+  },
+  {
+    duration: '100',
+    image: 'https://avatars.mds.yandex.net/i?id=a275443c20761fb72da11b540908c8e4_l-3481047-images-thumbs&n=13',
+    trailerLink: 'https://youtu.be/Kg5cMfrrZFU',
+    movieId: '345678',
+    nameRu: 'День курка'
+  },
+  {
+    duration: '98',
+    image: 'https://avatars.mds.yandex.net/i?id=1ee5a1bb791b131540c6643ce2950237_l-5366304-images-thumbs&n=13',
+    trailerLink: 'https://youtu.be/cMo3-FJBPLw',
+    movieId: '45632798',
+    nameRu: 'Пушки Акимбо'
+  },
+  {
+    duration: '97',
+    image: 'https://avatars.mds.yandex.net/i?id=d60955c16bfed62dcd2bcaa904df1ad1_l-4440117-images-thumbs&n=13',
+    trailerLink: 'https://youtu.be/864JU2qIyag',
+    movieId: '843456',
+    nameRu: 'Человек — швейцарский нож'
+  },
+  {
+    duration: '98',
+    image: 'https://avatars.mds.yandex.net/i?id=ae4c8563921946e0bc033645c9ccb3be_l-8351914-images-thumbs&ref=rim&n=13&w=1024&h=613',
+    trailerLink: 'https://youtu.be/y5qb-ohVYyQ',
+    movieId: '36543459',
+    nameRu: 'Патруль времени'
+  },
+  {
+    duration: '103',
+    image: 'https://yandex-images.clstorage.net/4nGE7Q236/091624eMB0/X0RGSwvlaersAXLUVhB-GDpPgSCxOEUnAJY6KbbWFRUAxh_IEDm_o3J5lf4VpwRa896H9reg6WdBuaV9h3rbLBoTBBpIuy7q6RU53hoKcggvA5xjpHpcIwfPNiLauGdtdKw0-TtHktg8Kc6tQ-gaSrPi6-bUg-FFYsrha4UEjlJTTHNuKMQq9fE0COxCGHMlFSaAP4F6aXcvpU5-149nSHKgGd4qRKjeIjvzoHTefHeRysyz34D_akvy3mqKJ6lsX1NQSBryCuvQARrvXzdgDxcXpCCkX3Z9E4pqR-qfYXxQkDLSOWSKwzUG77he0XJIs_juqPKA-mxrxtxIqASJf3BqdEwtzjDt8TE5xX0Ybi4BMpculUBCfCS3Umbfs2BaUokC-jpro_EHMcOjR9d7T5DR_YTyp9twQfLgRIQtilNcf2BjOMcpzcArFOZmF1YeAxOOK4dTVFACn1Rf_4xjT0KbFuwmVIvdMxLuunDRU1a19-CMw7_YbH3izWuKIa5WRklrcAn6FPLkBAnDUDRXMxoWpS2oY29cGrhDYcSTYFVZpCvkOUuP1xIb64112Vpehej7v8y8xEh2w_xtjye6c213QkQU8jPh8BkJxm0XeSUxF70hj3xUYAWnUH_0jXVeWKUj4xd4ruUULsuTXsJXXqf31qzxrcZRRtbiTKAdp2Z5YVtcIPcsyO09LdtCF2sFKDCuCLxjXk0IhENQypFhXlSQEeEeSZ3FPC3MomvpQ1GOzPCU1p74TXXP_HWNA6tSTmZqQzfFFe3kNCnrWzhwMjgLmT2QfUlWOotRa9apRV5_kDbaH22i2yMd15FX9G58tM_CkeqI31RI-tNmvBm3ZlFLfXAf3gDT5hcuwXYnTAsHOKADsn5nSR-Hfmvjo05aXIIZ-yVVsN8UGe6LSuh9XpTx5KfyovpaTszDVYQOm0JMUWRdH9gP8vsREMBgNVMxABG_BrxvRHICiHJ00Y8',
+    trailerLink: 'https://youtu.be/2j78nqWvfZg',
+    movieId: '3765645',
+    nameRu: 'Неудержимые'
+  },
 ]
 
-const maxMoviesPerPage = 8
+const maxMoviesPerPage = {
+  desktop: 12,
+  tablet: 8,
+  mobile: 4,
+}
 
 export {moviesTestStartArray, maxMoviesPerPage}

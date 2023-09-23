@@ -9,6 +9,7 @@ import Footer from '../Footer/Footer.jsx'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.jsx';
 import Movies from '../Movies/Movies.jsx';
 import SavedMovies from '../SavedMovies/SavedMovies.jsx';
+import {moviesTestStartArray} from '../../utils/constants.js';
 
 
 // const [user, setUser] = useState(null);
@@ -19,6 +20,7 @@ const user = {
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [movies, setMovies] = useState(moviesTestStartArray);
 
   function handleMovieSave(param, state) {
     console.log(state ? `Фильм ${param} сохранен` : `Фильм ${param} не сохранен`)
@@ -58,6 +60,7 @@ function App() {
               element={
                 <ProtectedRoute
                   component={Movies}
+                  movies={movies}
                   isLoggedIn={isLoggedIn}
                   onMovieSave={handleMovieSave}
                   onMovieDelete={handleMovieDelete}
@@ -71,6 +74,7 @@ function App() {
               element={
                 <ProtectedRoute
                   component={SavedMovies}
+                  movies={movies}
                   isLoggedIn={isLoggedIn}
                   onMovieSave={handleMovieSave}
                   onMovieDelete={handleMovieDelete}
