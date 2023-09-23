@@ -6,6 +6,12 @@
   justify-content: center;
 }
 
+/*.movies-card-list_alternative{*/
+/*  justify-content: center;*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*}*/
+
 .movies-card-list__more-button {
 
 }

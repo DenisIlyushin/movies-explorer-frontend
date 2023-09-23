@@ -8,6 +8,7 @@ import Landing from '../Landing/Landing.jsx';
 import Footer from '../Footer/Footer.jsx'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.jsx';
 import Movies from '../Movies/Movies.jsx';
+import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 
 
 // const [user, setUser] = useState(null);
@@ -19,6 +20,22 @@ const user = {
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  function handleMovieSave(param, state) {
+    console.log(state ? `Фильм ${param} сохранен` : `Фильм ${param} не сохранен`)
+  }
+
+  function handleMovieDelete(param) {
+    console.log(`Фильм ${param} удален`)
+  }
+
+  function handleSearchFormSubmit(event) {
+    event.preventDefault()
+    console.log('Произведен поиск')
+  }
+
+  function handleToggleSwitchChange(selectedState) {
+    console.log(selectedState ? 'Короткометражки выбраны' : 'Короткометражки не выбраны')
+  }
 
   return (
     <div className="app">
@@ -42,6 +59,23 @@ function App() {
                 <ProtectedRoute
                   component={Movies}
                   isLoggedIn={isLoggedIn}
+                  onMovieSave={handleMovieSave}
+                  onMovieDelete={handleMovieDelete}
+                  onSearchSubmit={handleSearchFormSubmit}
+                  onToggleSwitchChange={handleToggleSwitchChange}
+                />
+              }
+            />
+            <Route
+              path={'/saved-movies'}
+              element={
+                <ProtectedRoute
+                  component={SavedMovies}
+                  isLoggedIn={isLoggedIn}
+                  onMovieSave={handleMovieSave}
+                  onMovieDelete={handleMovieDelete}
+                  onSearchSubmit={handleSearchFormSubmit}
+                  onToggleSwitchChange={handleToggleSwitchChange}
                 />
               }
             />

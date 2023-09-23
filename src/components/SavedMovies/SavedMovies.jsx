@@ -1,11 +1,10 @@
-import './Movies.css'
-import SearchForm from '../SearchForm/SearchForm.jsx';
+import './SavedMovies.css'
 import {useEffect, useState} from 'react';
+import SearchForm from '../SearchForm/SearchForm.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 import {maxMoviesPerPage, moviesTestStartArray} from '../../utils/constants.js';
 
-
-function Movies(
+function SavedMovies(
   {
     onMovieSave,
     onMovieDelete,
@@ -36,4 +35,4 @@ function Movies(
   )
 }
 
-export default Movies
+export default SavedMovies

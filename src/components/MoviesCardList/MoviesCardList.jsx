@@ -4,7 +4,9 @@ import MoviesCard from '../MoviesCard/MoviesCard.jsx';
 function MoviesCardList(
   {
     movies,
-    maxMoviesPerInteration
+    maxMoviesPerInteration,
+    onMovieSave,
+    onMovieDelete
   }
 ) {
   return (
@@ -12,9 +14,16 @@ function MoviesCardList(
       className={'movies-card-list'}
       id={'movies'}
     >
-      {movies.slice(0, maxMoviesPerInteration).map((movieCard) => (
-        <MoviesCard card={movieCard} />
-      ))}
+      {
+        movies.slice(0, maxMoviesPerInteration).map((movie) => (
+          <MoviesCard
+            key={movie.movieId}
+            movie={movie}
+            onSave={onMovieSave}
+            onDelete={onMovieDelete}
+          />
+        ))
+      }
     </section>
   )
 }
