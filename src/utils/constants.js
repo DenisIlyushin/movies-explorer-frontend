@@ -13,7 +13,7 @@ const moviesTestStartArray = [
     trailerLink: 'https://youtu.be/poH6j9EKQIo',
     thumbnail: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1629390/5757cea9-a8b6-48f8-b9ce-c233cf6b2970/300x450',
     movieId: '854730',
-    nameRu: 'Теорема Hеро',
+    nameRu: 'Теорема Зеро',
     nameEN: 'The Zero Theorem'
   },
   {
