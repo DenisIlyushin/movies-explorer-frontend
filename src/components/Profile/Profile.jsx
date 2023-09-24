@@ -78,6 +78,10 @@ function Profile(
             onChange={handleChange}
           />
         </label>
+      </form>
+      <div
+        className={'profile__buttons'}
+      >
         <button
           className={'profile__button profile__button_type_submit-button'}
           type={'submit'}
@@ -85,14 +89,14 @@ function Profile(
         >
           Редактировать
         </button>
-      </form>
-      <button
-        className={'profile__button profile__button_type_logout-button'}
-        type={'button'}
-        onClick={onLogOut}
-      >
-        Выйти из аккаунта
-      </button>
+        <button
+          className={'profile__button profile__button_type_logout-button'}
+          type={'button'}
+          onClick={onLogOut}
+        >
+          Выйти из аккаунта
+        </button>
+      </div>
     </section>
   )
 }
