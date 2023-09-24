@@ -86,6 +86,10 @@
   opacity: 0.8;
 }
 
+.profile__button:disabled {
+  cursor: default;
+}
+
 .profile__button_type_submit-button {
   margin: 203px auto 0;
 }
