@@ -15,7 +15,7 @@ import Login from '../Login/Login.jsx';
 
 function App() {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [movies, setMovies] = useState(moviesTestStartArray);
 
   const currentUser =
@@ -77,6 +77,7 @@ function App() {
               element={
                 <ProtectedRoute
                   component={Profile}
+                  isLoggedIn={isLoggedIn}
                   onSubmit={handleProfileUpdate}
                   onLogOut={handleLogOut}
                 />

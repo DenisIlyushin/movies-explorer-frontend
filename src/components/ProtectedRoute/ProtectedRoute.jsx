@@ -8,9 +8,6 @@ function ProtectedRoute(
     ...props
   }
 ) {
-  //todo
-  isLoggedIn = true
-
   return (
     isLoggedIn
       ? <Component {...props}/>
