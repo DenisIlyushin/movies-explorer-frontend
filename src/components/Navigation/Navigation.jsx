@@ -33,14 +33,14 @@ function Navigation({ handleClose }) {
           </NavLink>
           <NavLink
             className={'navigation__link'}
-            to={'/'}
+            to={'/movies'}
             onClick={ handleClose }
           >
             Фильмы
           </NavLink>
           <NavLink
             className={'navigation__link'}
-            to={'/'}
+            to={'/saved-movies'}
             onClick={ handleClose }
           >
             Сохранённые фильмы
