@@ -62,11 +62,6 @@ function Profile(
             value={values.username || currentUser.name}
             onChange={handleChange}
           />
-          <span
-            className={'form__input-error'}
-          >
-            {errors.username}
-          </span>
         </label>
         <label
           className={'profile__input-label'}
@@ -82,11 +77,6 @@ function Profile(
             value={values.email || currentUser.email}
             onChange={handleChange}
           />
-          <span
-            className={'form__input-error'}
-          >
-            {errors.email}
-          </span>
         </label>
         <button
           className={'profile__button profile__button_type_submit-button'}

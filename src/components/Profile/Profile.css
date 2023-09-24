@@ -25,7 +25,6 @@
 }
 
 .profile__input-label {
-  position: relative;
   box-sizing: border-box;
   width: 410px;
   height: 48px;
@@ -68,19 +67,6 @@
   font-weight: 500;
   line-height: normal;
 }
-
-.form__input-error {
-  position: absolute;
-  top: 33px;
-  right: 0;
-  color: var(--accent-error-color, #ee3465);
-  text-align: right;
-  font-size: 10px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
 
 .profile__button {
   width: 410px;
