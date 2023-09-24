@@ -11,8 +11,8 @@ function Footer() {
       className=
         {
           pathname === '/profile'
-          || pathname === '/login'
-          || pathname === '/sighin'
+          || pathname === '/signin'
+          || pathname === '/sighup'
             ? 'footer footer_hidden'
             : 'footer'
         }

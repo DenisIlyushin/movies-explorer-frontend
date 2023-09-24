@@ -11,6 +11,7 @@ import Movies from '../Movies/Movies.jsx';
 import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 import Profile from '../Profile/Profile.jsx';
 import {moviesTestStartArray} from '../../utils/constants.js';
+import Login from '../Login/Login.jsx';
 
 function App() {
 
@@ -67,6 +68,11 @@ function App() {
               }
             />
             <Route
+              path={'/signin'}
+              element={
+                <Login/>
+              }/>
+            <Route
               path={'/profile'}
               element={
                 <ProtectedRoute
@@ -76,6 +82,7 @@ function App() {
                 />
               }
             />
+              />
             <Route
               path={'/movies'}
               element={

@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+.header_hidden {
+  display: none;
+}
+
 .header__logo {
   min-height: 38px;
   margin-left: 70px;

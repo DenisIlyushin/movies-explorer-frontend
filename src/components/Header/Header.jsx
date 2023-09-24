@@ -5,16 +5,18 @@ import logo from '../../images/logo.svg';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
 
 function Header({isLoggedIn}) {
-  //todo
-  isLoggedIn = true
-  const location = useLocation()
+  const {pathname} = useLocation()
 
   return (
     !isLoggedIn
       ? (
         <header
           id="header"
-          className={'header'}
+          className={
+          pathname === '/signin'
+          || pathname === '/sighup'
+            ? 'header header_hidden'
+            : 'header'}
         >
           <Link
             to={'/'}
@@ -63,7 +65,7 @@ function Header({isLoggedIn}) {
             <Link
               to={'/movies'}
               className={
-                location.pathname === '/movies'
+                pathname === '/movies'
                   ? 'header__app_nav_button header__app_nav_button_active'
                   : 'header__app_nav_button'
               }
@@ -73,7 +75,7 @@ function Header({isLoggedIn}) {
             <Link
               to={'/saved-movies'}
               className={
-                location.pathname === '/saved-movies'
+                pathname === '/saved-movies'
                   ? 'header__app_nav_button header__app_nav_button_active'
                   : 'header__app_nav_button'
               }
