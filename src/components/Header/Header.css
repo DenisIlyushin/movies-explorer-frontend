@@ -57,10 +57,11 @@
 }
 
 .header__auth_nav_button:hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .header__app_navigation {
+  margin-left: 50px;
   display: flex;
   align-items: center;
   gap: 16px;

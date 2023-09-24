@@ -9,18 +9,19 @@ import Footer from '../Footer/Footer.jsx'
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.jsx';
 import Movies from '../Movies/Movies.jsx';
 import SavedMovies from '../SavedMovies/SavedMovies.jsx';
+import Profile from '../Profile/Profile.jsx';
 import {moviesTestStartArray} from '../../utils/constants.js';
 
-
-// const [user, setUser] = useState(null);
-const user = {
-  name: 'Ден Илюшин',
-  email: 'id@id.ru',
-}
-
 function App() {
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [movies, setMovies] = useState(moviesTestStartArray);
+
+  const currentUser =
+    {
+      name: 'Ден Илюшин',
+      email: 'id@id.ru',
+    }
 
   function handleMovieSave(param, state) {
     console.log(state ? `Фильм ${param} сохранен` : `Фильм ${param} не сохранен`)
@@ -31,7 +32,7 @@ function App() {
   }
 
   function handleSearchFormSubmit(event) {
-    event.preventDefault()
+    event.preventDefault();
     console.log('Произведен поиск')
   }
 
@@ -39,9 +40,19 @@ function App() {
     console.log(selectedState ? 'Короткометражки выбраны' : 'Короткометражки не выбраны')
   }
 
+  function handleProfileUpdate(param) {
+    const {name, email} = param;
+    console.log(`Профиль бы обновлен с данными ${[name, email]}`)
+  }
+
+  function handleLogOut() {
+    setIsLoggedIn(false);
+    console.log('Вы вышли из профиля')
+  }
+
   return (
-    <div className="app">
-      <CurrentUserContext.Provider value={user}>
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="app">
         <div
           className={'app__content'}
         >
@@ -53,6 +64,16 @@ function App() {
               path={'/'}
               element={
                 <Landing/>
+              }
+            />
+            <Route
+              path={'/profile'}
+              element={
+                <ProtectedRoute
+                  component={Profile}
+                  onSubmit={handleProfileUpdate}
+                  onLogOut={handleLogOut}
+                />
               }
             />
             <Route
@@ -86,8 +107,8 @@ function App() {
           </Routes>
           <Footer/>
         </div>
-      </CurrentUserContext.Provider>
-    </div>
+      </div>
+    </CurrentUserContext.Provider>
   );
 }
 

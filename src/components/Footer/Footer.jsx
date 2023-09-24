@@ -1,11 +1,22 @@
+import {Link, useLocation} from 'react-router-dom';
+
 import './Footer.css';
-import {Link} from 'react-router-dom';
 
 function Footer() {
   const currentYear = new Date().getFullYear()
+  const {pathname} = useLocation()
 
   return (
-    <footer className="footer">
+    <footer
+      className=
+        {
+          pathname === '/profile'
+          || pathname === '/login'
+          || pathname === '/sighin'
+            ? 'footer footer_hidden'
+            : 'footer'
+        }
+    >
       <h2
         className={'footer__title'}
       >
