@@ -39,9 +39,6 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  /*text-overflow: ellipsis;*/
-  /*white-space: nowrap;*/
-  /*overflow: hidden;*/
 }
 
 .movie-card__duration {
