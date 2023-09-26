@@ -14,7 +14,7 @@ function Header({isLoggedIn}) {
           id="header"
           className={
           pathname === '/signin'
-          || pathname === '/sighup'
+          || pathname === '/signup'
             ? 'header header_hidden'
             : 'header'}
         >

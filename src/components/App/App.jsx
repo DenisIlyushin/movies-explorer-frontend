@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Route, Routes} from 'react-router-dom';
+import {redirect, Route, Routes, useNavigate} from 'react-router-dom';
 import './App.css';
 import {CurrentUserContext} from '../../context/CurrentUserContext.jsx';
 
@@ -12,10 +12,11 @@ import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 import Profile from '../Profile/Profile.jsx';
 import {moviesTestStartArray} from '../../utils/constants.js';
 import Login from '../Login/Login.jsx';
+import Registration from '../Registration/Registration.jsx';
 
 function App() {
-
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [movies, setMovies] = useState(moviesTestStartArray);
 
   const currentUser =
@@ -48,7 +49,25 @@ function App() {
 
   function handleLogOut() {
     setIsLoggedIn(false);
+    redirect('/')
     console.log('Вы вышли из профиля')
+  }
+
+  function handleLogin(param) {
+    const {email, password} = param;
+    setIsLoggedIn(true);
+    redirect('/movies')
+    console.log(`Вы вошли с данными ${[email, password]}, ура!`)
+  }
+
+  function handleRegistration(param) {
+    const {name, email, password} = param;
+    redirect('/signin')
+    console.log(`Вы зарегистрированы с данными ${[name, email, password]}, ура!`)
+  }
+
+  function handleNotFoundNavigation() {
+    navigate(-1);
   }
 
   return (
@@ -70,7 +89,20 @@ function App() {
             <Route
               path={'/signin'}
               element={
-                <Login/>
+                <Login
+                  onLogin={handleLogin}
+                  title={'Рады видеть!'}
+                  buttonTitle={'Войти'}
+                />
+              }/>
+            <Route
+              path={'/signup'}
+              element={
+                <Registration
+                  onLogin={handleRegistration}
+                  title={'Добро пожаловать!'}
+                  buttonTitle={'Зарегистрироваться'}
+                />
               }/>
             <Route
               path={'/profile'}
@@ -83,7 +115,7 @@ function App() {
                 />
               }
             />
-              />
+            />
             <Route
               path={'/movies'}
               element={

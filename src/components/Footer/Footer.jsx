@@ -12,7 +12,7 @@ function Footer() {
         {
           pathname === '/profile'
           || pathname === '/signin'
-          || pathname === '/sighup'
+          || pathname === '/signup'
             ? 'footer footer_hidden'
             : 'footer'
         }

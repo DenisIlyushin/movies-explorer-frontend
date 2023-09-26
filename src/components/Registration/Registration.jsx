@@ -3,14 +3,14 @@ import useValidate from '../../hooks/useValidate.jsx';
 import {Link} from 'react-router-dom';
 import {useState} from 'react';
 
-function Login(
+function Registration(
   {
     onLogin,
     title,
     buttonTitle,
   }
 ) {
-  const {values, errors, isValid, setIsValid, handleChange} = useValidate()
+  const {values, errors, isValid, setIsValid, handleChange} = useValidate();
 
   useState(() => {
     setIsValid(true)
@@ -33,6 +33,18 @@ function Login(
       isValid={isValid}
     >
       <label className="auth__input-label">
+        Имя
+        <input
+          className={'auth__input'}
+          id={'loginName'}
+          type={'text'}
+          name={'name'}
+          value={values.name || ''}
+          required={true}
+          onChange={handleChange}
+        />
+      </label>
+      <label className="auth__input-label">
         E-mail
         <input
           className={'auth__input'}
@@ -47,7 +59,7 @@ function Login(
       <label className="auth__input-label">
         Пароль
         <input
-          className={'auth__input'}
+          className={`auth__input ${isValid ? '' : 'auth__input_error'}`}
           id={'loginPassword'}
           type={'password'}
           name={'password'}
@@ -55,20 +67,25 @@ function Login(
           required={true}
           onChange={handleChange}
         />
+        <span
+          className={`auth__input-error ${isValid ? '' : 'auth__input-error_active'}`}
+        >
+            {'Что-то пошло не так...'}
+          </span>
       </label>
       <p
         className={'auth__navigation'}
       >
-        Ещё не зарегистрированы?&nbsp;
+        Уже зарегистрированы?&nbsp;
         <Link
           className={'auth__navigation-link'}
-          to={'/signup'}
+          to={'/signin'}
         >
-          Регистрация
+          Войти
         </Link>
       </p>
     </Auth>
   )
 }
 
-export default Login
+export default Registration
