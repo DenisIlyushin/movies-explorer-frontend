@@ -1,0 +1,55 @@
+.notfound {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.notfound__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.notfound__title {
+  margin: 0;
+  padding: 0;
+  color: var(--font-color, #fff);
+  text-align: center;
+  font-size: 140px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.notfound__description {
+  margin: 5px 0 0;
+  padding: 0;
+  color: var(--font-color, #fff);
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.notfound__go-back-button {
+  margin: 184px auto 0;
+  color: var(--theme-auth-color, #4285F4);
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.notfound__go-back-button:hover {
+  opacity: 0.8;
+}

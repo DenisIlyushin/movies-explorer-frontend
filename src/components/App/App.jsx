@@ -13,6 +13,7 @@ import Profile from '../Profile/Profile.jsx';
 import {moviesTestStartArray} from '../../utils/constants.js';
 import Login from '../Login/Login.jsx';
 import Registration from '../Registration/Registration.jsx';
+import NotFound from '../NotFound/NotFound.jsx';
 
 function App() {
   const navigate = useNavigate();
@@ -80,9 +81,13 @@ function App() {
             isLoggedIn={isLoggedIn}
           />
           <Routes>
+            {/*
+            todo кажется надо выделить типа MAIN в нем прописать роуты с header и footer,
+             а остальное типа чистяком пойдет
+            */}
             <Route
               path={'/'}
-              element={
+              elements={
                 <Landing/>
               }
             />
@@ -141,6 +146,14 @@ function App() {
                   onMovieDelete={handleMovieDelete}
                   onSearchSubmit={handleSearchFormSubmit}
                   onToggleSwitchChange={handleToggleSwitchChange}
+                />
+              }
+            />
+            <Route
+              path={'/*'}
+              element={
+                <NotFound
+                  onGoBack={handleNotFoundNavigation}
                 />
               }
             />
