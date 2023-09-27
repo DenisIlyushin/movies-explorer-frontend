@@ -11,7 +11,7 @@ function Profile(
   }
 ) {
   const currentUser = useContext(CurrentUserContext);
-  const {values, errors, isValid, setValues, handleChange, resetForm} = useValidate()
+  const {values, isValid, setValues, handleChange} = useValidate()
 
   useEffect(() => {
     setValues(

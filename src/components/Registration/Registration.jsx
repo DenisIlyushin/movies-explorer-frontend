@@ -10,7 +10,7 @@ function Registration(
     buttonTitle,
   }
 ) {
-  const {values, errors, isValid, setIsValid, handleChange} = useValidate();
+  const {values, isValid, setIsValid, handleChange} = useValidate();
 
   useState(() => {
     setIsValid(true)
