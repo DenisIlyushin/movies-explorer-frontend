@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {redirect, Route, Routes, useLocation, useNavigate} from 'react-router-dom';
+import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
 import './App.css';
 import {CurrentUserContext} from '../../context/CurrentUserContext.jsx';
 
@@ -14,6 +14,7 @@ import Movies from '../Movies/Movies.jsx';
 import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 import Footer from '../Footer/Footer.jsx';
+import Preloader from '../Preloader/Preloader.jsx';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [movies, setMovies] = useState(moviesTestStartArray);
+  const [isLoginLoading, setIsLoginLoading] = useState(false)
 
   const currentUser =
     {
@@ -81,94 +83,106 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
         <div
-          className={'app__content'}
+          className={
+            isLoginLoading
+              ? 'app__content app__content_preload'
+              : 'app__content'
+          }
         >
           {
-            showHeaderPaths.includes(pathname)
-              ? <Header
-                isLoggedIn={isLoggedIn}
+            isLoginLoading
+              ? <Preloader
+                isVisible={isLoginLoading}
               />
-              : null
-          }
-          <Routes>
-            <Route
-              path={'/'}
-              element={
-                <>
-                  <Landing/>
-                </>
-              }
-            />
-            <Route
-              path={'/signin'}
-              element={
-                <Login
-                  onLogin={handleLogin}
-                  title={'Рады видеть!'}
-                  buttonTitle={'Войти'}
-                />
-              }/>
-            <Route
-              path={'/signup'}
-              element={
-                <Registration
-                  onLogin={handleRegistration}
-                  title={'Добро пожаловать!'}
-                  buttonTitle={'Зарегистрироваться'}
-                />
-              }/>
-            <Route
-              path={'/profile'}
-              element={
-                <ProtectedRoute
-                  component={Profile}
-                  isLoggedIn={isLoggedIn}
-                  onSubmit={handleProfileUpdate}
-                  onLogOut={handleLogOut}
-                />
-              }
-            />
-            <Route
-              path={'/movies'}
-              element={
-                <ProtectedRoute
-                  component={Movies}
-                  movies={movies}
-                  isLoggedIn={isLoggedIn}
-                  onMovieSave={handleMovieSave}
-                  onMovieDelete={handleMovieDelete}
-                  onSearchSubmit={handleSearchFormSubmit}
-                  onToggleSwitchChange={handleToggleSwitchChange}
-                />
-              }
-            />
-            <Route
-              path={'/saved-movies'}
-              element={
-                <ProtectedRoute
-                  component={SavedMovies}
-                  movies={movies}
-                  isLoggedIn={isLoggedIn}
-                  onMovieSave={handleMovieSave}
-                  onMovieDelete={handleMovieDelete}
-                  onSearchSubmit={handleSearchFormSubmit}
-                  onToggleSwitchChange={handleToggleSwitchChange}
-                />
-              }
-            />
-            <Route
-              path={'/*'}
-              element={
-                <NotFound
-                  onGoBack={handleNotFoundNavigation}
-                />
-              }
-            />
-          </Routes>
-          {
-            showFooterPath.includes(pathname)
-              ? <Footer/>
-              : null
+              : <>
+                {
+                  showHeaderPaths.includes(pathname)
+                    ? <Header
+                      isLoggedIn={isLoggedIn}
+                    />
+                    : null
+                }
+                <Routes>
+                  <Route
+                    path={'/'}
+                    element={
+                      <>
+                        <Landing/>
+                      </>
+                    }
+                  />
+                  <Route
+                    path={'/signin'}
+                    element={
+                      <Login
+                        onLogin={handleLogin}
+                        title={'Рады видеть!'}
+                        buttonTitle={'Войти'}
+                      />
+                    }/>
+                  <Route
+                    path={'/signup'}
+                    element={
+                      <Registration
+                        onLogin={handleRegistration}
+                        title={'Добро пожаловать!'}
+                        buttonTitle={'Зарегистрироваться'}
+                      />
+                    }/>
+                  <Route
+                    path={'/profile'}
+                    element={
+                      <ProtectedRoute
+                        component={Profile}
+                        isLoggedIn={isLoggedIn}
+                        onSubmit={handleProfileUpdate}
+                        onLogOut={handleLogOut}
+                      />
+                    }
+                  />
+                  <Route
+                    path={'/movies'}
+                    element={
+                      <ProtectedRoute
+                        component={Movies}
+                        movies={movies}
+                        isLoggedIn={isLoggedIn}
+                        onMovieSave={handleMovieSave}
+                        onMovieDelete={handleMovieDelete}
+                        onSearchSubmit={handleSearchFormSubmit}
+                        onToggleSwitchChange={handleToggleSwitchChange}
+                      />
+                    }
+                  />
+                  <Route
+                    path={'/saved-movies'}
+                    element={
+                      <ProtectedRoute
+                        component={SavedMovies}
+                        movies={movies}
+                        isLoggedIn={isLoggedIn}
+                        onMovieSave={handleMovieSave}
+                        onMovieDelete={handleMovieDelete}
+                        onSearchSubmit={handleSearchFormSubmit}
+                        onToggleSwitchChange={handleToggleSwitchChange}
+                      />
+                    }
+                  />
+                  <Route
+                    path={'/*'}
+                    element={
+                      <NotFound
+                        onGoBack={handleNotFoundNavigation}
+                      />
+                    }
+                  />
+                </Routes>
+                {
+                  showFooterPath.includes(pathname)
+                    ? <Footer/>
+                    : null
+                }
+              </>
           }
         </div>
       </div>
