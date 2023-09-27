@@ -31,7 +31,7 @@
 }
 
 .movie-card__title {
-  margin: 14px 0 0 14px;
+  margin: 12px 0 0 14px;
   max-width: 250px;
   max-height: 48px;
   color: var(--font-color, #fff);
@@ -42,14 +42,13 @@
 }
 
 .movie-card__duration {
-  margin: 17px 14px 0 0;
+  margin: 12px 14px 0 0;
   padding: 3px 4px 3px;
   max-height: 18px;
+  min-width: 44px;
   align-self: start;
   border-radius: 3px;
   background: var(--background-accent-color, #2f2f2f);
-  display: flex;
-  align-items: center;
   color: var(--font-background-color, #8b8b8b);
   text-align: center;
   font-size: 11px;

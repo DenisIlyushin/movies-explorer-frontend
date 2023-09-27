@@ -8,7 +8,7 @@
 .movies-card-list__content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 60px 30px;
+  gap: 59px 30px;
   justify-content: center;
 }
 
