@@ -19,6 +19,7 @@ function Registration(
   function handleSubmit() {
     onLogin(
       {
+        name: values.name,
         email: values.email,
         password: values.password
       }

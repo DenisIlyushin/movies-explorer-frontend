@@ -41,10 +41,11 @@ function Profile(
       </h2>
       <form
         className={'profile__form'}
+        id={'profile'}
         name={'profile-edit'}
         autoComplete={'off'}
         noValidate
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
       >
         <label
           className={'profile__input-label'}
@@ -86,6 +87,7 @@ function Profile(
           className={'profile__button profile__button_type_submit-button'}
           type={'submit'}
           disabled={!isValid}
+          onClick={handleSubmit}
         >
           Редактировать
         </button>
@@ -93,6 +95,7 @@ function Profile(
           className={'profile__button profile__button_type_logout-button'}
           type={'button'}
           onClick={onLogOut}
+
         >
           Выйти из аккаунта
         </button>

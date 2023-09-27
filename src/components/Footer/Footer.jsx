@@ -4,18 +4,10 @@ import './Footer.css';
 
 function Footer() {
   const currentYear = new Date().getFullYear()
-  const {pathname} = useLocation()
 
   return (
     <footer
-      className=
-        {
-          pathname === '/profile'
-          || pathname === '/signin'
-          || pathname === '/signup'
-            ? 'footer footer_hidden'
-            : 'footer'
-        }
+      className={'footer'}
     >
       <h2
         className={'footer__title'}

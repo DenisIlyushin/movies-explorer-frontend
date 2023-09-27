@@ -4,7 +4,6 @@
 
 .promo__content {
   margin: 0 40px 0;
-  min-height: 493px;
   border-radius: 10px;
   background: var(--background-light-color, #272727);
   display: flex;
@@ -15,7 +14,7 @@
 
 .promo__title {
   max-width: 730px;
-  margin: 160px auto;
+  margin: 160px auto 150px;
   color: var(--font-color, #fff);
   text-align: center;
   font-size: 50px;

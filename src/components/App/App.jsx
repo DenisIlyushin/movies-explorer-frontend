@@ -1,22 +1,28 @@
 import {useState} from 'react';
-import {redirect, Route, Routes, useNavigate} from 'react-router-dom';
+import {redirect, Route, Routes, useLocation, useNavigate} from 'react-router-dom';
 import './App.css';
 import {CurrentUserContext} from '../../context/CurrentUserContext.jsx';
 
+import {moviesTestStartArray} from '../../utils/constants.js';
 import Header from '../Header/Header.jsx';
 import Landing from '../Landing/Landing.jsx';
-import Footer from '../Footer/Footer.jsx'
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.jsx';
-import Movies from '../Movies/Movies.jsx';
-import SavedMovies from '../SavedMovies/SavedMovies.jsx';
-import Profile from '../Profile/Profile.jsx';
-import {moviesTestStartArray} from '../../utils/constants.js';
 import Login from '../Login/Login.jsx';
 import Registration from '../Registration/Registration.jsx';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute.jsx';
+import Profile from '../Profile/Profile.jsx';
+import Movies from '../Movies/Movies.jsx';
+import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
+import Footer from '../Footer/Footer.jsx';
+
 
 function App() {
   const navigate = useNavigate();
+  const {pathname} = useLocation();
+
+  const showHeaderPaths = ['/', '/movies', '/saved-movies', '/profile']
+  const showFooterPath = ['/', '/movies', '/saved-movies']
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [movies, setMovies] = useState(moviesTestStartArray);
 
@@ -50,20 +56,20 @@ function App() {
 
   function handleLogOut() {
     setIsLoggedIn(false);
-    redirect('/')
+    navigate('/')
     console.log('Вы вышли из профиля')
   }
 
   function handleLogin(param) {
     const {email, password} = param;
     setIsLoggedIn(true);
-    redirect('/movies')
+    navigate('/movies')
     console.log(`Вы вошли с данными ${[email, password]}, ура!`)
   }
 
   function handleRegistration(param) {
     const {name, email, password} = param;
-    redirect('/signin')
+    navigate('/signin')
     console.log(`Вы зарегистрированы с данными ${[name, email, password]}, ура!`)
   }
 
@@ -77,18 +83,20 @@ function App() {
         <div
           className={'app__content'}
         >
-          <Header
-            isLoggedIn={isLoggedIn}
-          />
+          {
+            showHeaderPaths.includes(pathname)
+              ? <Header
+                isLoggedIn={isLoggedIn}
+              />
+              : null
+          }
           <Routes>
-            {/*
-            todo кажется надо выделить типа MAIN в нем прописать роуты с header и footer,
-             а остальное типа чистяком пойдет
-            */}
             <Route
               path={'/'}
-              elements={
-                <Landing/>
+              element={
+                <>
+                  <Landing/>
+                </>
               }
             />
             <Route
@@ -119,7 +127,6 @@ function App() {
                   onLogOut={handleLogOut}
                 />
               }
-            />
             />
             <Route
               path={'/movies'}
@@ -158,7 +165,11 @@ function App() {
               }
             />
           </Routes>
-          <Footer/>
+          {
+            showFooterPath.includes(pathname)
+              ? <Footer/>
+              : null
+          }
         </div>
       </div>
     </CurrentUserContext.Provider>

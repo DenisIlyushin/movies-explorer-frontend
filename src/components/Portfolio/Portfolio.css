@@ -3,7 +3,7 @@
 }
 
 .portfolio__content {
-  margin: 100px 70px 125px;
+  margin: 100px 70px 107px;
 }
 
 .portfolio__title {
@@ -32,7 +32,7 @@
   border-bottom: 1px solid var(--portfolio-separatpr-color, #424242);
   background-image: url('../../images/portfolio_nav.svg');
   background-repeat: no-repeat;
-  background-position: top 19px right;
+  background-position: top 19px right 6px;
 }
 
 .portfolio__item:first-of-type {

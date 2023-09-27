@@ -51,6 +51,7 @@ function Auth(
             `auth__submit-button
                ${isValid ? '' : 'auth__submit-button_inactive'}`
           }
+          type={'submit'}
           disabled={!isValid}
         >
           {buttonTitle}

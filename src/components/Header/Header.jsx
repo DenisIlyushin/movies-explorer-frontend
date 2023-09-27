@@ -12,11 +12,7 @@ function Header({isLoggedIn}) {
       ? (
         <header
           id="header"
-          className={
-          pathname === '/signin'
-          || pathname === '/signup'
-            ? 'header header_hidden'
-            : 'header'}
+          className={'header'}
         >
           <Link
             to={'/'}
