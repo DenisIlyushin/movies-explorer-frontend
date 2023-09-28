@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .profile__title {
@@ -18,7 +17,7 @@
 }
 
 .profile__form {
-  margin: 123px auto 0;
+  margin: 106px auto 0;
   display: flex;
   flex-direction: column;
 }
@@ -105,6 +104,20 @@
   color: var(--accent-error-color, #ee3465);
 }
 
+@media screen and (max-width: 1023px) {
+  .profile__title {
+    margin: 236px auto 0;
+  }
+
+  .profile__form {
+    margin: 80px auto 0;
+  }
+
+  .profile__button_type_submit-button {
+    margin: 194px auto 0;
+  }
+}
+
 @media screen and (max-width: 619px) {
   .profile {
     height: 100vh;
@@ -120,6 +133,7 @@
   }
 
   .profile__form {
+    margin: 64px auto 0;
     width: 260px;
     flex: 1;
   }
