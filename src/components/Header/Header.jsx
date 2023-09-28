@@ -24,17 +24,17 @@ function Header({isLoggedIn}) {
             />
           </Link>
           <div
-            className={'header__auth_navigation'}
+            className={'header__auth-navigation'}
           >
             <Link
               to={'/signup'}
-              className={'header__auth_button'}
+              className={'header__auth-button'}
             >
               Регистрация
             </Link>
             <Link
               to={'/signin'}
-              className={'header__auth_button header__auth_button_focused'}
+              className={'header__auth-button header__auth-button_focused'}
             >
               Войти
             </Link>
@@ -56,14 +56,14 @@ function Header({isLoggedIn}) {
             />
           </Link>
           <nav
-            className={'header__app_navigation'}
+            className={'header__app-navigation'}
           >
             <Link
               to={'/movies'}
               className={
                 pathname === '/movies'
-                  ? 'header__app_nav_button header__app_nav_button_active'
-                  : 'header__app_nav_button'
+                  ? 'header__app-nav-button header__app-nav-button_active'
+                  : 'header__app-nav-button'
               }
             >
               Фильмы
@@ -72,19 +72,19 @@ function Header({isLoggedIn}) {
               to={'/saved-movies'}
               className={
                 pathname === '/saved-movies'
-                  ? 'header__app_nav_button header__app_nav_button_active'
-                  : 'header__app_nav_button'
+                  ? 'header__app-nav-button header__app-nav-button_active'
+                  : 'header__app-nav-button'
               }
             >
               Сохранённые фильмы
             </Link>
           </nav>
           <nav
-            className={'header__auth_navigation'}
+            className={'header__auth-navigation'}
           >
             <Link
               to={'/profile'}
-              className={'header__auth_nav_button'}
+              className={'header__auth-nav-button'}
             >
               Аккаунт
             </Link>

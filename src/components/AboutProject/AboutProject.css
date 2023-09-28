@@ -30,7 +30,7 @@
   width: 100%;
 }
 
-.about-project__statement_title {
+.about-project__statement-title {
   margin: 0 0 26px 0;
   color: var(--font-color, #fff);
   font-size: 20px;
@@ -40,7 +40,7 @@
   letter-spacing: -0.8px;
 }
 
-.about-project__statement_text {
+.about-project__statement-text {
   margin: 0;
   color: var(--font-color, #fff);
   font-size: 14px;
@@ -70,7 +70,7 @@
   background-color: var(--theme-color, #3ddc84);
 }
 
-.about-project__step_title {
+.about-project__step-title {
   margin: 0;
   padding: 9px 14px;
   color: var(--font-color, #fff);
@@ -81,11 +81,11 @@
   line-height: normal;
 }
 
-.about-project__step_title_theme-highlight {
+.about-project__step-title_theme-highlight {
   color: #000;
 }
 
-.about-project__step_description {
+.about-project__step-description {
   margin: 14px 0 0 0;
   color: var(--font-background-color, #8b8b8b);
   text-align: center;
@@ -108,12 +108,12 @@
     gap: 30px;
   }
 
-  .about-project__statement_title {
+  .about-project__statement-title {
     margin: 0 0 22px 0;
     min-height: 48px;
   }
 
-  .about-project__statement_text {
+  .about-project__statement-text {
     min-height: 54px;
     font-size: 12px;
     line-height: 18px;
@@ -137,14 +137,14 @@
     gap: 56px;
   }
 
-  .about-project__statement_title {
+  .about-project__statement-title {
     margin: 0 0 16px 0;
     min-height: 44px;
     font-size: 18px;
     letter-spacing: -0.72px;
   }
 
-  .about-project__statement_text {
+  .about-project__statement-text {
     min-height: 48px;
     font-size: 11px;
     line-height: 16px;
@@ -154,12 +154,12 @@
     margin: 60px 0 93px;
   }
 
-  .about-project__step_title {
+  .about-project__step-title {
     padding: 11px 10px;
     font-size: 11px;
   }
 
-  .about-project__step_description {
+  .about-project__step-description {
     margin: 10px 0 0 0;
     font-size: 11px;
     line-height: normal;

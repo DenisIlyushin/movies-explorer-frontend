@@ -27,7 +27,7 @@
   line-height: 18px;
 }
 
-.search-form__submit_button {
+.search-form__submit-button {
   width: 44px;
   height: 44px;
   margin: 0 2px 0 11px;
@@ -37,7 +37,7 @@
   transition: opacity 0.2s linear;
 }
 
-.search-form__submit_button:hover {
+.search-form__submit-button:hover {
   opacity: 0.8;
 }
 

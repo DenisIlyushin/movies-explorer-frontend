@@ -19,12 +19,12 @@ function AboutProject() {
             className={'about-project__statement'}
           >
             <h3
-              className={'about-project__statement_title'}
+              className={'about-project__statement-title'}
             >
               Дипломный проект включал 5&nbsp;этапов
             </h3>
             <p
-              className={'about-project__statement_text'}
+              className={'about-project__statement-text'}
             >
               Составление плана, работу над бэкендом, вёрстку, добавление
               функциональности и финальные доработки.
@@ -34,12 +34,12 @@ function AboutProject() {
             className={'about-project__statement'}
           >
             <h3
-              className={'about-project__statement_title'}
+              className={'about-project__statement-title'}
             >
               На выполнение диплома ушло 5&nbsp;недель
             </h3>
             <p
-              className={'about-project__statement_text'}
+              className={'about-project__statement-text'}
             >
               У каждого этапа был мягкий и жёсткий дедлайн, которые нужно
               было соблюдать, чтобы успешно защититься.
@@ -53,12 +53,12 @@ function AboutProject() {
             className={'about-project__step'}
           >
             <h3
-              className={'about-project__step_title about-project__step_title_theme-highlight'}
+              className={'about-project__step-title about-project__step-title_theme-highlight'}
             >
               1 неделя
             </h3>
             <p
-              className={'about-project__step_description'}
+              className={'about-project__step-description'}
             >
               Back-end
             </p>
@@ -66,12 +66,12 @@ function AboutProject() {
           <li
             className={'about-project__step'}
           >
-            <h3 className={'about-project__step_title'}
+            <h3 className={'about-project__step-title'}
             >
               4 недели
             </h3>
             <p
-              className={'about-project__step_description'}
+              className={'about-project__step-description'}
             >
               Front-end
             </p>

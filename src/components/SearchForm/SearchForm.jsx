@@ -25,7 +25,7 @@ function SearchForm(
           required
         />
         <button
-          className={'search-form__submit_button'}
+          className={'search-form__submit-button'}
           type={'submit'}
         />
       </div>

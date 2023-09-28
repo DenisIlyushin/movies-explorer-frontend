@@ -17,14 +17,14 @@
   width: 38px;
 }
 
-.header__auth_navigation {
+.header__auth-navigation {
   display: flex;
   margin-right: 70px;
   align-items: center;
   gap: 8px;
 }
 
-.header__auth_button {
+.header__auth-button {
   padding: 8px 20px;
   border-radius: 3px;
   font-size: 12px;
@@ -37,16 +37,16 @@
   transition: opacity 0.2s linear;
 }
 
-.header__auth_button:hover {
+.header__auth-button:hover {
   opacity: 0.7;
 }
 
-.header__auth_button_focused {
+.header__auth-button_focused {
   background-color: var(--theme-color, #3ddc84);
   color: #000;
 }
 
-.header__auth_nav_button {
+.header__auth-nav-button {
   padding: 8px 20px;
   border-radius: 20px;
   background-color: var(--background-nav-color, #313131);
@@ -64,14 +64,14 @@
   opacity: 0.8;
 }
 
-.header__app_navigation {
+.header__app-navigation {
   margin-left: 60px;
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.header__app_nav_button {
+.header__app-nav-button {
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
@@ -82,11 +82,11 @@
   transition: opacity 0.2s linear;
 }
 
-.header__app_nav_button_active {
+.header__app-nav-button_active {
   font-weight: 500;
 }
 
-.header__app_nav_button:hover {
+.header__app-nav-button:hover {
   opacity: 0.7;
 }
 
@@ -95,15 +95,15 @@
     margin-left: 30px;
   }
 
-  .header__auth_navigation {
+  .header__auth-navigation {
     margin-right: 30px;
   }
 
-  .header__auth_nav_button {
+  .header__auth-nav-button {
     display: none;
   }
 
-  .header__app_navigation {
+  .header__app-navigation {
     display: none;
   }
 }
@@ -113,11 +113,11 @@
     margin-left: 14px;
   }
 
-  .header__auth_navigation {
+  .header__auth-navigation {
     margin-right: 14px;
   }
 
-  .header__auth_button {
+  .header__auth-button {
     padding: 5px 12px;
     font-size: 10px;
     line-height: 16px;
