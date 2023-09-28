@@ -147,7 +147,7 @@
 
 @media screen and (max-width: 619px) {
   .about-me__content {
-    margin: 70px 14px 0;
+    margin: 71px 14px 0;
   }
 
   .about-me__info {
@@ -170,14 +170,15 @@
     line-height: 16px;
   }
 
-  .about-me__description {
-    margin: 20px 0 0 0;
+  .about-me__bio {
+    margin: 4px 0 0 0;
     font-size: 11px;
     line-height: 16px;
   }
 
   .about-me__photo {
     width: 292px;
+    height: 352px;
   }
 
   .about-me__github-link {

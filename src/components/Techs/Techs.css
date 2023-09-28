@@ -115,7 +115,7 @@
   }
 
   .techs__subtitle {
-    margin: 60px auto 25px;
+    margin: 50px auto 12px;
     font-size: 30px;
     letter-spacing: -1.2px;
   }
@@ -130,5 +130,6 @@
 
   .techs__list {
     margin: 0 0 70px;
+    grid-template-columns: repeat(2, 84px);
   }
 }
