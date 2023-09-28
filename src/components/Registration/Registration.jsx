@@ -42,6 +42,9 @@ function Registration(
           name={'name'}
           value={values.name || ''}
           required={true}
+          minLength={2}
+          maxLength={30}
+          placeholder={'Как Вас зовут?'}
           onChange={handleChange}
         />
       </label>
@@ -54,6 +57,7 @@ function Registration(
           name={'email'}
           value={values.email || ''}
           required={true}
+          placeholder={'Ваш e-email'}
           onChange={handleChange}
         />
       </label>
@@ -66,6 +70,9 @@ function Registration(
           name={'password'}
           value={values.password || ''}
           required={true}
+          minLength={8}
+          maxLength={30}
+          placeholder={'Ваш пароль'}
           onChange={handleChange}
         />
         <span

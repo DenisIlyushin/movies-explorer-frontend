@@ -56,11 +56,11 @@ function Profile(
             id={'username'}
             name={'username'}
             type={'text'}
-            placeholder={'Как вас зовут?'}
             required
             minLength={2}
             maxLength={30}
             value={values.username || currentUser.name}
+            placeholder={'Как вас зовут?'}
             onChange={handleChange}
           />
         </label>
@@ -73,9 +73,9 @@ function Profile(
             id={'email'}
             name={'email'}
             type={'email'}
-            placeholder={'Ваш e-mail'}
             required
             value={values.email || currentUser.email}
+            placeholder={'Ваш e-mail'}
             onChange={handleChange}
           />
         </label>

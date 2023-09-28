@@ -1,5 +1,5 @@
 import './Auth.css'
-import React from 'react';
+import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
 import logo from '../../images/logo.svg';
 
@@ -12,6 +12,7 @@ function Auth(
     children,
   }
 ) {
+  useState(() => {isValid = false}, [])
   function handleSubmit(event) {
     event.preventDefault();
     onSubmit()
@@ -31,6 +32,7 @@ function Auth(
       <form
         className={'auth__form'}
         onSubmit={handleSubmit}
+        autoComplete={'off'}
       >
         <Link
           to={'/'}

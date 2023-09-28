@@ -41,6 +41,7 @@ function Login(
           name={'email'}
           value={values.email || ''}
           required={true}
+          placeholder={'Ваш e-email'}
           onChange={handleChange}
         />
       </label>
@@ -52,7 +53,10 @@ function Login(
           type={'password'}
           name={'password'}
           value={values.password || ''}
+          minLength={8}
+          maxLength={30}
           required={true}
+          placeholder={'Ваш пароль'}
           onChange={handleChange}
         />
       </label>
