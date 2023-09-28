@@ -20,6 +20,12 @@
   height: 38px;
   width: 38px;
   align-self: start;
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.auth__logo:hover {
+  opacity: 0.7;
 }
 
 .auth__title {
@@ -52,7 +58,7 @@
   font-weight: 500;
   line-height: normal;
   cursor: pointer;
-  transition: opacity 0.2s linear;
+  transition: opacity, background-color 0.2s linear;
 }
 
 .auth__submit-button:hover {
@@ -60,8 +66,12 @@
 }
 
 .auth__submit-button_inactive {
-  /*background-color: var(--background-nav-color, #313131);*/
+  background-color: var(--background-nav-color, #313131);
   cursor: default;
+}
+
+.auth__submit-button_inactive:hover {
+  opacity: 1;
 }
 
 .auth__input-label {

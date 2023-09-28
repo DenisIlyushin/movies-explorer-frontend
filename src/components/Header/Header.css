@@ -15,6 +15,12 @@
   min-height: 38px;
   margin-left: 70px;
   width: 38px;
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.header__logo:hover {
+  opacity: 0.8;
 }
 
 .header__auth-navigation {
@@ -38,7 +44,7 @@
 }
 
 .header__auth-button:hover {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .header__auth-button_focused {
@@ -98,7 +104,10 @@
   .header__auth-navigation {
     margin-right: 30px;
   }
+}
 
+
+@media screen and (max-width: 768px) {
   .header__auth-nav-button {
     display: none;
   }

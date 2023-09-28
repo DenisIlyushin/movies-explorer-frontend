@@ -3,6 +3,12 @@
   display: inline-block;
   width: 36px;
   height: 16px;
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.toggle-switch:hover {
+  opacity: 0.8;
 }
 
 .toggle-switch__input {

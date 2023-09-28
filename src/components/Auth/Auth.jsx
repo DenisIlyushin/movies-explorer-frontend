@@ -48,8 +48,7 @@ function Auth(
         <div className={'auth__blank'}/>
         <button
           className={
-            `auth__submit-button
-               ${isValid ? '' : 'auth__submit-button_inactive'}`
+            `auth__submit-button ${isValid ? '' : 'auth__submit-button_inactive'}`
           }
           type={'submit'}
           disabled={!isValid}

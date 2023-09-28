@@ -95,7 +95,6 @@ function Profile(
           className={'profile__button profile__button_type_logout-button'}
           type={'button'}
           onClick={onLogOut}
-
         >
           Выйти из аккаунта
         </button>

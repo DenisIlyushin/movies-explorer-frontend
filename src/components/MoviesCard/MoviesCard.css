@@ -16,7 +16,13 @@
   height: 201px;
   border-radius: 5px;
   object-fit: cover;
+  cursor: pointer;
+  filter: saturate(40%);
+  transition: filter 0.08s linear;
+}
 
+.movie-card__image:hover {
+  filter: saturate(100%);
 }
 
 .movie-card:hover .movie-card__button {
@@ -97,7 +103,7 @@
   background-repeat: no-repeat;
 }
 
-.movie-card__save-button:hover {
+.movie-card__button:hover {
   opacity: 0.8;
 }
 
