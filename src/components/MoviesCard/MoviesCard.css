@@ -2,6 +2,7 @@
   width: 360px;
   height: 231px;
   position: relative;
+  list-style: none;
 }
 
 .movie-card__content {

@@ -27,7 +27,7 @@ function MoviesCard(
   }
 
   return (
-    <div
+    <li
       className={'movie-card'}
     >
       <Link
@@ -79,7 +79,7 @@ function MoviesCard(
           onClick={() => handleDelete(movie.nameRu)}
           />
       }
-    </div>
+    </li>
   )
 }
 

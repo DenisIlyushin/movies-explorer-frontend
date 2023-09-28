@@ -1,5 +1,6 @@
 .nav-tab {
   margin-bottom: 30px;
+  padding: 0;
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -20,6 +21,7 @@
   font-weight: 500;
   line-height: 16px;
   text-decoration: none;
+  list-style: none;
   transition: opacity 0.2s linear;
   cursor: pointer;
 }
