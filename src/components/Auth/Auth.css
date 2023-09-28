@@ -101,6 +101,11 @@
   overflow: hidden;
 }
 
+.auth__input:focus {
+  outline-offset: 3px;
+  outline: 1px solid var(--theme-color, #3ddc84);
+}
+
 .auth__input_error {
   margin: 10px 0 0;
   color: var(--accent-error-color, #ee3465);

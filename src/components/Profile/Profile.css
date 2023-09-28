@@ -57,6 +57,11 @@
   overflow: hidden;
 }
 
+.profile__input:focus {
+  outline-offset: 3px;
+  outline: 1px solid var(--theme-color, #3ddc84);
+}
+
 .profile__input::placeholder {
   color: var(--font-color, #fff);
   text-align: right;
