@@ -142,7 +142,7 @@
 
   .movie-card__duration {
     margin: 16px 0 0 0;
-    min-width: 52px;
+    min-width: 44px;
   }
 
   .movie-card__button {
