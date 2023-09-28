@@ -113,12 +113,12 @@
   }
 
   .movie-card__title {
-    margin: 25px 0 0 0;
+    margin: 23px 0 0 0;
     max-height: 32px;
   }
 
   .movie-card__duration {
-    margin: 25px 0 0 0;
+    margin: 23px 0 0 0;
   }
 }
 
