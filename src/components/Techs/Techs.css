@@ -73,14 +73,20 @@
     margin: 90px 50px 0;
   }
 
+  .techs__subtitle {
+    margin: 80px auto 22px;
+  }
+
   .techs__description {
+    margin: 0 auto 83px;
     font-size: 12px;
     line-height: 18px;
     letter-spacing: -0.48px;
   }
 
   .techs__list {
-    margin: 0 0 90px;
+    margin: 0 0 91px;
+    grid-template-columns: repeat(auto-fit, 84px);
   }
 
   .techs__item {

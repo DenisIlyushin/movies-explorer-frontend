@@ -113,14 +113,14 @@
   }
 
   .about-me__bio {
-    margin: 16px 0 0 0;
+    margin: -1px 0 0 0;
     font-feature-settings: 'clig' off, 'liga' off;
     font-size: 12px;
     line-height: 18px;
   }
 
   .about-me__description {
-    margin: 18px 0 0 0;
+    margin: -6px 0 0 0;
     font-size: 12px;
     line-height: 28px;
   }

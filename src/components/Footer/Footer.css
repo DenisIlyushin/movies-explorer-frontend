@@ -65,6 +65,10 @@
   .footer {
     width: calc(100% - 60px);
   }
+
+  .footer__title {
+    margin: 60px auto 0;
+  }
 }
 
 @media screen and (max-width: 767px) {

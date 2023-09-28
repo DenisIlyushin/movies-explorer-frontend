@@ -30,6 +30,7 @@
   }
 
   .promo__title {
+    margin: 350px auto 315px;
     max-width: 680px;
     font-size: 40px;
     line-height: 52px;
