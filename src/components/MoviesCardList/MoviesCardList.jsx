@@ -51,7 +51,7 @@ function MoviesCardList(
       className={'movies-card-list'}
       id={'movies'}
     >
-      <div
+      <ul
         className={'movies-card-list__content'}
       >
         {
@@ -64,7 +64,7 @@ function MoviesCardList(
             />
           ))
         }
-      </div>
+      </ul>
       {
         movies.length > moviesOnPage
           ? <button

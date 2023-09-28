@@ -18,6 +18,7 @@ function BurgerMenu() {
       <button
         className={'burger-menu'}
         onClick={ openNavigationMenu }
+        type={'button'}
       />
       {
         isMenuOpen

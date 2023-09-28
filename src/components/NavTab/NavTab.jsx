@@ -3,7 +3,7 @@ import './NavTab.css'
 
 function NavTab() {
   return (
-    <nav
+    <ul
     className={'nav-tab'}
     >
       <Link
@@ -30,7 +30,7 @@ function NavTab() {
         Студент
       <
       /Link>
-    </nav>
+    </ul>
   )
 }
 

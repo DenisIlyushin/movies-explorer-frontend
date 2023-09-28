@@ -19,7 +19,7 @@ function SavedMovies(
   }, [isShortMovies])
 
   return (
-    <div className={'movies'}>
+    <main className={'movies'}>
       <SearchForm
         switchState={ isShortMovies }
         onSubmit={ onSearchSubmit }
@@ -31,7 +31,7 @@ function SavedMovies(
         onMovieSave={onMovieSave}
         onMovieDelete={onMovieDelete}
       />
-    </div>
+    </main>
   )
 }
 

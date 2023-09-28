@@ -7,13 +7,13 @@ import Portfolio from '../Portfolio/Portfolio.jsx';
 
 function Landing() {
   return (
-    <div className={'landing'}>
+    <main className={'landing'}>
       <Promo />
       <AboutProject />
       <Techs />
       <AboutMe />
       <Portfolio />
-    </div>
+    </main>
   )
 }
 

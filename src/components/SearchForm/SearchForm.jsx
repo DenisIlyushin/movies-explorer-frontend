@@ -9,40 +9,43 @@ function SearchForm(
   }
 ) {
   return (
-    <form
+    <section
       className={'search-form'}
-      name={'search-form'}
-      autoComplete={'off'}
-      noValidate
-      onSubmit={ onSubmit }
     >
-      <div
-        className={'search-form__input-container'}
+      <form
+        name={'search-form'}
+        autoComplete={'off'}
+        noValidate
+        onSubmit={ onSubmit }
       >
-        <input
-          className={'search-form__input'}
-          placeholder={'Фильм'}
-          required
-        />
-        <button
-          className={'search-form__submit-button'}
-          type={'submit'}
-        />
-      </div>
-      <div
-        className={'search-form__switch-container'}
-      >
-        <ToggleSwitch
-          initialState={ switchState }
-          onChange={ onSwitchChange }
-        />
-        <p
-          className={'search-form__switch-label'}
+        <div
+          className={'search-form__input-container'}
         >
-          Короткометражки
-        </p>
-      </div>
-    </form>
+          <input
+            className={'search-form__input'}
+            placeholder={'Фильм'}
+            required
+          />
+          <button
+            className={'search-form__submit-button'}
+            type={'submit'}
+          />
+        </div>
+        <div
+          className={'search-form__switch-container'}
+        >
+          <ToggleSwitch
+            initialState={ switchState }
+            onChange={ onSwitchChange }
+          />
+          <p
+            className={'search-form__switch-label'}
+          >
+            Короткометражки
+          </p>
+        </div>
+      </form>
+    </section>
   )
 }
 

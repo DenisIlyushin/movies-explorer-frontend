@@ -25,7 +25,7 @@ function Auth(
   }
 
   return (
-    <div
+    <main
       className={'auth'}
     >
       <form
@@ -60,7 +60,7 @@ function Auth(
           getFormFieldsByType('p')
         }
       </form>
-    </div>
+    </main>
   )
 }
 

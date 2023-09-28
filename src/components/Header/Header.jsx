@@ -23,7 +23,7 @@ function Header({isLoggedIn}) {
               alt={'логотип'}
             />
           </Link>
-          <div
+          <nav
             className={'header__auth-navigation'}
           >
             <Link
@@ -38,7 +38,7 @@ function Header({isLoggedIn}) {
             >
               Войти
             </Link>
-          </div>
+          </nav>
         </header>
       )
       : (

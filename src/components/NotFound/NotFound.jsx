@@ -6,7 +6,7 @@ function NotFound(
   }
   ) {
   return (
-    <div
+    <main
       className={'notfound'}
     >
       <div
@@ -25,11 +25,12 @@ function NotFound(
         <button
           className={'notfound__go-back-button'}
           onClick={onGoBack}
+          type={'button'}
         >
           Назад
         </button>
       </div>
-    </div>
+    </main>
   )
 }
 

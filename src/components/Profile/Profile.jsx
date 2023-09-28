@@ -30,18 +30,18 @@ function Profile(
   }
 
   return (
-    <section
+    <main
       className={'profile'}
       id={'profile'}
     >
-      <h2
+      <h1
         className={'profile__title'}
       >
         {`Привет, ${currentUser.name}!`}
-      </h2>
+      </h1>
       <form
         className={'profile__form'}
-        id={'profile'}
+        id={'profile-form'}
         name={'profile-edit'}
         autoComplete={'off'}
         noValidate
@@ -100,7 +100,7 @@ function Profile(
           Выйти из аккаунта
         </button>
       </div>
-    </section>
+    </main>
   )
 }
 

@@ -64,6 +64,7 @@ function MoviesCard(
                 : 'movie-card__button_type_save'
             }`
           }
+            type={'button'}
             onClick={() => handleSave(movie.nameRu, !isSaved)}
           >
             {
