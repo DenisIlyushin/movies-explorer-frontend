@@ -7,7 +7,7 @@ function NavTab() {
     className={'nav-tab'}
     >
       <li
-        className={'nav-tab__item'}
+        className={'nav-tab__li'}
       >
         <Link
           className={'nav-tab__item'}
@@ -18,7 +18,7 @@ function NavTab() {
         </Link>
       </li>
       <li
-        className={'nav-tab__item'}
+        className={'nav-tab__li'}
       >
         <Link
           className={'nav-tab__item'}
@@ -29,7 +29,7 @@ function NavTab() {
         </Link>
       </li>
       <li
-        className={'nav-tab__item'}
+        className={'nav-tab__li'}
       >
         <Link
           className={'nav-tab__item'}
