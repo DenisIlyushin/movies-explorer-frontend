@@ -1,0 +1,21 @@
+:root {
+  /* Набор цветов */
+  --background-color: #202020;
+  --font-color: #fff;
+  --theme-color: #3ddc84;
+  --theme-auth-color: #4285F4;
+  --accent-error-color: #ee3465;
+  --background-accent-color: #2f2f2f;
+  --background-nav-color: #313131;
+  --background-light-color: #272727;
+  --background-dark-color: #303030;
+  --font-background-color: #8b8b8b;
+  --title-separator-color: #dadada;
+  --portfolio-separatpr-color: #424242;
+}
+
+/* Переходы экрана в приложении */
+@media screen and (max-width: 1023px) {}
+@media screen and (max-width: 1184px) {}
+@media screen and (max-width: 767px) {}
+@media screen and (max-width: 619px) {}

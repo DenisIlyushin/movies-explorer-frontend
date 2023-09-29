@@ -1,0 +1,134 @@
+.header {
+  width: 100%;
+  min-height: 74px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header_hidden {
+  display: none;
+}
+
+.header__logo {
+  min-height: 38px;
+  margin-left: 70px;
+  width: 38px;
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.header__logo:hover {
+  opacity: 0.8;
+}
+
+.header__auth-navigation {
+  display: flex;
+  margin-right: 70px;
+  align-items: center;
+  gap: 8px;
+}
+
+.header__auth-button {
+  padding: 8px 20px;
+  border-radius: 3px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--font-color, #fff);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.header__auth-button:hover {
+  opacity: 0.8;
+}
+
+.header__auth-button_focused {
+  background-color: var(--theme-color, #3ddc84);
+  color: #000;
+}
+
+.header__auth-nav-button {
+  padding: 8px 20px;
+  border-radius: 20px;
+  background-color: var(--background-nav-color, #313131);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  color: var(--font-color, #fff);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.header__auth-nav-button:hover {
+  opacity: 0.8;
+}
+
+.header__app-navigation {
+  margin-left: 60px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header__app-nav-button {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  color: var(--font-color, #fff);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s linear;
+}
+
+.header__app-nav-button_active {
+  font-weight: 500;
+}
+
+.header__app-nav-button:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 1023px) {
+  .header__logo {
+    margin-left: 30px;
+  }
+
+  .header__auth-navigation {
+    margin-right: 30px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .header__auth-nav-button {
+    display: none;
+  }
+
+  .header__app-navigation {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .header__logo {
+    margin-left: 14px;
+  }
+
+  .header__auth-navigation {
+    margin-right: 14px;
+  }
+
+  .header__auth-button {
+    padding: 5px 12px;
+    font-size: 10px;
+    line-height: 16px;
+  }
+}
