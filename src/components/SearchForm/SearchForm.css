@@ -12,14 +12,24 @@
 .search-form__input {
   flex: 1;
   height: 50px;
-  padding: 0;
+  padding: 0 0 0 20px;
   border-radius: 8px;
   border: none;
   background: var(--background-accent-color, #2f2f2f);
+  color: var(--font-background-color, #8b8b8b);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.search-form__input:focus {
+  outline-offset: 3px;
+  outline: 1px solid var(--theme-color, #3ddc84);
 }
 
 .search-form__input::placeholder {
-  padding: 0 0 0 20px;
+  padding: 0;
   color: var(--font-background-color, #8b8b8b);
   font-size: 14px;
   font-style: normal;
