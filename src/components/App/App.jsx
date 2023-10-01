@@ -15,6 +15,7 @@ import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 import Footer from '../Footer/Footer.jsx';
 import Preloader from '../Preloader/Preloader.jsx';
+import api from '../../utils/MainApi.js';
 
 
 function App() {
@@ -24,15 +25,12 @@ function App() {
   const showHeaderPaths = ['/', '/movies', '/saved-movies', '/profile']
   const showFooterPath = ['/', '/movies', '/saved-movies']
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [movies, setMovies] = useState(moviesTestStartArray);
-  const [isLoginLoading, setIsLoginLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
-  const currentUser =
-    {
-      name: 'Ден Илюшин',
-      email: 'id@id.ru',
-    }
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
 
   function handleMovieSave(param, state) {
     console.log(state ? `Фильм ${param} сохранен` : `Фильм ${param} не сохранен`)
@@ -64,9 +62,20 @@ function App() {
 
   function handleLogin(param) {
     const {email, password} = param;
-    setIsLoggedIn(true);
-    navigate('/movies')
-    console.log(`Вы вошли с данными ${[email, password]}, ура!`)
+
+    setIsLoading(true);
+    api.signIn({email, password})
+      .then(({token}) => {
+        localStorage.setItem('token', token);
+        setIsLoggedIn(true);
+        navigate('/movies')
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
   }
 
   function handleRegistration(param) {
@@ -84,15 +93,15 @@ function App() {
       <div className="app">
         <div
           className={
-            isLoginLoading
+            isLoading
               ? 'app__content app__content_preload'
               : 'app__content'
           }
         >
           {
-            isLoginLoading
+            isLoading
               ? <Preloader
-                isVisible={isLoginLoading}
+                isVisible={isLoading}
               />
               : <>
                 {
