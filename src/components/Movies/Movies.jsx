@@ -23,6 +23,7 @@ function Movies(
   function handleSearchFormSubmit({query, isShortMoviesOnly}) {
     setIsLoading(true);
     //todo надо добавить сюда сохранение результатов поиска
+    // есть мыслишки сделать хук для работы с локальнйо памятью по типу useValudate
     searchApi.getAllMovies()
       .then((movies) => {
         const foundMovies = filterMovies(movies, query, isShortMoviesOnly)

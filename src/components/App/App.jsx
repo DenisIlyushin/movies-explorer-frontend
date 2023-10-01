@@ -180,12 +180,9 @@ function App() {
                     element={
                       <ProtectedRoute
                         component={Movies}
-                        // movies={movies}
                         isLoggedIn={isLoggedIn}
                         onMovieSave={handleMovieSave}
                         onMovieDelete={handleMovieDelete}
-                        // onSearchSubmit={handleSearchFormSubmit}
-                        // onToggleSwitchChange={handleToggleSwitchChange}
                       />
                     }
                   />
@@ -193,6 +190,8 @@ function App() {
                     path={'/saved-movies'}
                     element={
                       <ProtectedRoute
+                        // todo обрати внимание, что ты переделал Movies
+                        //  даже думал о том, чтобы сделать отдельный компонент
                         component={SavedMovies}
                         movies={moviesTestStartArray}
                         isLoggedIn={isLoggedIn}
