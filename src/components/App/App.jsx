@@ -26,7 +26,7 @@ function App() {
   const showFooterPath = ['/', '/movies', '/saved-movies']
 
   const [movies, setMovies] = useState(moviesTestStartArray);
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoginLoading, setIsLoginLoading] = useState(false)
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
@@ -76,7 +76,7 @@ function App() {
   function handleLogin(param) {
     const {email, password} = param;
 
-    setIsLoading(true);
+    setIsLoginLoading(true);
     api.signIn({email, password})
       .then(({token}) => {
         localStorage.setItem('token', token);
@@ -87,7 +87,7 @@ function App() {
         console.log(error)
       })
       .finally(() => {
-        setIsLoading(false);
+        setIsLoginLoading(false);
       })
   }
 
@@ -106,15 +106,15 @@ function App() {
       <div className="app">
         <div
           className={
-            isLoading
+            isLoginLoading
               ? 'app__content app__content_preload'
               : 'app__content'
           }
         >
           {
-            isLoading
+            isLoginLoading
               ? <Preloader
-                isVisible={isLoading}
+                isVisible={isLoginLoading}
               />
               : <>
                 {
