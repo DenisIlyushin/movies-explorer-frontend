@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
 import './App.css';
 import {CurrentUserContext} from '../../context/CurrentUserContext.jsx';
@@ -31,6 +31,19 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (!isLoggedIn) {
+      return
+    }
+
+    api.getMe(token)
+      .then((userInfo) => {
+        setCurrentUser(userInfo)
+      })
+      .catch(console.log)
+  }, [isLoggedIn])
 
   function handleMovieSave(param, state) {
     console.log(state ? `Фильм ${param} сохранен` : `Фильм ${param} не сохранен`)
