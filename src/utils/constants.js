@@ -156,4 +156,13 @@ const maxMoviesPerPage = {
   mobile: 4,
 }
 
-export {moviesTestStartArray, maxMoviesPerPage}
+const shortMoviesDuration = 40;
+
+const messages = {
+  noMoviesFound: 'Ничего не найдено',
+  unexpectedErrorOnBeafilmServer: 'Во время запроса произошла ошибка. ' +
+    'Возможно, проблема с соединением или сервер недоступен. Подождите ' +
+    'немного и попробуйте ещё раз'
+}
+
+export {moviesTestStartArray, maxMoviesPerPage, shortMoviesDuration, messages}

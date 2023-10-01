@@ -37,8 +37,8 @@ function MoviesCard(
       >
         <img
           className={'movie-card__image'}
-          alt={movie.nameRu}
-          src={movie.image}
+          alt={movie.nameRU}
+          src={`https://api.nomoreparties.co${movie.image.url}`}
         />
       </Link>
       <div
@@ -46,7 +46,7 @@ function MoviesCard(
         <h2
           className={'movie-card__title'}
         >
-          {movie.nameRu}
+          {movie.nameRU}
         </h2>
         <p
           className={'movie-card__duration'}

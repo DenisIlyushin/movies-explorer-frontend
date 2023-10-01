@@ -43,7 +43,9 @@ function MoviesCardList(
 
   useEffect(() => {
     getMoviesOnPage()
-    window.addEventListener('resize', getMoviesOnPage)
+    setTimeout(() => {
+      window.addEventListener('resize', getMoviesOnPage)
+    }, 1000)
   }, [])
 
   return (
@@ -57,7 +59,7 @@ function MoviesCardList(
         {
           movies.slice(0, moviesOnPage).map((movie) => (
             <MoviesCard
-              key={movie.movieId}
+              key={movie.id || movie._id}
               movie={movie}
               onSave={onMovieSave}
               onDelete={onMovieDelete}

@@ -19,18 +19,31 @@ import api from '../../utils/MainApi.js';
 
 
 function App() {
+  // управление навигацией
   const navigate = useNavigate();
   const {pathname} = useLocation();
-
+  // управление отрисовкой страницы
   const showHeaderPaths = ['/', '/movies', '/saved-movies', '/profile']
   const showFooterPath = ['/', '/movies', '/saved-movies']
-
-  const [movies, setMovies] = useState(moviesTestStartArray);
-  const [isLoginLoading, setIsLoginLoading] = useState(false)
-
+  // управление пользователем и аторизацией
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoginLoading, setIsLoginLoading] = useState(false)
   const [currentUser, setCurrentUser] = useState(null);
 
+  const [movies, setMovies] = useState(moviesTestStartArray);
+
+  // установка состояния isLoggedIn по наличию токена в памяти браузера
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      return
+    }
+
+    setIsLoggedIn(true)
+  }, [])
+
+  // если состояние isLoggedIn === true, то запрашиваем данные пользователя
   useEffect(() => {
     const token = localStorage.getItem('token');
 
@@ -167,12 +180,12 @@ function App() {
                     element={
                       <ProtectedRoute
                         component={Movies}
-                        movies={movies}
+                        // movies={movies}
                         isLoggedIn={isLoggedIn}
                         onMovieSave={handleMovieSave}
                         onMovieDelete={handleMovieDelete}
-                        onSearchSubmit={handleSearchFormSubmit}
-                        onToggleSwitchChange={handleToggleSwitchChange}
+                        // onSearchSubmit={handleSearchFormSubmit}
+                        // onToggleSwitchChange={handleToggleSwitchChange}
                       />
                     }
                   />
@@ -181,7 +194,7 @@ function App() {
                     element={
                       <ProtectedRoute
                         component={SavedMovies}
-                        movies={movies}
+                        movies={moviesTestStartArray}
                         isLoggedIn={isLoggedIn}
                         onMovieSave={handleMovieSave}
                         onMovieDelete={handleMovieDelete}
