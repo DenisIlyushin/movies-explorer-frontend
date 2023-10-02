@@ -78,7 +78,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   color: var(--font-background-color, #8b8b8b);
   font-size: 10px;
   font-style: normal;
