@@ -15,8 +15,8 @@ class Api {
   };
 
   // todo не уверен, что нужная штука, написал пока так, чтобы всякий раз jwt в запрос передавать.
-  setAuthToken(token) {
-    this.#headers['Authorization'] = `Bearer ${token}`
+  setAuthToken(jwt) {
+    this.#headers['Authorization'] = `Bearer ${jwt}`
   };
 
   signUp({name, email, password}) {
