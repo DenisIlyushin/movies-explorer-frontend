@@ -82,6 +82,7 @@ function App() {
 
   function handleLogOut() {
     setIsLoggedIn(false);
+    localStorage.clear();
     navigate('/')
     console.log('Вы вышли из профиля')
   }
