@@ -30,8 +30,6 @@ function App() {
   const [isLoginLoading, setIsLoginLoading] = useState(false)
   const [currentUser, setCurrentUser] = useState(null);
 
-  const [movies, setMovies] = useState(moviesTestStartArray);
-
   // установка состояния isLoggedIn по наличию токена в памяти браузера
   useEffect(() => {
     const token = localStorage.getItem('token');
