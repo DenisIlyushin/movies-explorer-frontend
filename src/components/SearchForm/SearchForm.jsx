@@ -1,6 +1,7 @@
 import './SearchForm.css'
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch.jsx';
 import useValidate from '../../hooks/useValidate.jsx';
+import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 
 function SearchForm(
   {
@@ -9,7 +10,13 @@ function SearchForm(
     switchState
   }
 ) {
-  const {values, handleChange} = useValidate()
+  const {values, handleChange} = useValidate();
+  const [storedInput, setStoredInput] = useLocalStorage('search', null);
+
+  function fetchInput(event) {
+    setStoredInput(event.target.value)
+    handleChange(event)
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -37,10 +44,10 @@ function SearchForm(
             id={'searchQuery'}
             type={'text'}
             name={'searchQuery'}
-            value={values.searchQuery || ''}
+            value={values.searchQuery || storedInput }
             placeholder={'Фильм'}
             required={true}
-            onChange={handleChange}
+            onChange={ fetchInput }
           />
           <button
             className={'search-form__submit-button'}

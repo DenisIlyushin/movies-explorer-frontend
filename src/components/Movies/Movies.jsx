@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 
 import './Movies.css'
 import SearchForm from '../SearchForm/SearchForm.jsx';
@@ -7,6 +7,7 @@ import Preloader from '../Preloader/Preloader.jsx';
 import filterMovies from '../../utils/filterMovies.js';
 import searchApi from '../../utils/MoviesApi.js';
 import {messages} from '../../utils/constants.js';
+import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 
 
 function Movies(
@@ -19,6 +20,17 @@ function Movies(
   const [movies, setMovies] = useState(null);
   const [isLoading, setIsLoading] = useState(false)
   const [searchMessage, setSearchMessage] = useState('');
+  const [storedMovies, setStoredMovies] = useLocalStorage('movies', null)
+  const [storedToggleSwitchState, setStoredToggleSwitchState] = useLocalStorage('isShortMovies', false)
+
+  useEffect(() => {
+    setMovies(storedMovies);
+    setIsShortMovies(storedToggleSwitchState);
+  }, [])
+
+  useEffect(() => {
+    setStoredToggleSwitchState(isShortMovies)
+  }, [isShortMovies])
 
   function handleSearchFormSubmit({query, isShortMoviesOnly}) {
     setIsLoading(true);
@@ -27,6 +39,7 @@ function Movies(
     searchApi.getAllMovies()
       .then((movies) => {
         const foundMovies = filterMovies(movies, query, isShortMoviesOnly)
+        setStoredMovies(foundMovies)
         if (foundMovies.length !== 0) {
           setMovies(foundMovies)
         } else {
@@ -39,7 +52,7 @@ function Movies(
         setSearchMessage(messages.unexpectedErrorOnBeafilmServer)
       })
       .finally(() => {
-        setIsLoading(false)
+        setIsLoading(false);
       })
   }
 
