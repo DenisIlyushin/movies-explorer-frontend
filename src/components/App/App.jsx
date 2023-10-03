@@ -31,11 +31,13 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [storedToken, setStoredToken] = useLocalStorage('jwtToken', null);
   // управление карточками фильмов
-  const [savedMovies, setSavedMovies] = useState([]);
+  // todo не уверен, что нужно прям хранить в памяти браузера фильмы, что уже лайкнул
+  //  если нет, то используй обычную стейт переменную
+  // const [savedMovies, setSavedMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
 
   // установка состояния isLoggedIn по наличию токена в памяти браузера
   useEffect(() => {
-
     if (!storedToken) {
       return
     }
@@ -61,31 +63,27 @@ function App() {
   function handleMovieSave(movieObject, state) {
     const token = storedToken;
 
-    // сброс Preloader для отдельной карточки
-    function resetLoadingStatus() {
-      return Promise.resolve();
-    }
-
     if (state) {
       api.addMovie(token, movieObject)
         .then((movie) => {
-          console.log('saved', movie._id)
           setSavedMovies([movie, ...savedMovies]);
         })
         .catch(console.log)
     } else {
+      // ищем ID фильма среди сохранённых в стейт-переменной
       const [movieToDelete] = savedMovies.filter(
         (savedMovie) => savedMovie.movieId === movieObject.movieId
       )
-      console.log('deleting', movieToDelete._id)
+      // убираем фильм из списка сохраненных
+      savedMovies.splice(savedMovies.indexOf(movieToDelete), 1)
+      // удаляем по найденному _id
       api.deleteMovie(token, movieToDelete._id)
         .then((movie) => {
           setSavedMovies([movie, ...savedMovies]);
         })
         .catch(console.log)
+        .finally(() => setSavedMovies(savedMovies))
     }
-    // выкидываем промис, чтобы закончить прелоадер
-    return resetLoadingStatus()
   }
 
   function handleMovieDelete(param) {
@@ -107,8 +105,12 @@ function App() {
   }
 
   function handleLogOut() {
+    // сбрасывем стейт-переменные
     setIsLoggedIn(false);
+    setSavedMovies([])
+    // очищаем локальную базу (работа useLocalStorage() переменных)
     localStorage.clear();
+    // переводим пользователя на стартовую страницу
     navigate('/')
     console.log('Вы вышли из профиля')
   }
@@ -207,6 +209,7 @@ function App() {
                     element={
                       <ProtectedRoute
                         component={Movies}
+                        savedMovieList={savedMovies}
                         isLoggedIn={isLoggedIn}
                         onMovieSave={handleMovieSave}
                         onMovieDelete={handleMovieDelete}

@@ -2,21 +2,18 @@ import {Link, useLocation} from 'react-router-dom';
 
 import './MoviesCard.css';
 import {useState} from 'react';
-import Preloader from '../Preloader/Preloader.jsx';
 
 function MoviesCard(
   {
     movie,
     isSavedMovies,
+    isPreviouslySaved,
     onSave,
     onDelete
   }
 ) {
   const location = useLocation()
-  const [isSaved, setIsSaved] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-
-  // const isLoading = true
+  const [isSaved, setIsSaved] = useState(isPreviouslySaved)
 
   function prepareMovieData(movie) {
     return {
@@ -36,13 +33,8 @@ function MoviesCard(
 
   function handleSave(movie, state) {
     const movieObject = prepareMovieData(movie)
-
     onSave(movieObject, state)
-      .then(() => {
-          setIsSaved(!isSaved)
-          setIsLoading(false)
-        }
-      )
+    setIsSaved(!isSaved)
   }
 
   function handleDelete(param) {
@@ -68,14 +60,6 @@ function MoviesCard(
           alt={movie.nameRU}
           src={isSavedMovies ? movie.image : `https://api.nomoreparties.co${movie.image.url}`}
         />
-        {
-          isLoading
-            ? <Preloader
-              isVisible={isLoading}
-              isAfloat={true}
-            />
-            : null
-        }
       </Link>
       <div
         className={'movie-card__info'}>

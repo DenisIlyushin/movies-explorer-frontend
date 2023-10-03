@@ -12,6 +12,7 @@ import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 
 function Movies(
   {
+    savedMovieList,
     onMovieSave,
     onMovieDelete,
   }
@@ -81,6 +82,7 @@ function Movies(
         movies && !isLoading
           ? <MoviesCardList
             movies={movies}
+            savedMovieList={savedMovieList}
             onMovieSave={onMovieSave}
             onMovieDelete={onMovieDelete}
           />

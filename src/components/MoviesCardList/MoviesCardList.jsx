@@ -8,6 +8,7 @@ function MoviesCardList(
   {
     movies,
     isSavedMovies,
+    savedMovieList,
     onMovieSave,
     onMovieDelete
   }
@@ -48,7 +49,12 @@ function MoviesCardList(
       window.addEventListener('resize', getMoviesOnPage)
     }, 1000)
   }, [])
-  console.log(movies)
+
+  // проверяем, есть ли фильм в ранее добавленных в избранное пользователем
+  function setPreviouslySavedState(movie) {
+    return Boolean(savedMovieList.filter(savedMovie => {return savedMovie.movieId === movie.id}).length)
+  }
+
   return (
     <section
       className={'movies-card-list'}
@@ -60,9 +66,10 @@ function MoviesCardList(
         {
           movies.slice(0, moviesOnPage).map((movie) => (
             <MoviesCard
-              key={movie._id || movie._id}
+              key={movie.movieId || movie.id}
               movie={movie}
               isSavedMovies={isSavedMovies}
+              isPreviouslySaved={setPreviouslySavedState(movie)}
               onSave={onMovieSave}
               onDelete={onMovieDelete}
             />
