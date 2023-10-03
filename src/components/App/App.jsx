@@ -3,7 +3,6 @@ import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
 import './App.css';
 import {CurrentUserContext} from '../../context/CurrentUserContext.jsx';
 
-import {moviesTestStartArray} from '../../utils/constants.js';
 import Header from '../Header/Header.jsx';
 import Landing from '../Landing/Landing.jsx';
 import Login from '../Login/Login.jsx';
@@ -31,6 +30,8 @@ function App() {
   const [isLoginLoading, setIsLoginLoading] = useState(false)
   const [currentUser, setCurrentUser] = useState(null);
   const [storedToken, setStoredToken] = useLocalStorage('jwtToken', null);
+  // управление карточками фильмов
+  const [savedMovies, setSavedMovies] = useState([]);
 
   // установка состояния isLoggedIn по наличию токена в памяти браузера
   useEffect(() => {
@@ -57,10 +58,34 @@ function App() {
       .catch(console.log)
   }, [isLoggedIn])
 
-  function handleMovieSave(param, state) {
+  function handleMovieSave(movieObject, state) {
+    const token = storedToken;
 
+    // сброс Preloader для отдельной карточки
+    function resetLoadingStatus() {
+      return Promise.resolve();
+    }
 
-    console.log(state ? `Фильм ${param} сохранен` : `Фильм ${param} не сохранен`)
+    if (state) {
+      api.addMovie(token, movieObject)
+        .then((movie) => {
+          console.log('saved', movie._id)
+          setSavedMovies([movie, ...savedMovies]);
+        })
+        .catch(console.log)
+    } else {
+      const [movieToDelete] = savedMovies.filter(
+        (savedMovie) => savedMovie.movieId === movieObject.movieId
+      )
+      console.log('deleting', movieToDelete._id)
+      api.deleteMovie(token, movieToDelete._id)
+        .then((movie) => {
+          setSavedMovies([movie, ...savedMovies]);
+        })
+        .catch(console.log)
+    }
+    // выкидываем промис, чтобы закончить прелоадер
+    return resetLoadingStatus()
   }
 
   function handleMovieDelete(param) {
@@ -195,7 +220,7 @@ function App() {
                         // todo обрати внимание, что ты переделал Movies
                         //  даже думал о том, чтобы сделать отдельный компонент
                         component={SavedMovies}
-                        movies={moviesTestStartArray}
+                        movies={savedMovies}
                         isLoggedIn={isLoggedIn}
                         onMovieSave={handleMovieSave}
                         onMovieDelete={handleMovieDelete}

@@ -7,6 +7,7 @@ import {maxMoviesPerPage} from '../../utils/constants.js';
 function MoviesCardList(
   {
     movies,
+    isSavedMovies,
     onMovieSave,
     onMovieDelete
   }
@@ -47,7 +48,7 @@ function MoviesCardList(
       window.addEventListener('resize', getMoviesOnPage)
     }, 1000)
   }, [])
-
+  console.log(movies)
   return (
     <section
       className={'movies-card-list'}
@@ -59,8 +60,9 @@ function MoviesCardList(
         {
           movies.slice(0, moviesOnPage).map((movie) => (
             <MoviesCard
-              key={movie.id || movie._id}
+              key={movie._id || movie._id}
               movie={movie}
+              isSavedMovies={isSavedMovies}
               onSave={onMovieSave}
               onDelete={onMovieDelete}
             />

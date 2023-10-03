@@ -92,7 +92,7 @@ class Api {
       .then(this.#handleResponse);
   }
 
-  addMovie(jwt, movieinfo) {
+  addMovie(jwt, movieInfo) {
     return fetch(`${this.#baseUrl}/movies`, {
         method: 'POST',
         headers: {
@@ -101,7 +101,7 @@ class Api {
             Authorization: `Bearer ${jwt}`
           }
         },
-        body: JSON.stringify(movieinfo),
+        body: JSON.stringify(movieInfo),
       }
     )
       .then(this.#handleResponse);

@@ -2,10 +2,11 @@ import './SavedMovies.css'
 import {useEffect, useState} from 'react';
 import SearchForm from '../SearchForm/SearchForm.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
-import {maxMoviesPerPage, moviesTestStartArray} from '../../utils/constants.js';
+import {maxMoviesPerPage} from '../../utils/constants.js';
 
 function SavedMovies(
   {
+    movies,
     onMovieSave,
     onMovieDelete,
     onSearchSubmit,
@@ -21,13 +22,14 @@ function SavedMovies(
   return (
     <main className={'movies'}>
       <SearchForm
-        switchState={ isShortMovies }
-        onSubmit={ onSearchSubmit }
-        onSwitchChange={ setIsShortMovies }
+        switchState={isShortMovies}
+        onSubmit={onSearchSubmit}
+        onSwitchChange={setIsShortMovies}
       />
       <MoviesCardList
-        movies={ moviesTestStartArray }
-        maxMoviesPerInteration={ maxMoviesPerPage }
+        movies={movies}
+        isSavedMovies={true}
+        maxMoviesPerInteration={maxMoviesPerPage}
         onMovieSave={onMovieSave}
         onMovieDelete={onMovieDelete}
       />

@@ -2,23 +2,51 @@ import {Link, useLocation} from 'react-router-dom';
 
 import './MoviesCard.css';
 import {useState} from 'react';
+import Preloader from '../Preloader/Preloader.jsx';
 
 function MoviesCard(
   {
     movie,
+    isSavedMovies,
     onSave,
     onDelete
   }
 ) {
   const location = useLocation()
   const [isSaved, setIsSaved] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
-  function handleSave(param, state) {
-    setIsSaved(!isSaved);
-    onSave(param, state)
+  // const isLoading = true
+
+  function prepareMovieData(movie) {
+    return {
+      country: movie.country,
+      director: movie.director,
+      duration: movie.duration,
+      year: movie.year,
+      description: movie.description,
+      image: `https://api.nomoreparties.co${movie.image.url}`,
+      trailerLink: movie.trailerLink,
+      thumbnail: `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
+      nameRU: movie.nameRU,
+      nameEN: movie.nameEN,
+      movieId: movie.id,
+    }
+  }
+
+  function handleSave(movie, state) {
+    const movieObject = prepareMovieData(movie)
+
+    onSave(movieObject, state)
+      .then(() => {
+          setIsSaved(!isSaved)
+          setIsLoading(false)
+        }
+      )
   }
 
   function handleDelete(param) {
+    console.log(param)
     onDelete(param)
   }
 
@@ -38,8 +66,16 @@ function MoviesCard(
         <img
           className={'movie-card__image'}
           alt={movie.nameRU}
-          src={`https://api.nomoreparties.co${movie.image.url}`}
+          src={isSavedMovies ? movie.image : `https://api.nomoreparties.co${movie.image.url}`}
         />
+        {
+          isLoading
+            ? <Preloader
+              isVisible={isLoading}
+              isAfloat={true}
+            />
+            : null
+        }
       </Link>
       <div
         className={'movie-card__info'}>
@@ -58,14 +94,14 @@ function MoviesCard(
         location.pathname === '/movies'
           ? <button
             className={
-            `movie-card__button ${
-              isSaved 
-                ? 'movie-card__button_type_saved' 
-                : 'movie-card__button_type_save'
-            }`
-          }
+              `movie-card__button ${
+                isSaved
+                  ? 'movie-card__button_type_saved'
+                  : 'movie-card__button_type_save'
+              }`
+            }
             type={'button'}
-            onClick={() => handleSave(movie.nameRu, !isSaved)}
+            onClick={() => handleSave(movie, !isSaved)}
           >
             {
               isSaved
@@ -74,9 +110,9 @@ function MoviesCard(
             }
           </button>
           : <button
-          className={'movie-card__button movie-card__button_type_delete'}
-          type={'button'}
-          onClick={() => handleDelete(movie.nameRu)}
+            className={'movie-card__button movie-card__button_type_delete'}
+            type={'button'}
+            onClick={() => handleDelete(movie)}
           />
       }
     </li>
