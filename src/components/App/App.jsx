@@ -34,9 +34,8 @@ function App() {
 
   // установка состояния isLoggedIn по наличию токена в памяти браузера
   useEffect(() => {
-    const token = storedToken
 
-    if (!token) {
+    if (!storedToken) {
       return
     }
 
@@ -59,6 +58,8 @@ function App() {
   }, [isLoggedIn])
 
   function handleMovieSave(param, state) {
+
+
     console.log(state ? `Фильм ${param} сохранен` : `Фильм ${param} не сохранен`)
   }
 
