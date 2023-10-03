@@ -109,7 +109,7 @@ class Api {
 
   deleteMovie(jwt, id) {
     return fetch(`${this.#baseUrl}/movies/${id}`, {
-        method: 'GET',
+        method: 'DELETE',
         headers: {
           ...this.#headers,
           ...{
