@@ -16,6 +16,7 @@ import NotFound from '../NotFound/NotFound.jsx';
 import Footer from '../Footer/Footer.jsx';
 import Preloader from '../Preloader/Preloader.jsx';
 import api from '../../utils/MainApi.js';
+import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 
 
 function App() {
@@ -25,14 +26,15 @@ function App() {
   // управление отрисовкой страницы
   const showHeaderPaths = ['/', '/movies', '/saved-movies', '/profile']
   const showFooterPath = ['/', '/movies', '/saved-movies']
-  // управление пользователем и аторизацией
+  // управление пользователем и авторизацией
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoginLoading, setIsLoginLoading] = useState(false)
   const [currentUser, setCurrentUser] = useState(null);
+  const [storedToken, setStoredToken] = useLocalStorage('jwtToken', null);
 
   // установка состояния isLoggedIn по наличию токена в памяти браузера
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = storedToken
 
     if (!token) {
       return
@@ -43,7 +45,7 @@ function App() {
 
   // если состояние isLoggedIn === true, то запрашиваем данные пользователя
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = storedToken
 
     if (!isLoggedIn) {
       return
@@ -91,7 +93,7 @@ function App() {
     setIsLoginLoading(true);
     api.signIn({email, password})
       .then(({token}) => {
-        localStorage.setItem('token', token);
+        setStoredToken(token)
         setIsLoggedIn(true);
         navigate('/movies')
       })
