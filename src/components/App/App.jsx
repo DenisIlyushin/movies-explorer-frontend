@@ -137,18 +137,23 @@ function App() {
     console.log('Вы вышли из профиля')
   }
 
-  function handleLogin(param) {
-    const {email, password} = param;
-
+  function handleLogin(loginData) {
     setIsLoginLoading(true);
-    api.signIn({email, password})
+    api.signIn(loginData)
       .then(({token}) => {
         setStoredToken(token)
         setIsLoggedIn(true);
+        setApiMessage({
+          text: `Вы авторизовались!`,
+          isSuccess: true,
+        })
         navigate('/movies')
       })
       .catch((error) => {
-        console.log(error)
+        setApiMessage({
+          text: `Что пошло не так и получилась ${error}`,
+          isSuccess: false,
+        })
       })
       .finally(() => {
         setIsLoginLoading(false);
@@ -216,6 +221,8 @@ function App() {
                     element={
                       <Login
                         onLogin={handleLogin}
+                        isLoading={isLoginLoading}
+                        messageState={[apiMessage, setApiMessage]}
                         title={'Рады видеть!'}
                         buttonTitle={'Войти'}
                       />

@@ -6,11 +6,11 @@ import {regexPatterns} from '../../utils/constants.js';
 
 function Registration(
   {
+    title,
+    buttonTitle,
     isLoading,
     messageState: [message, setMessage],
     onLogin,
-    title,
-    buttonTitle,
   }
 ) {
   const {values, errors, isValid, handleChange} = useValidate();
@@ -104,7 +104,7 @@ function Registration(
           className={'auth__navigation-link'}
           to={'/signin'}
         >
-          {isLoading ? 'Редактировать...' : 'Редактировать'}
+          Войти
         </Link>
       </p>
     </Auth>

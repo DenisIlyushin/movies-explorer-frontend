@@ -2,19 +2,23 @@ import Auth from '../Auth/Auth.jsx';
 import useValidate from '../../hooks/useValidate.jsx';
 import {Link} from 'react-router-dom';
 import {useState} from 'react';
+import {regexPatterns} from '../../utils/constants.js';
 
 function Login(
   {
-    onLogin,
     title,
     buttonTitle,
+    isLoading,
+    messageState: [message, setMessage],
+    onLogin,
   }
 ) {
-  const {values, isValid, setIsValid, handleChange} = useValidate()
+  const {values, errors, isValid, handleChange} = useValidate()
 
-  useState(() => {
-    setIsValid(true)
-  }, [])
+  function fetchInputChange(event) {
+    setMessage({})
+    handleChange(event)
+  }
 
   function handleSubmit() {
     onLogin(
@@ -28,6 +32,7 @@ function Login(
   return (
     <Auth
       onSubmit={handleSubmit}
+      isLoading={isLoading}
       title={title}
       buttonTitle={buttonTitle}
       isValid={isValid}
@@ -43,6 +48,7 @@ function Login(
           required={true}
           placeholder={'Ваш e-email'}
           onChange={handleChange}
+          pattern={regexPatterns.email}
         />
       </label>
       <label className="auth__input-label">
@@ -59,6 +65,19 @@ function Login(
           placeholder={'Ваш пароль'}
           onChange={handleChange}
         />
+        <span
+          className={
+            message.isSuccess
+              ? 'auth__input-success'
+              : 'auth__input-error'
+          }
+        >
+            {
+              !errors && message.isSuccess
+                ? message.text
+                : errors.name || errors.email || errors.password || message.text
+            }
+          </span>
       </label>
       <p
         className={'auth__navigation'}
