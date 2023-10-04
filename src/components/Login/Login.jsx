@@ -1,7 +1,6 @@
 import Auth from '../Auth/Auth.jsx';
 import useValidate from '../../hooks/useValidate.jsx';
 import {Link} from 'react-router-dom';
-import {useState} from 'react';
 import {regexPatterns} from '../../utils/constants.js';
 
 function Login(
@@ -47,7 +46,7 @@ function Login(
           value={values.email || ''}
           required={true}
           placeholder={'Ваш e-email'}
-          onChange={handleChange}
+          onChange={fetchInputChange}
           pattern={regexPatterns.email}
         />
       </label>
@@ -63,7 +62,7 @@ function Login(
           maxLength={30}
           required={true}
           placeholder={'Ваш пароль'}
-          onChange={handleChange}
+          onChange={fetchInputChange}
         />
         <span
           className={
