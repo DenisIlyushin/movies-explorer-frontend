@@ -1,3 +1,24 @@
+const maxMoviesPerPage = {
+  desktop: 12,
+  tablet: 8,
+  mobile: 4,
+}
+
+const shortMoviesDuration = 40;
+
+const messages = {
+  noMoviesFound: 'Ничего не найдено',
+  unexpectedErrorOnBeafilmServer: 'Во время запроса произошла ошибка. ' +
+    'Возможно, проблема с соединением или сервер недоступен. Подождите ' +
+    'немного и попробуйте ещё раз'
+}
+
+const regexPatterns = {
+  email: '^[^@\s]+@[^@\s]+.[a-zA-Z]{2,5}$',
+  userName: '^[A-Za-zА-Яа-яЁё\\-\\s]+$',
+}
+
+// массив для тестирования верстки
 const moviesTestStartArray = [
   {
     director: 'Терри Гиллиам',
@@ -150,19 +171,4 @@ const moviesTestStartArray = [
   },
 ]
 
-const maxMoviesPerPage = {
-  desktop: 12,
-  tablet: 8,
-  mobile: 4,
-}
-
-const shortMoviesDuration = 40;
-
-const messages = {
-  noMoviesFound: 'Ничего не найдено',
-  unexpectedErrorOnBeafilmServer: 'Во время запроса произошла ошибка. ' +
-    'Возможно, проблема с соединением или сервер недоступен. Подождите ' +
-    'немного и попробуйте ещё раз'
-}
-
-export {moviesTestStartArray, maxMoviesPerPage, shortMoviesDuration, messages}
+export {maxMoviesPerPage, shortMoviesDuration, messages, regexPatterns}

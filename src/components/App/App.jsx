@@ -27,7 +27,7 @@ function App() {
   const showFooterPath = ['/', '/movies', '/saved-movies']
   // управление пользователем и авторизацией
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoginLoading, setIsLoginLoading] = useState(false)
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [storedToken, setStoredToken] = useLocalStorage('jwtToken', null);
   // управление карточками фильмов
@@ -35,6 +35,11 @@ function App() {
   //  если нет, то используй обычную стейт переменную
   // const [savedMovies, setSavedMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
+
+  // управление формами авторизации и профиля
+  // todo целиком передается в компонет, где требуется отображать сообщение
+  const [apiMessage, setApiMessage] = useState({});
+  const [isProfileLoading, setIsProfileLoading] = useState(false)
 
   // установка состояния isLoggedIn по наличию токена в памяти браузера
   useEffect(() => {
@@ -99,9 +104,25 @@ function App() {
     console.log(selectedState ? 'Короткометражки выбраны' : 'Короткометражки не выбраны')
   }
 
-  function handleProfileUpdate(param) {
-    const {name, email} = param;
-    console.log(`Профиль бы обновлен с данными ${[name, email]}`)
+  function handleProfileUpdate(userInfo) {
+    const token = storedToken;
+
+    setIsProfileLoading(true)
+    api.setMe(token, userInfo)
+      .then((newUserInfo) => {
+        setCurrentUser(newUserInfo);
+        setApiMessage({
+          text: `Ваш профиль бы обновлен!`,
+          isSuccess: true,
+          })
+      })
+      .catch((error) => {
+        setApiMessage({
+          text: `Что пошло не так и получилась ${error}`,
+          isSuccess: false,
+        })
+      })
+      .finally(() => setIsProfileLoading(false))
   }
 
   function handleLogOut() {
@@ -199,6 +220,8 @@ function App() {
                       <ProtectedRoute
                         component={Profile}
                         isLoggedIn={isLoggedIn}
+                        isLoading={isProfileLoading}
+                        messageState={[apiMessage, setApiMessage]}
                         onSubmit={handleProfileUpdate}
                         onLogOut={handleLogOut}
                       />

@@ -11,7 +11,7 @@ class Api {
     if (response.ok) {
       return response.json();
     }
-    return Promise.reject(`Ошибка: ${response.status}`);
+    return Promise.reject(`oшибка ${response.status}`);
   };
 
   // todo не уверен, что нужная штука, написал пока так, чтобы всякий раз jwt в запрос передавать.
@@ -61,7 +61,7 @@ class Api {
   }
 
   setMe(jwt, {name, email}) {
-    return fetch(`${this.#baseUrl}/movies`, {
+    return fetch(`${this.#baseUrl}/users/me`, {
         method: 'PATCH',
         headers: {
           ...this.#headers,

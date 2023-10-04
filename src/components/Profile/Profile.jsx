@@ -1,31 +1,31 @@
-import {useContext, useEffect} from 'react';
+import {useContext} from 'react';
 
 import './Profile.css'
 import {CurrentUserContext} from '../../context/CurrentUserContext.jsx';
 import useValidate from '../../hooks/useValidate.jsx';
+import {regexPatterns} from '../../utils/constants.js';
 
 function Profile(
   {
+    isLoading,
+    messageState: [message, setMessage],
     onSubmit,
     onLogOut
   }
 ) {
   const currentUser = useContext(CurrentUserContext);
-  const {values, isValid, setValues, handleChange} = useValidate()
+  const {values, errors, isValid, handleChange} = useValidate()
 
-  useEffect(() => {
-    setValues(
-      currentUser
-        ? {username: currentUser.name, email: currentUser.email}
-        : {username: '', email: ''}
-    );
-  }, [currentUser]);
+  function fetchInputChange(event) {
+    setMessage({})
+    handleChange(event)
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
     onSubmit({
-      name: values.username,
-      email: values.email,
+      name: values.username || currentUser.name,
+      email: values.email || currentUser.email,
     })
   }
 
@@ -37,7 +37,7 @@ function Profile(
       <h1
         className={'profile__title'}
       >
-        {`Привет, ${currentUser.name}!`}
+        {`Привет, ${currentUser ? currentUser.name : 'Студент Я.Практикума'}!`}
       </h1>
       <form
         className={'profile__form'}
@@ -45,7 +45,6 @@ function Profile(
         name={'profile-edit'}
         autoComplete={'off'}
         noValidate
-        // onSubmit={handleSubmit}
       >
         <label
           className={'profile__input-label'}
@@ -61,7 +60,8 @@ function Profile(
             maxLength={30}
             value={values.username || currentUser.name}
             placeholder={'Как вас зовут?'}
-            onChange={handleChange}
+            onChange={fetchInputChange}
+            pattern={regexPatterns.userName}
           />
         </label>
         <label
@@ -76,8 +76,22 @@ function Profile(
             required
             value={values.email || currentUser.email}
             placeholder={'Ваш e-mail'}
-            onChange={handleChange}
+            onChange={fetchInputChange}
+            pattern={regexPatterns.email}
           />
+          <span
+            className={
+              message.isSuccess
+                ? 'profile__input-success'
+                : 'profile__input-error'
+            }
+          >
+            {
+              !errors && message.isSuccess
+                ? message.text
+                : errors.username || errors.email || message.text
+            }
+          </span>
         </label>
       </form>
       <div
@@ -89,7 +103,7 @@ function Profile(
           disabled={!isValid}
           onClick={handleSubmit}
         >
-          Редактировать
+          {isLoading ? 'Редактировать...' : 'Редактировать'}
         </button>
         <button
           className={'profile__button profile__button_type_logout-button'}
