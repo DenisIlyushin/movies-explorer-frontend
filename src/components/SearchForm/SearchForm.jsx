@@ -44,7 +44,7 @@ function SearchForm(
             id={'searchQuery'}
             type={'text'}
             name={'searchQuery'}
-            value={values.searchQuery || storedInput }
+            value={values.searchQuery || storedInput || ''}
             placeholder={'Фильм'}
             required={true}
             onChange={ fetchInput }
