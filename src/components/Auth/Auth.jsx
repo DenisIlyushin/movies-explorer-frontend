@@ -5,10 +5,11 @@ import logo from '../../images/logo.svg';
 
 function Auth(
   {
-    onSubmit,
     title,
     buttonTitle,
     isValid,
+    isLoading,
+    onSubmit,
     children,
   }
 ) {
@@ -55,7 +56,7 @@ function Auth(
           type={'submit'}
           disabled={!isValid}
         >
-          {buttonTitle}
+          {isLoading ? `${buttonTitle}...` : buttonTitle}
         </button>
         {
           getFormFieldsByType('p')

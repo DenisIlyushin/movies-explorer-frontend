@@ -40,6 +40,7 @@ function App() {
   // todo целиком передается в компонет, где требуется отображать сообщение
   const [apiMessage, setApiMessage] = useState({});
   const [isProfileLoading, setIsProfileLoading] = useState(false)
+  const [isRegistrationLoading, setIsRegistrationLoading] = useState(false)
 
   // установка состояния isLoggedIn по наличию токена в памяти браузера
   useEffect(() => {
@@ -154,10 +155,24 @@ function App() {
       })
   }
 
-  function handleRegistration(param) {
-    const {name, email, password} = param;
-    navigate('/signin')
-    console.log(`Вы зарегистрированы с данными ${[name, email, password]}, ура!`)
+  function handleRegistration(userData) {
+    setIsRegistrationLoading(true)
+    api.signUp(userData)
+      .then((newUserInfo) => {
+        // setCurrentUser(newUserInfo);
+        setApiMessage({
+          text: `Вы зарегистрированы!`,
+          isSuccess: true,
+        })
+        navigate('/signin')
+      })
+      .catch((error) => {
+        setApiMessage({
+          text: `Что пошло не так и получилась ${error}`,
+          isSuccess: false,
+        })
+      })
+      .finally(() => setIsRegistrationLoading(false))
   }
 
   function handleNotFoundNavigation() {
@@ -209,6 +224,8 @@ function App() {
                     path={'/signup'}
                     element={
                       <Registration
+                        isLoading={isRegistrationLoading}
+                        messageState={[apiMessage, setApiMessage]}
                         onLogin={handleRegistration}
                         title={'Добро пожаловать!'}
                         buttonTitle={'Зарегистрироваться'}
