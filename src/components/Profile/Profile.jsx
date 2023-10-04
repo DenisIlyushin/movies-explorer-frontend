@@ -73,7 +73,7 @@ function Profile(
             id={'email'}
             name={'email'}
             type={'email'}
-            required
+            required={true}
             value={values.email || currentUser.email}
             placeholder={'Ваш e-mail'}
             onChange={fetchInputChange}
