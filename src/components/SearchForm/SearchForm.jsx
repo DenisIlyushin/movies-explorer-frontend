@@ -25,7 +25,7 @@ function SearchForm(
   function handleSubmit(event) {
     event.preventDefault();
     onSubmit({
-      query: values.searchQuery,
+      query: values.searchQuery || '',
       isShortMoviesOnly: switchState,
     })
   }
