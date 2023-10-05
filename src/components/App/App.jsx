@@ -71,11 +71,11 @@ function App() {
         if (foundMovies.length !== 0) {
           setSavedMovies(foundMovies)
         } else {
-          setSavedMovies(null);
+          setSavedMovies([]);
         }
       })
       .catch(() => {
-        setSavedMovies(null);
+        setSavedMovies([]);
       })
   }, [isLoggedIn])
 
