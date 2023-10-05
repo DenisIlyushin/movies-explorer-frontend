@@ -187,7 +187,6 @@ function App() {
     navigate('/')
   }
 
-
   function handleNotFoundNavigation() {
     navigate(-1);
   }
