@@ -18,7 +18,7 @@ function Profile(
 
   useState(() => {
     setMessage({})
-  }, [])
+  }, [isValid])
 
   function fetchInputChange(event) {
     setMessage({})

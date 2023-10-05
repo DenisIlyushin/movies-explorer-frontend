@@ -20,14 +20,12 @@ function SavedMovies(
   }
 ) {
   const [isShortMovies, setIsShortMovies] = useState(false)
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState(savedMovieList);
   const [isLoading, setIsLoading] = useState(false)
   const [searchMessage, setSearchMessage] = useState('');
   const [storedToggleSwitchState, setStoredToggleSwitchState] = useLocalStorage('isShortSavedMovies', false)
 
   useEffect(() => {
-    console.log('приехало', savedMovieList)
-    setMovies(savedMovieList)
     setIsShortMovies(storedToggleSwitchState);
   }, [])
 

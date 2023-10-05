@@ -25,6 +25,7 @@ function Movies(
   const [storedToggleSwitchState, setStoredToggleSwitchState] = useLocalStorage('isShortMovies', false)
 
   useEffect(() => {
+    console.log('в Movies пришло', savedMovieList)
     setMovies(storedMovies);
     setIsShortMovies(storedToggleSwitchState);
   }, [])
@@ -48,7 +49,6 @@ function Movies(
       })
       .catch((error) => {
         setMovies(null);
-        console.error(error)
         setSearchMessage(messages.unexpectedErrorOnBeafilmServer)
       })
       .finally(() => {

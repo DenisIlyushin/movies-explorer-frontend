@@ -39,7 +39,8 @@ function App() {
 
   // управление формами авторизации и профиля
   // todo целиком передается в компонет, где требуется отображать сообщение
-  const [apiMessage, setApiMessage] = useState({});
+  const [authMessage, setAuthMessage] = useState({});
+  const [profileMessage, setProfileMessage] = useState({});
   const [isProfileLoading, setIsProfileLoading] = useState( false)
   const [isRegistrationLoading, setIsRegistrationLoading] = useState(false)
 
@@ -79,6 +80,10 @@ function App() {
       })
   }, [isLoggedIn])
 
+  // useEffect(() => {
+  //   setSavedMovies(savedMovies)
+  // }, [navigate])
+
   function handleMovieSave(movieObject, state) {
     const token = storedToken;
 
@@ -96,13 +101,12 @@ function App() {
       // удаляем по найденному _id
       deleteMovie(token, movieToDelete._id)
         .catch(console.log)
-        .finally(() => setSavedMovies(savedMovies))
     }
   }
 
   function handleMovieDelete(movieObject) {
     const token = storedToken;
-    console.log(movieObject._id)
+
     deleteMovie(token, movieObject._id)
       .catch(console.log)
   }
@@ -110,11 +114,9 @@ function App() {
   function deleteMovie(token, movieId) {
     return api.deleteMovie(token, movieId)
       .then((deletedMovie) => {
-        // убираем фильм из списка сохраненных
-        const newMovieList = savedMovies.splice(savedMovies.indexOf(deletedMovie), 1)
-        setSavedMovies(newMovieList)
-        // todo
-        console.log('список фильмов после удаления', savedMovies)
+        // удаляем фильм из списка сохраненных
+        const filtered = savedMovies.filter(movie => movie.movieId !== deletedMovie.movieId)
+        setSavedMovies(filtered)
       })
   }
 
@@ -125,13 +127,13 @@ function App() {
     api.setMe(token, userInfo)
       .then((newUserInfo) => {
         setCurrentUser(newUserInfo);
-        setApiMessage({
+        setProfileMessage({
           text: `Ваш профиль бы обновлен!`,
           isSuccess: true,
         })
       })
       .catch((error) => {
-        setApiMessage({
+        setProfileMessage({
           text: `Что пошло не так и получилась ${error}`,
           isSuccess: false,
         })
@@ -156,14 +158,14 @@ function App() {
       .then(({token}) => {
         setStoredToken(token)
         setIsLoggedIn(true);
-        setApiMessage({
+        setAuthMessage({
           text: `Вы авторизовались!`,
           isSuccess: true,
         })
         navigate('/movies')
       })
       .catch((error) => {
-        setApiMessage({
+        setAuthMessage({
           text: `Что пошло не так и получилась ${error}`,
           isSuccess: false,
         })
@@ -176,16 +178,15 @@ function App() {
   function handleRegistration(userData) {
     setIsRegistrationLoading(true)
     api.signUp(userData)
-      .then((newUserInfo) => {
-        // setCurrentUser(newUserInfo);
-        setApiMessage({
+      .then(() => {
+        setAuthMessage({
           text: `Вы зарегистрированы!`,
           isSuccess: true,
         })
         navigate('/signin')
       })
       .catch((error) => {
-        setApiMessage({
+        setAuthMessage({
           text: `Что пошло не так и получилась ${error}`,
           isSuccess: false,
         })
@@ -235,7 +236,7 @@ function App() {
                       <Login
                         onLogin={handleLogin}
                         isLoading={isLoginLoading}
-                        messageState={[apiMessage, setApiMessage]}
+                        messageState={[authMessage, setAuthMessage]}
                         title={'Рады видеть!'}
                         buttonTitle={'Войти'}
                       />
@@ -245,7 +246,7 @@ function App() {
                     element={
                       <Registration
                         isLoading={isRegistrationLoading}
-                        messageState={[apiMessage, setApiMessage]}
+                        messageState={[authMessage, setAuthMessage]}
                         onLogin={handleRegistration}
                         title={'Добро пожаловать!'}
                         buttonTitle={'Зарегистрироваться'}
@@ -258,7 +259,7 @@ function App() {
                         component={Profile}
                         isLoggedIn={isLoggedIn}
                         isLoading={isProfileLoading}
-                        messageState={[apiMessage, setApiMessage]}
+                        messageState={[profileMessage, setProfileMessage]}
                         onSubmit={handleProfileUpdate}
                         onLogOut={handleLogOut}
                       />
