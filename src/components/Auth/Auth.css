@@ -107,11 +107,6 @@
   outline: 1px solid var(--font-background-color, #8b8b8b);
 }
 
-/*.auth__input_error {*/
-/*  margin: 10px 0 0;*/
-/*  color: var(--accent-error-color, #ee3465);*/
-/*}*/
-
 .auth__input::placeholder {
   color: var(--portfolio-separatpr-color, #424242);
   font-size: 13px;

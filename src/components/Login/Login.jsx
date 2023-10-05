@@ -2,6 +2,7 @@ import Auth from '../Auth/Auth.jsx';
 import useValidate from '../../hooks/useValidate.jsx';
 import {Link} from 'react-router-dom';
 import {regexPatterns} from '../../utils/constants.js';
+import {useState} from 'react';
 
 function Login(
   {
@@ -74,7 +75,7 @@ function Login(
             {
               !errors && message.isSuccess
                 ? message.text
-                : errors.name || errors.email || errors.password || message.text
+                : errors.email || errors.password || message.text
             }
           </span>
       </label>
