@@ -34,8 +34,8 @@ function App() {
   // управление карточками фильмов
   // todo не уверен, что нужно прям хранить в памяти браузера фильмы, что уже лайкнул
   //  если нет, то используй обычную стейт переменную
-  const [savedMovies, setSavedMovies] = useState([]);
-  // const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
+  // const [savedMovies, setSavedMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
 
   // управление формами авторизации и профиля
   // todo целиком передается в компонет, где требуется отображать сообщение
@@ -49,7 +49,6 @@ function App() {
     if (!storedToken) {
       return
     }
-
     setIsLoggedIn(true)
   }, [])
 
@@ -73,6 +72,7 @@ function App() {
       .catch(console.log)
   }, [isLoggedIn])
 
+  // обработка лайков фильма на странице "Фильмы"
   function handleMovieSave(movieObject, state) {
     const token = storedToken;
 
@@ -93,17 +93,15 @@ function App() {
     }
   }
 
+  // Обработка удаления фильма на странице "Сохранённые фильмы"
   function handleMovieDelete(movieObject) {
     const token = storedToken;
 
     deleteMovie(token, movieObject._id)
       .catch(console.log)
-
-    const filtered = savedMovies.filter(movie => movie.movieId !== movieObject.movieId)
-    setSavedMovies(filtered)
-    console.log(savedMovies)
   }
 
+  // общая функция удаления фильма с очисткой сохраненного состояния
   function deleteMovie(token, movieId) {
     return api.deleteMovie(token, movieId)
       .then((deletedMovie) => {
@@ -113,6 +111,7 @@ function App() {
       })
   }
 
+  // обработка обновления информации в Профиле
   function handleProfileUpdate(userInfo) {
     const token = storedToken;
 
@@ -134,16 +133,7 @@ function App() {
       .finally(() => setIsProfileLoading(false))
   }
 
-  function handleLogOut() {
-    // сбрасывем стейт-переменные
-    setIsLoggedIn(false);
-    setSavedMovies([])
-    // очищаем локальную базу (работа useLocalStorage() переменных)
-    localStorage.clear();
-    // переводим пользователя на стартовую страницу
-    navigate('/')
-  }
-
+  // Обработка авторизации
   function handleLogin(loginData) {
     setIsLoginLoading(true);
     api.signIn(loginData)
@@ -167,6 +157,7 @@ function App() {
       })
   }
 
+  // обработка регистрации
   function handleRegistration(userData) {
     setIsRegistrationLoading(true)
     api.signUp(userData)
@@ -185,6 +176,17 @@ function App() {
       })
       .finally(() => setIsRegistrationLoading(false))
   }
+
+  function handleLogOut() {
+    // сбрасывем стейт-переменные
+    setIsLoggedIn(false);
+    setSavedMovies([])
+    // очищаем локальную базу (работа useLocalStorage() переменных)
+    localStorage.clear();
+    // переводим пользователя на стартовую страницу
+    navigate('/')
+  }
+
 
   function handleNotFoundNavigation() {
     navigate(-1);
