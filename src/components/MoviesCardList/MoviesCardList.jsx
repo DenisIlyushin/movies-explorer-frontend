@@ -57,8 +57,6 @@ function MoviesCardList(
     if (isSavedMovies) {
       return true
     }
-    // console.log(savedMovieList.find(savedMovie => savedMovie.movieId === movie.id))
-    // return Boolean(savedMovieList ? savedMovieList.filter(savedMovie => {return savedMovie.movieId === movie.id}).length : false)
     return savedMovieList.find(savedMovie => savedMovie.movieId === movie.id)
   }
 
