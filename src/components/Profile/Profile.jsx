@@ -1,4 +1,4 @@
-import {useContext} from 'react';
+import {useContext, useState} from 'react';
 
 import './Profile.css'
 import {CurrentUserContext} from '../../context/CurrentUserContext.jsx';
@@ -15,6 +15,10 @@ function Profile(
 ) {
   const currentUser = useContext(CurrentUserContext);
   const {values, errors, isValid, handleChange} = useValidate()
+
+  useState(() => {
+    setMessage({})
+  }, [])
 
   function fetchInputChange(event) {
     setMessage({})
