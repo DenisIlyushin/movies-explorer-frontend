@@ -61,28 +61,17 @@ function App() {
       return
     }
 
-    api.getMe(token)
-      .then((userInfo) => {
+    Promise.all([api.getMe(token), api.getAllMovies(token)])
+      .then(([userInfo, foundMovies]) => {
         setCurrentUser(userInfo)
-      })
-      .catch(console.log)
-
-    api.getAllMovies(token)
-      .then((foundMovies) => {
         if (foundMovies.length !== 0) {
           setSavedMovies(foundMovies)
         } else {
           setSavedMovies([]);
         }
       })
-      .catch(() => {
-        setSavedMovies([]);
-      })
+      .catch(console.log)
   }, [isLoggedIn])
-
-  // useEffect(() => {
-  //   setSavedMovies(savedMovies)
-  // }, [navigate])
 
   function handleMovieSave(movieObject, state) {
     const token = storedToken;
@@ -149,7 +138,6 @@ function App() {
     localStorage.clear();
     // переводим пользователя на стартовую страницу
     navigate('/')
-    console.log('Вы вышли из профиля')
   }
 
   function handleLogin(loginData) {
