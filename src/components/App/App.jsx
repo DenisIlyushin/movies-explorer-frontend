@@ -102,7 +102,7 @@ function App() {
 
   function handleMovieDelete(movieObject) {
     const token = storedToken;
-
+    console.log(movieObject._id)
     deleteMovie(token, movieObject._id)
       .catch(console.log)
   }
