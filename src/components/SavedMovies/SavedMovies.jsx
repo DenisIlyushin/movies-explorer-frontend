@@ -10,31 +10,30 @@ import api from '../../utils/MainApi.js';
 
 function SavedMovies(
   {
-    // movies,
-    // storedMoviesState: [savedMovies, setSavedMovies],
     savedMovieList,
     onMovieSave,
     onMovieDelete,
-    // onSearchSubmit,
-    // onToggleSwitchChange
   }
 ) {
   const [isShortMovies, setIsShortMovies] = useState(false)
   const [movies, setMovies] = useState(savedMovieList);
   const [isLoading, setIsLoading] = useState(false)
   const [searchMessage, setSearchMessage] = useState('');
+  // const [storedMovies, setStoredMovies] = useLocalStorage('saved-movies', null)
   const [storedToggleSwitchState, setStoredToggleSwitchState] = useLocalStorage('isShortSavedMovies', false)
 
   useEffect(() => {
+    // setStoredMovies(movies);
+    setMovies(savedMovieList)
     setIsShortMovies(storedToggleSwitchState);
-  }, [])
+  }, [savedMovieList])
 
   useEffect(() => {
     setStoredToggleSwitchState(isShortMovies)
   }, [isShortMovies])
 
   function handleSearchFormSubmit({query, isShortMoviesOnly}) {
-
+    // todo
   }
 
   return (

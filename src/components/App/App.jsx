@@ -98,6 +98,10 @@ function App() {
 
     deleteMovie(token, movieObject._id)
       .catch(console.log)
+
+    const filtered = savedMovies.filter(movie => movie.movieId !== movieObject.movieId)
+    setSavedMovies(filtered)
+    console.log(savedMovies)
   }
 
   function deleteMovie(token, movieId) {

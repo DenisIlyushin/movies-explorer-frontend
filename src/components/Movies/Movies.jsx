@@ -25,7 +25,6 @@ function Movies(
   const [storedToggleSwitchState, setStoredToggleSwitchState] = useLocalStorage('isShortMovies', false)
 
   useEffect(() => {
-    console.log('в Movies пришло', savedMovieList)
     setMovies(storedMovies);
     setIsShortMovies(storedToggleSwitchState);
   }, [])
