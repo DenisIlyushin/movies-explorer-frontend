@@ -5,13 +5,17 @@ import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 
 function SearchForm(
   {
+    isSavedMovies,
     onSubmit,
     onSwitchChange,
     switchState
   }
 ) {
   const {values, handleChange} = useValidate();
-  const [storedInput, setStoredInput] = useLocalStorage('search', null);
+  const [
+    storedInput,
+    setStoredInput
+  ] = useLocalStorage(isSavedMovies ? 'search-saved' : 'search', null);
 
   function fetchInput(event) {
     setStoredInput(event.target.value)

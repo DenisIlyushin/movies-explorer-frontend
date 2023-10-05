@@ -38,7 +38,6 @@ function MoviesCard(
   }
 
   function handleDelete(param) {
-    console.log(param)
     onDelete(param)
   }
 

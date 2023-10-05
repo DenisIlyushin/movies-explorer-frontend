@@ -16,6 +16,7 @@ import Footer from '../Footer/Footer.jsx';
 import Preloader from '../Preloader/Preloader.jsx';
 import api from '../../utils/MainApi.js';
 import useLocalStorage from '../../hooks/useLocalStorage.jsx';
+import {messages} from '../../utils/constants.js';
 
 
 function App() {
@@ -33,13 +34,13 @@ function App() {
   // управление карточками фильмов
   // todo не уверен, что нужно прям хранить в памяти браузера фильмы, что уже лайкнул
   //  если нет, то используй обычную стейт переменную
-  // const [savedMovies, setSavedMovies] = useState([]);
-  const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
+  const [savedMovies, setSavedMovies] = useState([]);
+  // const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
 
   // управление формами авторизации и профиля
   // todo целиком передается в компонет, где требуется отображать сообщение
   const [apiMessage, setApiMessage] = useState({});
-  const [isProfileLoading, setIsProfileLoading] = useState(false)
+  const [isProfileLoading, setIsProfileLoading] = useState( false)
   const [isRegistrationLoading, setIsRegistrationLoading] = useState(false)
 
   // установка состояния isLoggedIn по наличию токена в памяти браузера
@@ -64,6 +65,18 @@ function App() {
         setCurrentUser(userInfo)
       })
       .catch(console.log)
+
+    api.getAllMovies(token)
+      .then((foundMovies) => {
+        if (foundMovies.length !== 0) {
+          setSavedMovies(foundMovies)
+        } else {
+          setSavedMovies(null);
+        }
+      })
+      .catch(() => {
+        setSavedMovies(null);
+      })
   }, [isLoggedIn])
 
   function handleMovieSave(movieObject, state) {
@@ -80,29 +93,29 @@ function App() {
       const [movieToDelete] = savedMovies.filter(
         (savedMovie) => savedMovie.movieId === movieObject.movieId
       )
-      // убираем фильм из списка сохраненных
-      savedMovies.splice(savedMovies.indexOf(movieToDelete), 1)
       // удаляем по найденному _id
-      api.deleteMovie(token, movieToDelete._id)
-        .then((movie) => {
-          setSavedMovies([movie, ...savedMovies]);
-        })
+      deleteMovie(token, movieToDelete._id)
         .catch(console.log)
         .finally(() => setSavedMovies(savedMovies))
     }
   }
 
-  function handleMovieDelete(param) {
-    console.log(`Фильм ${param} удален`)
+  function handleMovieDelete(movieObject) {
+    const token = storedToken;
+
+    deleteMovie(token, movieObject._id)
+      .catch(console.log)
   }
 
-  function handleSearchFormSubmit(event) {
-    event.preventDefault();
-    console.log('Произведен поиск')
-  }
-
-  function handleToggleSwitchChange(selectedState) {
-    console.log(selectedState ? 'Короткометражки выбраны' : 'Короткометражки не выбраны')
+  function deleteMovie(token, movieId) {
+    return api.deleteMovie(token, movieId)
+      .then((deletedMovie) => {
+        // убираем фильм из списка сохраненных
+        const newMovieList = savedMovies.splice(savedMovies.indexOf(deletedMovie), 1)
+        setSavedMovies(newMovieList)
+        // todo
+        console.log('список фильмов после удаления', savedMovies)
+      })
   }
 
   function handleProfileUpdate(userInfo) {
@@ -115,7 +128,7 @@ function App() {
         setApiMessage({
           text: `Ваш профиль бы обновлен!`,
           isSuccess: true,
-          })
+        })
       })
       .catch((error) => {
         setApiMessage({
@@ -256,8 +269,8 @@ function App() {
                     element={
                       <ProtectedRoute
                         component={Movies}
-                        savedMovieList={savedMovies}
                         isLoggedIn={isLoggedIn}
+                        savedMovieList={savedMovies}
                         onMovieSave={handleMovieSave}
                         onMovieDelete={handleMovieDelete}
                       />
@@ -270,12 +283,10 @@ function App() {
                         // todo обрати внимание, что ты переделал Movies
                         //  даже думал о том, чтобы сделать отдельный компонент
                         component={SavedMovies}
-                        movies={savedMovies}
                         isLoggedIn={isLoggedIn}
+                        savedMovieList={savedMovies}
                         onMovieSave={handleMovieSave}
                         onMovieDelete={handleMovieDelete}
-                        onSearchSubmit={handleSearchFormSubmit}
-                        onToggleSwitchChange={handleToggleSwitchChange}
                       />
                     }
                   />

@@ -15,6 +15,8 @@ function MoviesCardList(
 ) {
   const [moviesOnPage, setMoviesOnPage] = useState(0)
 
+  // useEffect(() => {}, [movies])
+
   function getDisplayWidth() {
     return window.innerWidth
   }
@@ -52,7 +54,9 @@ function MoviesCardList(
 
   // проверяем, есть ли фильм в ранее добавленных в избранное пользователем
   function setPreviouslySavedState(movie) {
-    return Boolean(savedMovieList.filter(savedMovie => {return savedMovie.movieId === movie.id}).length)
+    // if (isSavedMovies) {return}
+    console.log('работаем со списком', savedMovieList)
+    return Boolean(savedMovieList ? savedMovieList.filter(savedMovie => {return savedMovie.movieId === movie.id}).length : false)
   }
 
   return (

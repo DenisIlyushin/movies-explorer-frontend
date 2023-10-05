@@ -46,8 +46,9 @@ function Movies(
           setSearchMessage(messages.noMoviesFound)
         }
       })
-      .catch(() => {
+      .catch((error) => {
         setMovies(null);
+        console.error(error)
         setSearchMessage(messages.unexpectedErrorOnBeafilmServer)
       })
       .finally(() => {
