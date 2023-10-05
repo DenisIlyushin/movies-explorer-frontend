@@ -6,7 +6,6 @@ import {maxMoviesPerPage, messages} from '../../utils/constants.js';
 import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 import Preloader from '../Preloader/Preloader.jsx';
 import filterMovies from '../../utils/filterMovies.js';
-import api from '../../utils/MainApi.js';
 
 function SavedMovies(
   {
