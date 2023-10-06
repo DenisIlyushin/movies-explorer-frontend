@@ -1,11 +1,12 @@
-import './SavedMovies.css'
 import {useEffect, useState} from 'react';
+import './SavedMovies.css'
+
 import SearchForm from '../SearchForm/SearchForm.jsx';
-import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
-import {maxMoviesPerPage, messages} from '../../utils/constants.js';
-import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 import Preloader from '../Preloader/Preloader.jsx';
+import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
+import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 import filterMovies from '../../utils/filterMovies.js';
+import {maxMoviesPerPage, messages} from '../../utils/constants.js';
 
 function SavedMovies(
     {

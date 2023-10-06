@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
-import './App.css';
 import {CurrentUserContext} from '../../context/CurrentUserContext.jsx';
+import './App.css';
 
 import Header from '../Header/Header.jsx';
 import Landing from '../Landing/Landing.jsx';
@@ -16,7 +16,6 @@ import Footer from '../Footer/Footer.jsx';
 import Preloader from '../Preloader/Preloader.jsx';
 import api from '../../utils/MainApi.js';
 import useLocalStorage from '../../hooks/useLocalStorage.jsx';
-import {messages} from '../../utils/constants.js';
 
 
 function App() {
@@ -32,13 +31,10 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [storedToken, setStoredToken] = useLocalStorage('jwtToken', null);
   // управление карточками фильмов
-  // todo не уверен, что нужно прям хранить в памяти браузера фильмы, что уже лайкнул
-  //  если нет, то используй обычную стейт переменную
   // const [savedMovies, setSavedMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
 
   // управление формами авторизации и профиля
-  // todo целиком передается в компонет, где требуется отображать сообщение
   const [authMessage, setAuthMessage] = useState({});
   const [profileMessage, setProfileMessage] = useState({});
   const [isProfileLoading, setIsProfileLoading] = useState( false)

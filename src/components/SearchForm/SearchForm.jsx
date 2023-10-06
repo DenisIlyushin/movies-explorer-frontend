@@ -1,4 +1,5 @@
 import './SearchForm.css'
+
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch.jsx';
 import useValidate from '../../hooks/useValidate.jsx';
 import useLocalStorage from '../../hooks/useLocalStorage.jsx';

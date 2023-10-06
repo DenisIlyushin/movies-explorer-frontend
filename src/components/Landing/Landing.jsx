@@ -1,4 +1,5 @@
 import './Landing.css'
+
 import Promo from '../Promo/Promo.jsx';
 import AboutProject from '../AboutProject/AboutProject.jsx';
 import Techs from '../Techs/Techs.jsx';

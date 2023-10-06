@@ -1,6 +1,7 @@
-import './Auth.css'
-import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
+import './Auth.css'
+
+import React, {useState} from 'react';
 import logo from '../../images/logo.svg';
 
 function Auth(

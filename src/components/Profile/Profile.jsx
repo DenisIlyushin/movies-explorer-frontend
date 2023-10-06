@@ -1,6 +1,6 @@
 import {useContext, useState} from 'react';
-
 import './Profile.css'
+
 import {CurrentUserContext} from '../../context/CurrentUserContext.jsx';
 import useValidate from '../../hooks/useValidate.jsx';
 import {regexPatterns} from '../../utils/constants.js';

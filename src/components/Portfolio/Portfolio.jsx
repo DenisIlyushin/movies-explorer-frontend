@@ -1,6 +1,5 @@
-import './Portfolio.css'
-import nav from '../../images/portfolio_nav.svg'
 import {Link} from 'react-router-dom';
+import './Portfolio.css'
 
 function Portfolio() {
   return (

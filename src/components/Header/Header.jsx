@@ -1,6 +1,6 @@
 import {Link, useLocation} from 'react-router-dom';
-
 import './Header.css'
+
 import logo from '../../images/logo.svg';
 import BurgerMenu from '../BurgerMenu/BurgerMenu.jsx';
 

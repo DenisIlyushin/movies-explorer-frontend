@@ -1,5 +1,6 @@
-import './BurgerMenu.css'
 import {useState} from 'react';
+import './BurgerMenu.css'
+
 import Navigation from '../Navigation/Navigation.jsx';
 
 function BurgerMenu() {

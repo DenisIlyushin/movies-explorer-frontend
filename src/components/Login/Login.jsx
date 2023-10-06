@@ -1,7 +1,8 @@
-import Auth from '../Auth/Auth.jsx';
-import useValidate from '../../hooks/useValidate.jsx';
 import {Link} from 'react-router-dom';
 import {regexPatterns} from '../../utils/constants.js';
+
+import Auth from '../Auth/Auth.jsx';
+import useValidate from '../../hooks/useValidate.jsx';
 
 function Login(
   {

@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
-
 import './MoviesCardList.css'
+
 import MoviesCard from '../MoviesCard/MoviesCard.jsx';
 import {maxMoviesPerPage} from '../../utils/constants.js';
 

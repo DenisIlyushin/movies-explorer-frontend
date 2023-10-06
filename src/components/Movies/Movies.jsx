@@ -1,13 +1,13 @@
 import {useEffect, useState} from 'react';
-
 import './Movies.css'
+
 import SearchForm from '../SearchForm/SearchForm.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 import Preloader from '../Preloader/Preloader.jsx';
+import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 import filterMovies from '../../utils/filterMovies.js';
 import searchApi from '../../utils/MoviesApi.js';
 import {messages} from '../../utils/constants.js';
-import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 
 
 function Movies(
