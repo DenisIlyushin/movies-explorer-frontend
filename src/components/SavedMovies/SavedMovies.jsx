@@ -32,9 +32,9 @@ function SavedMovies(
     }, [isShortMovies])
 
     function handleSearchFormSubmit({query, isShortMoviesOnly}) {
-        setIsLoading(true);
         const foundMovies = filterMovies(movies, query, isShortMoviesOnly)
-        console.log(movies)
+
+        setIsLoading(true);
         if (foundMovies.length !== 0) {
             setFilteredMovies(foundMovies)
         } else {
@@ -71,7 +71,7 @@ function SavedMovies(
             {
                 movies && !isLoading
                     ? <MoviesCardList
-                        movies={[filteredMovies].length <= movies.length ? filteredMovies : movies }
+                        movies={filteredMovies.length <= movies.length ? filteredMovies : movies }
                         isSavedMovies={true}
                         savedMovieList={savedMovieList}
                         maxMoviesPerInteration={maxMoviesPerPage}
