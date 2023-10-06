@@ -270,8 +270,6 @@ function App() {
                     path={'/saved-movies'}
                     element={
                       <ProtectedRoute
-                        // todo обрати внимание, что ты переделал Movies
-                        //  даже думал о том, чтобы сделать отдельный компонент
                         component={SavedMovies}
                         isLoggedIn={isLoggedIn}
                         savedMovieList={savedMovies}
