@@ -5,14 +5,14 @@ class SearchApi {
   constructor(options) {
     this.#baseUrl = options.baseUrl;
     this.#headers = options.headers;
-  };
+  }
 
   #handleResponse(response) {
     if (response.ok) {
       return response.json();
     }
     return Promise.reject(`Ошибка: ${response.status}`);
-  };
+  }
 
   getAllMovies() {
     return fetch(`${this.#baseUrl}/beatfilm-movies`, {

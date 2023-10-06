@@ -14,7 +14,7 @@ const messages = {
 }
 
 const regexPatterns = {
-  email: '^[^@\s]+@[^@\s]+.[a-zA-Z]{2,5}$',
+  email: '^[^@]+@[^@]+.[a-zA-Z]{2,5}$',
   userName: '^[A-Za-zА-Яа-яЁё\\-\\s]+$',
 }
 
