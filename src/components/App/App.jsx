@@ -91,9 +91,7 @@ function App() {
 
   // Обработка удаления фильма на странице "Сохранённые фильмы"
   function handleMovieDelete(movieObject) {
-    const token = storedToken;
-
-    deleteMovie(token, movieObject._id)
+    deleteMovie(storedToken, movieObject._id)
       .catch(console.log)
   }
 

@@ -46,7 +46,7 @@ function Movies(
           setSearchMessage(messages.noMoviesFound)
         }
       })
-      .catch((error) => {
+      .catch(() => {
         setMovies(null);
         setSearchMessage(messages.unexpectedErrorOnBeafilmServer)
       })
