@@ -130,7 +130,9 @@ function App() {
           isSuccess: false,
         })
       })
-      .finally(() => setIsProfileLoading(false))
+      .finally(() => {
+        setIsProfileLoading(false);
+      })
   }
 
   // Обработка авторизации
