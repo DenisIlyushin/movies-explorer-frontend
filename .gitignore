@@ -37,3 +37,4 @@ yarn-error.log*
 /.env
 /reminder.md
 /_junk/
+.eslintrc
