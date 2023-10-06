@@ -9,7 +9,7 @@ function ProtectedRoute(
   }
 ) {
   return (
-    isLoggedIn
+      isLoggedIn
       ? <Component {...props}/>
       : <Navigate to='/'/>
   )
