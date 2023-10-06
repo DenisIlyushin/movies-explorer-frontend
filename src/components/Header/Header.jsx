@@ -88,8 +88,7 @@ function Header({isLoggedIn}) {
             >
               Аккаунт
             </Link>
-            <BurgerMenu
-            />
+            <BurgerMenu />
           </nav>
         </header>
       )
