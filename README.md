@@ -1,6 +1,8 @@
 # Дипломная работа
 ---
 Макет dark-2
+сайт [тут](https://denisilyushin.nomoredomainsicu.ru/)
+репозиторий [тут](https://github.com/DenisIlyushin/movies-explorer-frontend)
 
 ## Технологии
 
