@@ -8,72 +8,81 @@ import Preloader from '../Preloader/Preloader.jsx';
 import filterMovies from '../../utils/filterMovies.js';
 
 function SavedMovies(
-  {
-    savedMovieList,
-    onMovieSave,
-    onMovieDelete,
-  }
+    {
+        savedMovieList,
+        onMovieSave,
+        onMovieDelete,
+    }
 ) {
-  const [isShortMovies, setIsShortMovies] = useState(false)
-  const [movies, setMovies] = useState(savedMovieList);
-  const [isLoading, setIsLoading] = useState(false)
-  const [searchMessage, setSearchMessage] = useState('');
-  // const [storedMovies, setStoredMovies] = useLocalStorage('saved-movies', null)
-  const [storedToggleSwitchState, setStoredToggleSwitchState] = useLocalStorage('isShortSavedMovies', false)
+    const [isShortMovies, setIsShortMovies] = useState(false)
+    const [movies, setMovies] = useState(savedMovieList);
+    // буду сравнивать длину списков
+    const [filteredMovies, setFilteredMovies] =useState(savedMovieList)
+    const [isLoading, setIsLoading] = useState(false)
+    const [searchMessage, setSearchMessage] = useState('');
+    const [storedToggleSwitchState, setStoredToggleSwitchState] = useLocalStorage('isShortSavedMovies', false)
 
-  useEffect(() => {
-    // setStoredMovies(movies);
-    setMovies(savedMovieList)
-    setIsShortMovies(storedToggleSwitchState);
-  }, [savedMovieList])
+    useEffect(() => {
+        setMovies(savedMovieList);
+        setIsShortMovies(storedToggleSwitchState);
+    }, [savedMovieList, filteredMovies])
 
-  useEffect(() => {
-    setStoredToggleSwitchState(isShortMovies)
-  }, [isShortMovies])
+    useEffect(() => {
+        setStoredToggleSwitchState(isShortMovies)
+    }, [isShortMovies])
 
-  function handleSearchFormSubmit({query, isShortMoviesOnly}) {
-    // todo
-  }
+    function handleSearchFormSubmit({query, isShortMoviesOnly}) {
+        setIsLoading(true);
+        const foundMovies = filterMovies(movies, query, isShortMoviesOnly)
+        console.log(movies)
+        if (foundMovies.length !== 0) {
+            setFilteredMovies(foundMovies)
+        } else {
+            setFilteredMovies([]);
+            setSearchMessage(messages.noMoviesFound)
+        }
+        setIsLoading(false);
+    }
 
-  return (
-    <main className={'movies'}>
-      <SearchForm
-        isSavedMovies={true}
-        switchState={isShortMovies}
-        onSubmit={handleSearchFormSubmit}
-        onSwitchChange={setIsShortMovies}
-      />
-      {
-        isLoading
-          ? <Preloader
-            isVisible={isLoading}
-            isCentered={true}
-          />
-          : null
-      }
-      {
-        !movies && !isLoading
-          ? <p
-            className={'movies__message'}>
-            {searchMessage}
-          </p>
-          : null
-      }
-      {
-        movies && !isLoading
-          ? <MoviesCardList
-            movies={movies}
-            isSavedMovies={true}
-            savedMovieList={savedMovieList}
-            maxMoviesPerInteration={maxMoviesPerPage}
-            onMovieSave={onMovieSave}
-            onMovieDelete={onMovieDelete}
-          />
-          : ''
-      }
+    return (
+        <main className={'movies'}>
+            <SearchForm
+                isSavedMovies={true}
+                switchState={isShortMovies}
+                onSubmit={handleSearchFormSubmit}
+                onSwitchChange={setIsShortMovies}
+            />
+            {
+                isLoading
+                    ? <Preloader
+                        isVisible={isLoading}
+                        isCentered={true}
+                    />
+                    : null
+            }
+            {
+                !filteredMovies.length && !isLoading
+                    ? <p
+                        className={'movies__message'}>
+                        {searchMessage}
+                    </p>
+                    : null
+            }
+            {
+                movies && !isLoading
+                    ? <MoviesCardList
+                        movies={[filteredMovies].length <= movies.length ? filteredMovies : movies }
+                        isSavedMovies={true}
+                        savedMovieList={savedMovieList}
+                        maxMoviesPerInteration={maxMoviesPerPage}
+                        onMovieSave={onMovieSave}
+                        onMovieDelete={onMovieDelete}
+                    />
+                    : ''
+            }
 
-    </main>
-  )
+        </main>
+    )
 }
 
 export default SavedMovies

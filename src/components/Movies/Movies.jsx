@@ -21,7 +21,7 @@ function Movies(
   const [movies, setMovies] = useState(null);
   const [isLoading, setIsLoading] = useState(false)
   const [searchMessage, setSearchMessage] = useState('');
-  const [storedMovies, setStoredMovies] = useLocalStorage('movies', null)
+  const [storedMovies, setStoredMovies] = useLocalStorage('movies', [])
   const [storedToggleSwitchState, setStoredToggleSwitchState] = useLocalStorage('isShortMovies', false)
 
   useEffect(() => {
