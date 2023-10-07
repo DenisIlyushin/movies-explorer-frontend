@@ -64,10 +64,10 @@ class Api {
             Authorization: `Bearer ${jwt}`
           }
         },
-      body: JSON.stringify({
-        name: name,
-        email: email
-      }),
+        body: JSON.stringify({
+          name: name,
+          email: email
+        }),
       }
     )
       .then(this.#handleResponse);

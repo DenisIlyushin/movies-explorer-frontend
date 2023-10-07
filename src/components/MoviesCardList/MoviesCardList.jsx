@@ -15,7 +15,8 @@ function MoviesCardList(
 ) {
   const [moviesOnPage, setMoviesOnPage] = useState(0)
 
-  useEffect(() => {}, [movies])
+  useEffect(() => {
+  }, [movies])
 
   function getDisplayWidth() {
     return window.innerWidth

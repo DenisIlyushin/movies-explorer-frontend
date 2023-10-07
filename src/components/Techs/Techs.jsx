@@ -20,7 +20,7 @@ function Techs() {
           7 технологий
         </h3>
         <p
-        className={'techs__description'}
+          className={'techs__description'}
         >
           На курсе веб-разработки мы освоили технологии, которые применили
           в дипломном проекте.

@@ -18,12 +18,12 @@ function BurgerMenu() {
     <>
       <button
         className={'burger-menu'}
-        onClick={ openNavigationMenu }
+        onClick={openNavigationMenu}
         type={'button'}
       />
       {
         isMenuOpen
-          ? <Navigation handleClose={ closeNavigationMenu } isOpen={ isMenuOpen }/>
+          ? <Navigation handleClose={closeNavigationMenu} isOpen={isMenuOpen}/>
           : ''
       }
     </>

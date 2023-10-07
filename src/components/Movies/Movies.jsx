@@ -57,19 +57,19 @@ function Movies(
   }
 
   function handleSwitchChange(switchState) {
-      setIsShortMovies(switchState)
-      const foundMovies = filterShortMovies(movies)
+    setIsShortMovies(switchState)
+    const foundMovies = filterShortMovies(movies)
 
-      if (switchState) {
-          if (foundMovies.length !== 0) {
-              setMovies(foundMovies)
-          } else {
-              setMovies(null)
-              setSearchMessage(messages.noMoviesFound)
-          }
+    if (switchState) {
+      if (foundMovies.length !== 0) {
+        setMovies(foundMovies)
       } else {
-          setMovies(storedMovies)
+        setMovies(null)
+        setSearchMessage(messages.noMoviesFound)
       }
+    } else {
+      setMovies(storedMovies)
+    }
   }
 
   return (

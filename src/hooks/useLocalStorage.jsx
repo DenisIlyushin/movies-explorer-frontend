@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 
 /**
  * Хук управляет хранением переменной в локальном хранилище браузера

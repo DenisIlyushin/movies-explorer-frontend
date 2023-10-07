@@ -9,10 +9,10 @@ function ProtectedRoute(
   }
 ) {
   return (
-      isLoggedIn
+    isLoggedIn
       ? <Component {...props}/>
-      : <Navigate to='/'/>
+      : <Navigate to="/"/>
   )
 }
 
-export default ProtectedRoute
+export default ProtectedRoute;

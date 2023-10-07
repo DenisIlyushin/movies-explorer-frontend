@@ -37,7 +37,7 @@ function App() {
   // управление формами авторизации и профиля
   const [authMessage, setAuthMessage] = useState({});
   const [profileMessage, setProfileMessage] = useState({});
-  const [isProfileLoading, setIsProfileLoading] = useState( false)
+  const [isProfileLoading, setIsProfileLoading] = useState(false)
   const [isRegistrationLoading, setIsRegistrationLoading] = useState(false)
 
   // установка состояния isLoggedIn по наличию токена в памяти браузера

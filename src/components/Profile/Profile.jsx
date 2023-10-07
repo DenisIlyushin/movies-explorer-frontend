@@ -16,6 +16,7 @@ function Profile(
   const currentUser = useContext(CurrentUserContext);
   const {values, errors, isValid, handleChange} = useValidate()
 
+  // сброс сообщения api при повторном возвращении на страницу
   useState(() => {
     setMessage({})
   }, [isValid])

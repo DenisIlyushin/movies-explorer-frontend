@@ -39,7 +39,7 @@ function SearchForm(
         name={'search-form'}
         autoComplete={'off'}
         noValidate
-        onSubmit={ handleSubmit }
+        onSubmit={handleSubmit}
       >
         <div
           className={'search-form__input-container'}
@@ -52,7 +52,7 @@ function SearchForm(
             value={values.searchQuery || storedInput || ''}
             placeholder={'Фильм'}
             required={true}
-            onChange={ fetchInput }
+            onChange={fetchInput}
           />
           <button
             className={'search-form__submit-button'}
@@ -63,8 +63,8 @@ function SearchForm(
           className={'search-form__switch-container'}
         >
           <ToggleSwitch
-            initialState={ switchState }
-            onChange={ onSwitchChange }
+            initialState={switchState}
+            onChange={onSwitchChange}
           />
           <p
             className={'search-form__switch-label'}
