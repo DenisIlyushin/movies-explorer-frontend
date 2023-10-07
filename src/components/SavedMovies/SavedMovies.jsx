@@ -47,7 +47,7 @@ function SavedMovies(
 
     function handleSwitchChange(switchState) {
         setIsShortMovies(switchState)
-        const foundMovies = filterShortMovies(movies, isShortMovies)
+        const foundMovies = filterShortMovies(movies)
 
         if (switchState) {
             if (foundMovies.length !== 0) {
