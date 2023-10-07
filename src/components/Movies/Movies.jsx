@@ -19,15 +19,28 @@ function Movies(
   }
 ) {
   const [isShortMovies, setIsShortMovies] = useState(false);
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false)
   const [searchMessage, setSearchMessage] = useState('');
   const [storedMovies, setStoredMovies] = useLocalStorage('movies', [])
   const [storedToggleSwitchState, setStoredToggleSwitchState] = useLocalStorage('isShortMovies', false)
 
+
+
   useEffect(() => {
-    setMovies(storedMovies);
     setIsShortMovies(storedToggleSwitchState);
+
+    if (storedToggleSwitchState) {
+      const foundMovies = filterShortMovies(storedMovies, storedToggleSwitchState)
+      if (foundMovies.length !== 0) {
+        setMovies(foundMovies)
+      } else {
+        setMovies([])
+        setSearchMessage(messages.noMoviesFound)
+      }
+    } else {
+      setMovies(storedMovies)
+    }
   }, [])
 
   useEffect(() => {
@@ -58,13 +71,13 @@ function Movies(
 
   function handleSwitchChange(switchState) {
     setIsShortMovies(switchState)
-    const foundMovies = filterShortMovies(movies)
 
     if (switchState) {
+      const foundMovies = filterShortMovies(movies, switchState)
       if (foundMovies.length !== 0) {
         setMovies(foundMovies)
       } else {
-        setMovies(null)
+        setMovies([])
         setSearchMessage(messages.noMoviesFound)
       }
     } else {
@@ -88,7 +101,7 @@ function Movies(
           : null
       }
       {
-        !movies && !isLoading
+        !movies.length && !isLoading
           ? <p
             className={'movies__message'}>
             {searchMessage}
