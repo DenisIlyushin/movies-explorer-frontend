@@ -26,7 +26,7 @@ function App() {
   const showHeaderPaths = ['/', '/movies', '/saved-movies', '/profile']
   const showFooterPath = ['/', '/movies', '/saved-movies']
   // управление пользователем и авторизацией
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useLocalStorage('isLoggedIn', false)
   const [isLoginLoading, setIsLoginLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const [storedToken, setStoredToken] = useLocalStorage('jwtToken', null);
