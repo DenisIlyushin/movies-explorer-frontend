@@ -2,9 +2,11 @@
 ---
 Макет dark-2
 
-сайт [тут](https://denisilyushin.nomoredomainsicu.ru/)
+[сайт](https://denisilyushin.nomoredomainsicu.ru/)
 
-репозиторий [тут](https://github.com/DenisIlyushin/movies-explorer-frontend)
+[пул-реквест level-3](https://github.com/DenisIlyushin/movies-explorer-frontend/pull/3)
+
+[репозиторий](https://github.com/DenisIlyushin/movies-explorer-frontend)
 
 ## Технологии
 
