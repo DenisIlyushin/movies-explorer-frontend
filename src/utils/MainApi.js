@@ -14,11 +14,6 @@ class Api {
     return Promise.reject(`oшибка ${response.status}`);
   }
 
-  // todo не уверен, что нужная штука, написал пока так, чтобы всякий раз jwt в запрос передавать.
-  setAuthToken(jwt) {
-    this.#headers['Authorization'] = `Bearer ${jwt}`
-  }
-
   signUp({name, email, password}) {
     return fetch(`${this.#baseUrl}/signup`, {
         method: 'POST',
