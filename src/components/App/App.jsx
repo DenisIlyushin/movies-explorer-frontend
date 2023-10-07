@@ -201,6 +201,7 @@ function App() {
             isLoginLoading
               ? <Preloader
                 isVisible={isLoginLoading}
+                isCentered={true}
               />
               : <>
                 {
