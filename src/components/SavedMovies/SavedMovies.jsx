@@ -18,14 +18,29 @@ function SavedMovies(
 ) {
   const [isShortMovies, setIsShortMovies] = useState(false)
   const [movies, setMovies] = useState(savedMovieList);
-  const [filteredMovies, setFilteredMovies] = useState(savedMovieList)
+  const [filteredMovies, setFilteredMovies] = useState(movies)
   const [isLoading, setIsLoading] = useState(false)
   const [searchMessage, setSearchMessage] = useState('');
   const [storedToggleSwitchState, setStoredToggleSwitchState] = useLocalStorage('isShortSavedMovies', false)
 
+  // Логика вывода карточек на страницу по состоянию переключателя
+  function setMoviesOnPage(flag) {
+    if (flag) {
+      const foundMovies = filterShortMovies(savedMovieList, flag)
+      if (foundMovies.length !== 0) {
+        setMovies(foundMovies)
+      } else {
+        setMovies([])
+        setSearchMessage(messages.noMoviesFound)
+      }
+    } else {
+      setMovies(savedMovieList);
+    }
+  }
+
   useEffect(() => {
-    setMovies(savedMovieList);
     setIsShortMovies(storedToggleSwitchState);
+    setMoviesOnPage(storedToggleSwitchState)
   }, [savedMovieList, filteredMovies])
 
   useEffect(() => {
@@ -47,18 +62,7 @@ function SavedMovies(
 
   function handleSwitchChange(switchState) {
     setIsShortMovies(switchState)
-    const foundMovies = filterShortMovies(movies)
-
-    if (switchState) {
-      if (foundMovies.length !== 0) {
-        setMovies(foundMovies)
-      } else {
-        setMovies(null)
-        setSearchMessage(messages.noMoviesFound)
-      }
-    } else {
-      setMovies(filteredMovies)
-    }
+    setMoviesOnPage(switchState)
   }
 
   return (
@@ -78,7 +82,7 @@ function SavedMovies(
           : null
       }
       {
-        !filteredMovies.length && !isLoading
+        !movies.length || !filteredMovies.length && !isLoading
           ? <p
             className={'movies__message'}>
             {searchMessage}

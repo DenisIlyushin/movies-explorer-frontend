@@ -1,9 +1,9 @@
 import {shortMoviesDuration} from './constants.js';
 
-export default function filterShortMovies(movies) {
+export default function filterShortMovies(movies, flag) {
   return movies.filter(
     (movie) => {
-      return movie.duration <= shortMoviesDuration
+      return flag ? movie.duration <= shortMoviesDuration : false
     }
   )
 }
