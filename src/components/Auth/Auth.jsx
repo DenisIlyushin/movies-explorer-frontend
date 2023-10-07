@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom';
 import './Auth.css'
 
-import React, {useState} from 'react';
+import React from 'react';
 import logo from '../../images/logo.svg';
 
 function Auth(
@@ -14,7 +14,6 @@ function Auth(
     children,
   }
 ) {
-  useState(() => {isValid = false}, [])
   function handleSubmit(event) {
     event.preventDefault();
     onSubmit()
