@@ -6,6 +6,7 @@ import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 
 function SearchForm(
   {
+    isLoading,
     isSavedMovies,
     onSubmit,
     onSwitchChange,
@@ -53,10 +54,12 @@ function SearchForm(
             placeholder={'Фильм'}
             required={true}
             onChange={fetchInput}
+            disabled={isLoading}
           />
           <button
             className={'search-form__submit-button'}
             type={'submit'}
+            disabled={isLoading}
           />
         </div>
         <div

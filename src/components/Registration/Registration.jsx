@@ -51,6 +51,7 @@ function Registration(
           placeholder={'Как Вас зовут?'}
           onChange={fetchInputChange}
           pattern={regexPatterns.userName}
+          disabled={isLoading}
         />
       </label>
       <label className="auth__input-label">
@@ -65,6 +66,7 @@ function Registration(
           placeholder={'Ваш e-email'}
           onChange={fetchInputChange}
           pattern={regexPatterns.email}
+          disabled={isLoading}
         />
       </label>
       <label className="auth__input-label">
@@ -80,6 +82,7 @@ function Registration(
           maxLength={30}
           placeholder={'Ваш пароль'}
           onChange={handleChange}
+          disabled={isLoading}
         />
         <span
           className={

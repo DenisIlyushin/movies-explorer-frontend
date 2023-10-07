@@ -67,6 +67,7 @@ function Profile(
             placeholder={'Как вас зовут?'}
             onChange={fetchInputChange}
             pattern={regexPatterns.userName}
+            disabled={isLoading}
           />
         </label>
         <label
@@ -83,6 +84,7 @@ function Profile(
             placeholder={'Ваш e-mail'}
             onChange={fetchInputChange}
             pattern={regexPatterns.email}
+            disabled={isLoading}
           />
           <span
             className={
@@ -105,7 +107,7 @@ function Profile(
         <button
           className={'profile__button profile__button_type_submit-button'}
           type={'submit'}
-          disabled={!isValid}
+          disabled={!isValid || isLoading}
           onClick={handleSubmit}
         >
           {isLoading ? 'Редактировать...' : 'Редактировать'}

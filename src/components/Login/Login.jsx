@@ -49,6 +49,7 @@ function Login(
           placeholder={'Ваш e-email'}
           onChange={fetchInputChange}
           pattern={regexPatterns.email}
+          disabled={isLoading}
         />
       </label>
       <label className="auth__input-label">
@@ -64,6 +65,7 @@ function Login(
           required={true}
           placeholder={'Ваш пароль'}
           onChange={fetchInputChange}
+          disabled={isLoading}
         />
         <span
           className={

@@ -88,6 +88,7 @@ function Movies(
   return (
     <main className={'movies'}>
       <SearchForm
+        isLoading={isLoading}
         switchState={isShortMovies}
         onSubmit={handleSearchFormSubmit}
         onSwitchChange={handleSwitchChange}
