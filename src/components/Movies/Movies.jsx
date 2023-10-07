@@ -8,6 +8,7 @@ import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 import filterMovies from '../../utils/filterMovies.js';
 import searchApi from '../../utils/MoviesApi.js';
 import {messages} from '../../utils/constants.js';
+import filterShortMovies from '../../utils/filterShortMovies.js';
 
 
 function Movies(
@@ -55,12 +56,28 @@ function Movies(
       })
   }
 
+  function handleSwitchChange(switchState) {
+      setIsShortMovies(switchState)
+      const foundMovies = filterShortMovies(movies, isShortMovies)
+
+      if (switchState) {
+          if (foundMovies.length !== 0) {
+              setMovies(foundMovies)
+          } else {
+              setMovies(null)
+              setSearchMessage(messages.noMoviesFound)
+          }
+      } else {
+          setMovies(storedMovies)
+      }
+  }
+
   return (
     <main className={'movies'}>
       <SearchForm
         switchState={isShortMovies}
         onSubmit={handleSearchFormSubmit}
-        onSwitchChange={setIsShortMovies}
+        onSwitchChange={handleSwitchChange}
       />
       {
         isLoading

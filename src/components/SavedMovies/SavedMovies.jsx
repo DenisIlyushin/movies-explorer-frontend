@@ -7,6 +7,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 import filterMovies from '../../utils/filterMovies.js';
 import {maxMoviesPerPage, messages} from '../../utils/constants.js';
+import filterShortMovies from '../../utils/filterShortMovies.js';
 
 function SavedMovies(
     {
@@ -17,7 +18,6 @@ function SavedMovies(
 ) {
     const [isShortMovies, setIsShortMovies] = useState(false)
     const [movies, setMovies] = useState(savedMovieList);
-    // буду сравнивать длину списков
     const [filteredMovies, setFilteredMovies] =useState(savedMovieList)
     const [isLoading, setIsLoading] = useState(false)
     const [searchMessage, setSearchMessage] = useState('');
@@ -45,13 +45,29 @@ function SavedMovies(
         setIsLoading(false);
     }
 
+    function handleSwitchChange(switchState) {
+        setIsShortMovies(switchState)
+        const foundMovies = filterShortMovies(movies, isShortMovies)
+
+        if (switchState) {
+            if (foundMovies.length !== 0) {
+                setMovies(foundMovies)
+            } else {
+                setMovies(null)
+                setSearchMessage(messages.noMoviesFound)
+            }
+        } else {
+            setMovies(filteredMovies)
+        }
+    }
+
     return (
         <main className={'movies'}>
             <SearchForm
                 isSavedMovies={true}
                 switchState={isShortMovies}
                 onSubmit={handleSearchFormSubmit}
-                onSwitchChange={setIsShortMovies}
+                onSwitchChange={handleSwitchChange}
             />
             {
                 isLoading
