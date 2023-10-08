@@ -48,9 +48,6 @@ function MoviesCardList(
 
   useEffect(() => {
     getMoviesOnPage()
-    setTimeout(() => {
-      window.addEventListener('resize', getMoviesOnPage)
-    }, 1000)
   }, [])
 
   // проверяем, есть ли фильм в ранее добавленных в избранное пользователем
