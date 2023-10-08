@@ -39,8 +39,8 @@ function SavedMovies(
   }
 
   useEffect(() => {
-    setIsShortMovies(storedToggleSwitchState);
-    setMoviesOnPage(storedToggleSwitchState)
+    setMovies(savedMovieList);
+    setMoviesOnPage(false)
   }, [savedMovieList, filteredMovies])
 
   useEffect(() => {
