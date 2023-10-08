@@ -3,7 +3,7 @@ import './Profile.css'
 
 import {CurrentUserContext} from '../../context/CurrentUserContext.jsx';
 import useValidate from '../../hooks/useValidate.jsx';
-import {regexPatterns} from '../../utils/constants.js';
+import {REGEX_PATTERNS} from '../../utils/constants.js';
 
 function Profile(
   {
@@ -66,7 +66,7 @@ function Profile(
             value={!currentUser ? values.username : currentUser.name}
             placeholder={'Как вас зовут?'}
             onChange={fetchInputChange}
-            pattern={regexPatterns.userName}
+            pattern={REGEX_PATTERNS.USERNAME}
             disabled={isLoading}
           />
         </label>
@@ -83,7 +83,7 @@ function Profile(
             value={!currentUser ? values.email : currentUser.email}
             placeholder={'Ваш e-mail'}
             onChange={fetchInputChange}
-            pattern={regexPatterns.email}
+            pattern={REGEX_PATTERNS.EMAIL}
             disabled={isLoading}
           />
           <span

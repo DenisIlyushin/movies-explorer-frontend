@@ -1,4 +1,4 @@
-import {shortMoviesDuration} from './constants.js';
+import {SHORT_MOVIES_DURATION} from './constants.js';
 
 export default function filterMovies(movies, query, shortMoviesFlag) {
   function normalizeSting(value) {
@@ -10,7 +10,7 @@ export default function filterMovies(movies, query, shortMoviesFlag) {
 
   return movies.filter(
     (movie) => {
-      const isShort = shortMoviesFlag ? movie.duration <= shortMoviesDuration : true
+      const isShort = shortMoviesFlag ? movie.duration <= SHORT_MOVIES_DURATION : true
       const normalizedMovieName = normalizeSting(movie.nameRU + movie.nameEN)
       const normalizedQuery = normalizeSting(query)
 

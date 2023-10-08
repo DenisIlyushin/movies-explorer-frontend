@@ -6,7 +6,7 @@ import Preloader from '../Preloader/Preloader.jsx';
 import MoviesCardList from '../MoviesCardList/MoviesCardList.jsx';
 import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 import filterMovies from '../../utils/filterMovies.js';
-import {maxMoviesPerPage, messages} from '../../utils/constants.js';
+import {MESSAGES} from '../../utils/constants.js';
 import filterShortMovies from '../../utils/filterShortMovies.js';
 
 function SavedMovies(
@@ -31,7 +31,7 @@ function SavedMovies(
         setMovies(foundMovies)
       } else {
         setMovies([])
-        setSearchMessage(messages.noMoviesFound)
+        setSearchMessage(MESSAGES.NO_MOVIE_FOUND)
       }
     } else {
       setMovies(savedMovieList);
@@ -55,7 +55,7 @@ function SavedMovies(
       setFilteredMovies(foundMovies)
     } else {
       setFilteredMovies([]);
-      setSearchMessage(messages.noMoviesFound)
+      setSearchMessage(MESSAGES.NO_MOVIE_FOUND)
     }
     setIsLoading(false);
   }
@@ -95,7 +95,6 @@ function SavedMovies(
             movies={filteredMovies.length <= movies.length ? filteredMovies : movies}
             isSavedMovies={true}
             savedMovieList={savedMovieList}
-            maxMoviesPerInteration={maxMoviesPerPage}
             onMovieSave={onMovieSave}
             onMovieDelete={onMovieDelete}
           />

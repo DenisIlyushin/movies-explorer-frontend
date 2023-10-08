@@ -7,7 +7,7 @@ import Preloader from '../Preloader/Preloader.jsx';
 import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 import filterMovies from '../../utils/filterMovies.js';
 import searchApi from '../../utils/MoviesApi.js';
-import {messages} from '../../utils/constants.js';
+import {MESSAGES} from '../../utils/constants.js';
 import filterShortMovies from '../../utils/filterShortMovies.js';
 
 
@@ -36,7 +36,7 @@ function Movies(
         setMovies(foundMovies)
       } else {
         setMovies([])
-        setSearchMessage(messages.noMoviesFound)
+        setSearchMessage(MESSAGES.NO_MOVIE_FOUND)
       }
     } else {
       setMovies(storedMovies)
@@ -57,12 +57,12 @@ function Movies(
           setMovies(foundMovies)
         } else {
           setMovies(null);
-          setSearchMessage(messages.noMoviesFound)
+          setSearchMessage(MESSAGES.NO_MOVIE_FOUND)
         }
       })
       .catch(() => {
         setMovies(null);
-        setSearchMessage(messages.unexpectedErrorOnBeafilmServer)
+        setSearchMessage(MESSAGES.UNEXPECTED_ERROR_ON_BEATFILM_SERVER)
       })
       .finally(() => {
         setIsLoading(false);
@@ -78,7 +78,7 @@ function Movies(
         setMovies(foundMovies)
       } else {
         setMovies([])
-        setSearchMessage(messages.noMoviesFound)
+        setSearchMessage(MESSAGES.NO_MOVIE_FOUND)
       }
     } else {
       setMovies(storedMovies)

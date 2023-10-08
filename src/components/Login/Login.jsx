@@ -1,5 +1,5 @@
 import {Link} from 'react-router-dom';
-import {regexPatterns} from '../../utils/constants.js';
+import {REGEX_PATTERNS} from '../../utils/constants.js';
 
 import Auth from '../Auth/Auth.jsx';
 import useValidate from '../../hooks/useValidate.jsx';
@@ -48,7 +48,7 @@ function Login(
           required={true}
           placeholder={'Ваш e-email'}
           onChange={fetchInputChange}
-          pattern={regexPatterns.email}
+          pattern={REGEX_PATTERNS.EMAIL}
           disabled={isLoading}
         />
       </label>

@@ -1,21 +1,32 @@
-const maxMoviesPerPage = {
-  desktop: 12,
-  tablet: 8,
-  mobile: 4,
+const MAX_MOVIES_ON_PAGE = {
+  DESKTOP: 12,
+  TABLET: 8,
+  MOBILE: 4,
 }
 
-const shortMoviesDuration = 40;
+const DISPLAY_LIMIT = {
+  TABLET: 1184,
+  MOBILE: 767,
+}
 
-const messages = {
-  noMoviesFound: 'Ничего не найдено',
-  unexpectedErrorOnBeafilmServer: 'Во время запроса произошла ошибка. ' +
+const SHORT_MOVIES_DURATION = 40;
+
+const MESSAGES = {
+  NO_MOVIE_FOUND: 'Ничего не найдено',
+  UNEXPECTED_ERROR_ON_BEATFILM_SERVER: 'Во время запроса произошла ошибка. ' +
     'Возможно, проблема с соединением или сервер недоступен. Подождите ' +
     'немного и попробуйте ещё раз'
 }
 
-const regexPatterns = {
-  email: '^[^@]+@[^@]+.[a-zA-Z]{2,5}$',
-  userName: '^[A-Za-zА-Яа-яЁё\\-\\s]+$',
+const REGEX_PATTERNS = {
+  EMAIL: '^[^@]+@[^@]+.[a-zA-Z]{2,5}$',
+  USERNAME: '^[A-Za-zА-Яа-яЁё\\-\\s]+$',
 }
 
-export {maxMoviesPerPage, shortMoviesDuration, messages, regexPatterns}
+export {
+  MESSAGES,
+  MAX_MOVIES_ON_PAGE,
+  REGEX_PATTERNS,
+  SHORT_MOVIES_DURATION,
+  DISPLAY_LIMIT
+}

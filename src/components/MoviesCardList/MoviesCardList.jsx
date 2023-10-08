@@ -2,7 +2,7 @@ import {useEffect, useState} from 'react';
 import './MoviesCardList.css'
 
 import MoviesCard from '../MoviesCard/MoviesCard.jsx';
-import {maxMoviesPerPage} from '../../utils/constants.js';
+import {MAX_MOVIES_ON_PAGE, DISPLAY_LIMIT} from '../../utils/constants.js';
 
 function MoviesCardList(
   {
@@ -25,12 +25,12 @@ function MoviesCardList(
   function getMoviesOnPage() {
     const displayWidth = getDisplayWidth();
 
-    if (displayWidth < 1184 && displayWidth > 767) {
-      setMoviesOnPage(maxMoviesPerPage.tablet)
-    } else if (displayWidth <= 767) {
-      setMoviesOnPage(maxMoviesPerPage.mobile)
+    if (displayWidth < DISPLAY_LIMIT.TABLET && displayWidth > DISPLAY_LIMIT.MOBILE) {
+      setMoviesOnPage(MAX_MOVIES_ON_PAGE.TABLET)
+    } else if (displayWidth <= DISPLAY_LIMIT.MOBILE) {
+      setMoviesOnPage(MAX_MOVIES_ON_PAGE.MOBILE)
     } else {
-      setMoviesOnPage(maxMoviesPerPage.desktop)
+      setMoviesOnPage(MAX_MOVIES_ON_PAGE.DESKTOP)
     }
   }
 
@@ -38,11 +38,11 @@ function MoviesCardList(
     const displayWidth = getDisplayWidth();
 
     if (displayWidth < 1184 && displayWidth > 767) {
-      setMoviesOnPage(moviesOnPage + maxMoviesPerPage.tablet)
+      setMoviesOnPage(moviesOnPage + MAX_MOVIES_ON_PAGE.TABLET)
     } else if (displayWidth <= 767) {
-      setMoviesOnPage(moviesOnPage + maxMoviesPerPage.mobile)
+      setMoviesOnPage(moviesOnPage + MAX_MOVIES_ON_PAGE.MOBILE)
     } else {
-      setMoviesOnPage(moviesOnPage + maxMoviesPerPage.desktop)
+      setMoviesOnPage(moviesOnPage + MAX_MOVIES_ON_PAGE.DESKTOP)
     }
   }
 
