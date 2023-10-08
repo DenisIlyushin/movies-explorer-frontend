@@ -21,7 +21,6 @@ function SavedMovies(
   const [filteredMovies, setFilteredMovies] = useState(movies)
   const [isLoading, setIsLoading] = useState(false)
   const [searchMessage, setSearchMessage] = useState('');
-  const [storedToggleSwitchState, setStoredToggleSwitchState] = useLocalStorage('isShortSavedMovies', false)
 
   // Логика вывода карточек на страницу по состоянию переключателя
   function setMoviesOnPage(flag) {
