@@ -63,7 +63,7 @@ function Profile(
             required
             minLength={2}
             maxLength={30}
-            value={values.username || currentUser.name}
+            value={!currentUser ? values.username : currentUser.name}
             placeholder={'Как вас зовут?'}
             onChange={fetchInputChange}
             pattern={regexPatterns.userName}
@@ -80,7 +80,7 @@ function Profile(
             name={'email'}
             type={'email'}
             required={true}
-            value={values.email || currentUser.email}
+            value={!currentUser ? values.email : currentUser.email}
             placeholder={'Ваш e-mail'}
             onChange={fetchInputChange}
             pattern={regexPatterns.email}
