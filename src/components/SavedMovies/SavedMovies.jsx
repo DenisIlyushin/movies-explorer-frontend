@@ -39,13 +39,14 @@ function SavedMovies(
   }
 
   useEffect(() => {
-    setMovies(savedMovieList);
-    setMoviesOnPage(false)
+    if (filteredMovies.length > movies.length) {
+      setMoviesOnPage(true)
+      setIsShortMovies(true);
+    } else {
+      setIsShortMovies(false);
+      setMoviesOnPage(false)
+    }
   }, [savedMovieList, filteredMovies])
-
-  useEffect(() => {
-    setStoredToggleSwitchState(isShortMovies)
-  }, [isShortMovies])
 
   function handleSearchFormSubmit({query, isShortMoviesOnly}) {
     const foundMovies = filterMovies(movies, query, isShortMoviesOnly)
