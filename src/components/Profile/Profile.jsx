@@ -14,7 +14,7 @@ function Profile(
   }
 ) {
   const currentUser = useContext(CurrentUserContext);
-  const {values, errors, isValid, handleChange} = useValidate()
+  const {values, errors, isValid, handleChange, resetForm} = useValidate()
 
   // сброс сообщения api при повторном возвращении на страницу
   useState(() => {
@@ -32,6 +32,7 @@ function Profile(
       name: values.username || currentUser.name,
       email: values.email || currentUser.email,
     })
+    resetForm()
   }
 
   return (
@@ -63,7 +64,7 @@ function Profile(
             required
             minLength={2}
             maxLength={30}
-            value={!currentUser ? values.username : currentUser.name}
+            value={values.username || currentUser.name}
             placeholder={'Как вас зовут?'}
             onChange={fetchInputChange}
             pattern={REGEX_PATTERNS.USERNAME}
@@ -80,7 +81,7 @@ function Profile(
             name={'email'}
             type={'email'}
             required={true}
-            value={!currentUser ? values.email : currentUser.email}
+            value={values.email || currentUser.email}
             placeholder={'Ваш e-mail'}
             onChange={fetchInputChange}
             pattern={REGEX_PATTERNS.EMAIL}

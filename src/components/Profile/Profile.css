@@ -123,6 +123,7 @@
 
 .profile__button:disabled {
   cursor: default;
+  color: var(--background-nav-color, #313131);
 }
 
 .profile__button:disabled:hover {

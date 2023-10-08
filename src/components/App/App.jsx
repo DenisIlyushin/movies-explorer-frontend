@@ -28,7 +28,8 @@ function App() {
   // управление пользователем и авторизацией
   const [isLoggedIn, setIsLoggedIn] = useLocalStorage('isLoggedIn', false)
   const [isLoginLoading, setIsLoginLoading] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
+  // const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useLocalStorage('currentUser', null)
   const [storedToken, setStoredToken] = useLocalStorage('jwtToken', null);
   // управление карточками фильмов
   // const [savedMovies, setSavedMovies] = useState([]);
