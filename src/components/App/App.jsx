@@ -155,14 +155,12 @@ function App() {
 
   // обработка регистрации
   function handleRegistration(userData) {
+    const {email, password} = userData
+
     setIsRegistrationLoading(true)
     api.signUp(userData)
       .then(() => {
-        setAuthMessage({
-          text: `Вы зарегистрированы!`,
-          isSuccess: true,
-        })
-        navigate('/signin')
+        handleLogin({email, password})
       })
       .catch((error) => {
         setAuthMessage({
