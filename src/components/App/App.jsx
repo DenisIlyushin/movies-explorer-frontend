@@ -41,6 +41,11 @@ function App() {
   const [isProfileLoading, setIsProfileLoading] = useState(false)
   const [isRegistrationLoading, setIsRegistrationLoading] = useState(false)
 
+  // перерисовываем приложение когда поменяли savedMovies
+  useEffect(() => {
+    console.log('Перерисовываю приложение')
+  }, [savedMovies])
+
   // установка состояния isLoggedIn по наличию токена в памяти браузера
   useEffect(() => {
     if (!storedToken) {
@@ -69,40 +74,33 @@ function App() {
       .catch(console.log)
   }, [isLoggedIn])
 
-  // обработка лайков фильма на странице "Фильмы"
-  function handleMovieSave(movieObject, state) {
-    const token = storedToken;
-
-    if (state) {
-      api.addMovie(token, movieObject)
-        .then((movie) => {
-          setSavedMovies([movie, ...savedMovies]);
+  function handleMovieLike(movieObject) {
+    console.log('начинаем лайкать фильм', movieObject)
+    return api.addMovie(storedToken, movieObject)
+      .then((movie) => {
+        console.log('пришел ответ от сервера')
+        setSavedMovies([movie, ...savedMovies]);
+        console.log('добавили фильм в лайкнутые')
         })
-        .catch(console.log)
-    } else {
-      // ищем ID фильма среди сохранённых в стейт-переменной
-      const [movieToDelete] = savedMovies.filter(
-        (savedMovie) => savedMovie.movieId === movieObject.movieId
-      )
-      // удаляем по найденному _id
-      deleteMovie(token, movieToDelete._id)
-        .catch(console.log)
-    }
   }
 
   // Обработка удаления фильма на странице "Сохранённые фильмы"
-  function handleMovieDelete(movieObject) {
-    deleteMovie(storedToken, movieObject._id)
-      .catch(console.log)
-  }
-
-  // общая функция удаления фильма с очисткой сохраненного состояния
-  function deleteMovie(token, movieId) {
-    return api.deleteMovie(token, movieId)
+  function handleMovieDelete(movie) {
+    console.log('начинаем удалять фильм', movie)
+    console.log('ищу', movie, 'cреди', savedMovies)
+    const [foundMovie] = savedMovies.filter(
+      (savedMovie) => savedMovie.movieId === movie.movieId ? true : false
+    )
+    console.log('нашли', foundMovie)
+    console.log('начинаю удалять', foundMovie._id)
+    return api.deleteMovie(storedToken, foundMovie._id)
       .then((deletedMovie) => {
+        console.log('пришел ответ от сервера')
         // удаляем фильм из списка сохраненных
+        console.log('убираю фильм из списка сохраненных')
         const filtered = savedMovies.filter(movie => movie.movieId !== deletedMovie.movieId)
         setSavedMovies(filtered)
+        console.log('заменил список сохраненных фильмов')
       })
   }
 
@@ -261,7 +259,8 @@ function App() {
                         component={Movies}
                         isLoggedIn={isLoggedIn}
                         savedMovieList={savedMovies}
-                        onMovieSave={handleMovieSave}
+                        // onMovieSave={handleMovieSave}
+                        onMovieSave={handleMovieLike}
                         onMovieDelete={handleMovieDelete}
                       />
                     }
@@ -273,7 +272,7 @@ function App() {
                         component={SavedMovies}
                         isLoggedIn={isLoggedIn}
                         savedMovieList={savedMovies}
-                        onMovieSave={handleMovieSave}
+                        // onMovieSave={handleMovieSave}
                         onMovieDelete={handleMovieDelete}
                       />
                     }

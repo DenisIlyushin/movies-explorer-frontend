@@ -18,7 +18,7 @@ function SavedMovies(
 ) {
   const [isShortMovies, setIsShortMovies] = useState(false)
   const [movies, setMovies] = useState(savedMovieList);
-  const [filteredMovies, setFilteredMovies] = useState(movies)
+  const [filteredMovies, setFilteredMovies] = useState(savedMovieList)
   const [isLoading, setIsLoading] = useState(false)
   const [searchMessage, setSearchMessage] = useState('');
 
@@ -38,12 +38,14 @@ function SavedMovies(
   }
 
   useEffect(() => {
+    //todo тут херня какая-то теперь
+    setIsShortMovies(false)
     if (filteredMovies.length > movies.length) {
+      setIsShortMovies(true)
       setMoviesOnPage(true)
-      setIsShortMovies(true);
     } else {
-      setIsShortMovies(false);
       setMoviesOnPage(false)
+      setIsShortMovies(true)
     }
   }, [savedMovieList, filteredMovies])
 
