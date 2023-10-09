@@ -14,7 +14,6 @@ function MoviesCard(
 ) {
   const location = useLocation()
   const [isSaved, setIsSaved] = useState(isPreviouslySaved)
-  const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
 
   useEffect(() => {
   }, [isSaved])
