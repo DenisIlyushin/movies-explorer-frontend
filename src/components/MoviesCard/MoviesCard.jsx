@@ -27,9 +27,13 @@ function MoviesCard(
       duration: movie.duration,
       year: movie.year,
       description: movie.description,
-      image: !movie.image ? movie.image.url : `https://api.nomoreparties.co${movie.image.url}`,
+      image: !movie.image
+        ? movie.image.url
+        : `https://api.nomoreparties.co${movie.image.url}`,
       trailerLink: movie.trailerLink,
-      thumbnail: movie.thumbnail ? movie.thumbnail : `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
+      thumbnail: movie.thumbnail
+        ? movie.thumbnail
+        : `https://api.nomoreparties.co${movie.image.formats.thumbnail.url}`,
       nameRU: movie.nameRU,
       nameEN: movie.nameEN,
       movieId: movie.id,
@@ -56,6 +60,7 @@ function MoviesCard(
 
   function handleDelete(movie) {
     onDelete(movie)
+      .catch(console.log)
   }
 
   function convertDuration(duration) {
