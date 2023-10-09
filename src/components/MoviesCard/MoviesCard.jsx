@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import './MoviesCard.css';
-import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 
 function MoviesCard(
   {

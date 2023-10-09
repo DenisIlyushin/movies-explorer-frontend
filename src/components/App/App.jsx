@@ -79,12 +79,14 @@ function App() {
   // Обработка удаления фильма на странице "Сохранённые фильмы"
   function handleMovieDelete(movie) {
     const [foundMovie] = savedMovies.filter(
-      (savedMovie) => savedMovie.movieId === movie.movieId ? true : false
+      (savedMovie) => savedMovie.movieId === movie.movieId
     )
     return api.deleteMovie(storedToken, foundMovie._id)
       .then((deletedMovie) => {
         // удаляем фильм из списка сохраненных
-        const filtered = savedMovies.filter(movie => movie.movieId !== deletedMovie.movieId)
+        const filtered = savedMovies.filter(
+          movie => movie.movieId !== deletedMovie.movieId
+        )
         setSavedMovies(filtered)
       })
   }
