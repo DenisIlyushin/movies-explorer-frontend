@@ -69,6 +69,8 @@ function App() {
       .catch(console.log)
   }, [isLoggedIn])
 
+
+  // обработка лайка
   function handleMovieLike(movieObject) {
     return api.addMovie(storedToken, movieObject)
       .then((movie) => {
@@ -76,7 +78,7 @@ function App() {
         })
   }
 
-  // Обработка удаления фильма на странице "Сохранённые фильмы"
+  // Обработка удаления фильма или дизлайка
   function handleMovieDelete(movie) {
     const [foundMovie] = savedMovies.filter(
       (savedMovie) => savedMovie.movieId === movie.movieId
