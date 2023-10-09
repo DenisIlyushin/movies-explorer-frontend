@@ -22,5 +22,5 @@
   
 ---
 ### Автор проекта
-  
+   
 Ден Илюшин ([DenisIlyushin](https://github.com/DenisIlyushin/))
