@@ -17,12 +17,9 @@ function MoviesCard(
   const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
 
   useEffect(() => {
-    console.log('рисуем карточку')
-    console.log(`и она ${isSaved}`)
   }, [isSaved])
 
   function prepareMovieData(movie) {
-    console.log('конвертируем-с', movie)
     return {
       _id: movie._id,
       country: movie.country,
@@ -41,31 +38,23 @@ function MoviesCard(
 
   function handleButtonClick(movie) {
     const movieObject = prepareMovieData(movie)
-    console.log('работаю с', movieObject)
 
     if (!isSaved) {
-      console.log('лайкаю')
       onSave(movieObject)
         .then(() => {
-          console.log('все получилось')
           setIsSaved(true)
         })
         .catch(console.log)
-        .finally(() => console.log('закончили ставить лайк'))
     } else {
-      console.log('дизлайкаю-удаляю', movieObject)
       onDelete(movieObject)
         .then(() => {
-          console.log('все получилось')
           setIsSaved(false)
         })
         .catch(console.log)
-        .finally(() => console.log('закончили ставить лайк'))
     }
   }
 
   function handleDelete(movie) {
-    console.log('удаляю')
     onDelete(movie)
   }
 

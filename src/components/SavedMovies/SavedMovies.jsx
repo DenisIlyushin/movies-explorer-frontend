@@ -39,14 +39,16 @@ function SavedMovies(
 
   useEffect(() => {
     //todo тут херня какая-то теперь
-    setIsShortMovies(false)
-    if (filteredMovies.length > movies.length) {
-      setIsShortMovies(true)
-      setMoviesOnPage(true)
-    } else {
-      setMoviesOnPage(false)
-      setIsShortMovies(true)
-    }
+    console.log('in', movies.length, 'stored', filteredMovies.length, 'flag', isShortMovies)
+    setMoviesOnPage(isShortMovies)
+    //
+    // if (filteredMovies.length <= movies.length) {
+    //   setMoviesOnPage(false)
+    //   setIsShortMovies(false)
+    // } else {
+    //   setMoviesOnPage(true)
+    //   setIsShortMovies(true)
+    // }
   }, [savedMovieList, filteredMovies])
 
   function handleSearchFormSubmit({query, isShortMoviesOnly}) {
