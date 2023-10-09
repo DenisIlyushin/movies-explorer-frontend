@@ -13,6 +13,7 @@ function Profile(
     onLogOut
   }
 ) {
+  // todo Сейчас есть возможность отправлять данные текущего пользователя. Предусмотрите случай когда форму отредактировали, а потом вернули к начальным значениям
   const currentUser = useContext(CurrentUserContext);
   const {values, errors, isValid, handleChange, resetForm} = useValidate()
 
