@@ -1,4 +1,4 @@
-import {useContext, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import './Profile.css'
 
 import {CurrentUserContext} from '../../context/CurrentUserContext.jsx';
@@ -13,14 +13,20 @@ function Profile(
     onLogOut
   }
 ) {
-  // todo Сейчас есть возможность отправлять данные текущего пользователя. Предусмотрите случай когда форму отредактировали, а потом вернули к начальным значениям
   const currentUser = useContext(CurrentUserContext);
   const {values, errors, isValid, handleChange, resetForm} = useValidate()
 
   // сброс сообщения api при повторном возвращении на страницу
-  useState(() => {
+  useEffect(() => {
     setMessage({})
   }, [isValid])
+
+  // сброс валидации при попытке отправить значения формы === currentUser
+  useEffect(() => {
+    if (currentUser.name === values?.username || currentUser.email === values?.email) {
+      resetForm()
+    }
+  }, [handleChange]);
 
   function fetchInputChange(event) {
     setMessage({})
