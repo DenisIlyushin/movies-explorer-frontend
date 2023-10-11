@@ -1,20 +1,23 @@
 import Auth from '../Auth/Auth.jsx';
 import useValidate from '../../hooks/useValidate.jsx';
 import {Link} from 'react-router-dom';
-import {useState} from 'react';
+import {REGEX_PATTERNS} from '../../utils/constants.js';
 
 function Registration(
   {
-    onLogin,
     title,
     buttonTitle,
+    isLoading,
+    messageState: [message, setMessage],
+    onLogin,
   }
 ) {
-  const {values, isValid, setIsValid, handleChange} = useValidate();
+  const {values, errors, isValid, handleChange} = useValidate();
 
-  useState(() => {
-    setIsValid(true)
-  }, [])
+  function fetchInputChange(event) {
+    setMessage({})
+    handleChange(event)
+  }
 
   function handleSubmit() {
     onLogin(
@@ -29,6 +32,7 @@ function Registration(
   return (
     <Auth
       onSubmit={handleSubmit}
+      isLoading={isLoading}
       title={title}
       buttonTitle={buttonTitle}
       isValid={isValid}
@@ -45,7 +49,9 @@ function Registration(
           minLength={2}
           maxLength={30}
           placeholder={'Как Вас зовут?'}
-          onChange={handleChange}
+          onChange={fetchInputChange}
+          pattern={REGEX_PATTERNS.USERNAME}
+          disabled={isLoading}
         />
       </label>
       <label className="auth__input-label">
@@ -58,7 +64,9 @@ function Registration(
           value={values.email || ''}
           required={true}
           placeholder={'Ваш e-email'}
-          onChange={handleChange}
+          onChange={fetchInputChange}
+          pattern={REGEX_PATTERNS.EMAIL}
+          disabled={isLoading}
         />
       </label>
       <label className="auth__input-label">
@@ -74,11 +82,20 @@ function Registration(
           maxLength={30}
           placeholder={'Ваш пароль'}
           onChange={handleChange}
+          disabled={isLoading}
         />
         <span
-          className={`auth__input-error ${isValid ? '' : 'auth__input-error_active'}`}
+          className={
+            message.isSuccess
+              ? 'auth__input-success'
+              : 'auth__input-error'
+          }
         >
-            {'Что-то пошло не так...'}
+            {
+              !errors && message.isSuccess
+                ? message.text
+                : errors.name || errors.email || errors.password || message.text
+            }
           </span>
       </label>
       <p

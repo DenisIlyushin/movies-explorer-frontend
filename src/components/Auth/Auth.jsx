@@ -1,18 +1,19 @@
-import './Auth.css'
-import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
+import './Auth.css'
+
+import React from 'react';
 import logo from '../../images/logo.svg';
 
 function Auth(
   {
-    onSubmit,
     title,
     buttonTitle,
     isValid,
+    isLoading,
+    onSubmit,
     children,
   }
 ) {
-  useState(() => {isValid = false}, [])
   function handleSubmit(event) {
     event.preventDefault();
     onSubmit()
@@ -50,12 +51,12 @@ function Auth(
         <div className={'auth__blank'}/>
         <button
           className={
-            `auth__submit-button ${isValid ? '' : 'auth__submit-button_inactive'}`
+            `auth__submit-button ${isValid || isLoading? '' : 'auth__submit-button_inactive'}`
           }
           type={'submit'}
-          disabled={!isValid}
+          disabled={!isValid || isLoading}
         >
-          {buttonTitle}
+          {isLoading ? `${buttonTitle}...` : buttonTitle}
         </button>
         {
           getFormFieldsByType('p')

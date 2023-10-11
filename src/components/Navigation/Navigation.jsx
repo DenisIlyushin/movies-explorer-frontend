@@ -1,8 +1,7 @@
 import {Link, NavLink} from 'react-router-dom';
-
 import './Navigation.css'
 
-function Navigation({ handleClose }) {
+function Navigation({handleClose}) {
   function handleCloseOnOverlay(event) {
     if (event.target.classList.contains('navigation')) {
       return handleClose()
@@ -19,7 +18,7 @@ function Navigation({ handleClose }) {
       >
         <button
           className={'navigation__close-button'}
-          onClick={ handleClose }
+          onClick={handleClose}
         />
         <nav
           className={'navigation__menu'}
@@ -27,21 +26,21 @@ function Navigation({ handleClose }) {
           <NavLink
             className={'navigation__link'}
             to={'/'}
-            onClick={ handleClose }
+            onClick={handleClose}
           >
             Главная
           </NavLink>
           <NavLink
             className={'navigation__link'}
             to={'/movies'}
-            onClick={ handleClose }
+            onClick={handleClose}
           >
             Фильмы
           </NavLink>
           <NavLink
             className={'navigation__link'}
             to={'/saved-movies'}
-            onClick={ handleClose }
+            onClick={handleClose}
           >
             Сохранённые фильмы
           </NavLink>
@@ -49,7 +48,7 @@ function Navigation({ handleClose }) {
         <Link
           className={'navigation__account-button'}
           to={'/profile'}
-          onClick={ handleClose }
+          onClick={handleClose}
         >
           Аккаунт
         </Link>

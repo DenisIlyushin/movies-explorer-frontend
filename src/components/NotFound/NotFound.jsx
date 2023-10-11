@@ -4,7 +4,7 @@ function NotFound(
   {
     onGoBack,
   }
-  ) {
+) {
   return (
     <main
       className={'notfound'}

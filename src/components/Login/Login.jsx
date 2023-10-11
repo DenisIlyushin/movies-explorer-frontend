@@ -1,20 +1,24 @@
+import {Link} from 'react-router-dom';
+import {REGEX_PATTERNS} from '../../utils/constants.js';
+
 import Auth from '../Auth/Auth.jsx';
 import useValidate from '../../hooks/useValidate.jsx';
-import {Link} from 'react-router-dom';
-import {useState} from 'react';
 
 function Login(
   {
-    onLogin,
     title,
     buttonTitle,
+    isLoading,
+    messageState: [message, setMessage],
+    onLogin,
   }
 ) {
-  const {values, isValid, setIsValid, handleChange} = useValidate()
+  const {values, errors, isValid, handleChange} = useValidate()
 
-  useState(() => {
-    setIsValid(true)
-  }, [])
+  function fetchInputChange(event) {
+    setMessage({})
+    handleChange(event)
+  }
 
   function handleSubmit() {
     onLogin(
@@ -28,6 +32,7 @@ function Login(
   return (
     <Auth
       onSubmit={handleSubmit}
+      isLoading={isLoading}
       title={title}
       buttonTitle={buttonTitle}
       isValid={isValid}
@@ -42,7 +47,9 @@ function Login(
           value={values.email || ''}
           required={true}
           placeholder={'Ваш e-email'}
-          onChange={handleChange}
+          onChange={fetchInputChange}
+          pattern={REGEX_PATTERNS.EMAIL}
+          disabled={isLoading}
         />
       </label>
       <label className="auth__input-label">
@@ -57,8 +64,22 @@ function Login(
           maxLength={30}
           required={true}
           placeholder={'Ваш пароль'}
-          onChange={handleChange}
+          onChange={fetchInputChange}
+          disabled={isLoading}
         />
+        <span
+          className={
+            message.isSuccess
+              ? 'auth__input-success'
+              : 'auth__input-error'
+          }
+        >
+            {
+              !errors && message.isSuccess
+                ? message.text
+                : errors.email || errors.password || message.text
+            }
+          </span>
       </label>
       <p
         className={'auth__navigation'}

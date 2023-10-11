@@ -4,7 +4,7 @@ import './NavTab.css'
 function NavTab() {
   return (
     <ul
-    className={'nav-tab'}
+      className={'nav-tab'}
     >
       <li
         className={'nav-tab__li'}

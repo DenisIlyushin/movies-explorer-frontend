@@ -1,5 +1,8 @@
 import {useState} from 'react';
 
+/**
+ * Хук управляет валидацией формы
+ */
 export default function useValidate() {
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});

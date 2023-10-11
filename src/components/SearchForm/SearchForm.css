@@ -25,7 +25,7 @@
 
 .search-form__input:focus {
   outline-offset: 3px;
-  outline: 1px solid var(--theme-color, #3ddc84);
+  outline: 1px solid var(--font-background-color, #8b8b8b);
 }
 
 .search-form__input::placeholder {

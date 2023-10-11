@@ -1,9 +1,8 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {Route, Routes, useLocation, useNavigate} from 'react-router-dom';
-import './App.css';
 import {CurrentUserContext} from '../../context/CurrentUserContext.jsx';
+import './App.css';
 
-import {moviesTestStartArray} from '../../utils/constants.js';
 import Header from '../Header/Header.jsx';
 import Landing from '../Landing/Landing.jsx';
 import Login from '../Login/Login.jsx';
@@ -15,64 +14,159 @@ import SavedMovies from '../SavedMovies/SavedMovies.jsx';
 import NotFound from '../NotFound/NotFound.jsx';
 import Footer from '../Footer/Footer.jsx';
 import Preloader from '../Preloader/Preloader.jsx';
+import api from '../../utils/MainApi.js';
+import useLocalStorage from '../../hooks/useLocalStorage.jsx';
 
 
 function App() {
+  // управление навигацией
   const navigate = useNavigate();
   const {pathname} = useLocation();
-
+  // управление отрисовкой страницы
   const showHeaderPaths = ['/', '/movies', '/saved-movies', '/profile']
   const showFooterPath = ['/', '/movies', '/saved-movies']
+  // управление пользователем и авторизацией
+  const [isLoggedIn, setIsLoggedIn] = useLocalStorage('isLoggedIn', false)
+  const [isLoginLoading, setIsLoginLoading] = useState(false);
+  // const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useLocalStorage('currentUser', null)
+  const [storedToken, setStoredToken] = useLocalStorage('jwtToken', null);
+  // управление карточками фильмов
+  // const [savedMovies, setSavedMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useLocalStorage('savedMovies', []);
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [movies, setMovies] = useState(moviesTestStartArray);
-  const [isLoginLoading, setIsLoginLoading] = useState(false)
+  // управление формами авторизации и профиля
+  const [authMessage, setAuthMessage] = useState({});
+  const [profileMessage, setProfileMessage] = useState({});
+  const [isProfileLoading, setIsProfileLoading] = useState(false)
+  const [isRegistrationLoading, setIsRegistrationLoading] = useState(false)
 
-  const currentUser =
-    {
-      name: 'Ден Илюшин',
-      email: 'id@id.ru',
+  // установка состояния isLoggedIn по наличию токена в памяти браузера
+  useEffect(() => {
+    if (!storedToken) {
+      return
+    }
+    setIsLoggedIn(true)
+  }, [])
+
+  // если состояние isLoggedIn === true, то запрашиваем данные пользователя
+  useEffect(() => {
+    const token = storedToken
+
+    if (!isLoggedIn) {
+      return
     }
 
-  function handleMovieSave(param, state) {
-    console.log(state ? `Фильм ${param} сохранен` : `Фильм ${param} не сохранен`)
+    Promise.all([api.getMe(token), api.getAllMovies(token)])
+      .then(([userInfo, foundMovies]) => {
+        setCurrentUser(userInfo)
+        if (foundMovies.length !== 0) {
+          setSavedMovies(foundMovies)
+        } else {
+          setSavedMovies([]);
+        }
+      })
+      .catch(console.log)
+  }, [isLoggedIn])
+
+
+  // обработка лайка
+  function handleMovieLike(movieObject) {
+    return api.addMovie(storedToken, movieObject)
+      .then((movie) => {
+        setSavedMovies([movie, ...savedMovies]);
+        })
   }
 
-  function handleMovieDelete(param) {
-    console.log(`Фильм ${param} удален`)
+  // Обработка удаления фильма или дизлайка
+  function handleMovieDelete(movie) {
+    const [foundMovie] = savedMovies.filter(
+      (savedMovie) => savedMovie.movieId === movie.movieId
+    )
+    return api.deleteMovie(storedToken, foundMovie._id)
+      .then((deletedMovie) => {
+        // удаляем фильм из списка сохраненных
+        const filtered = savedMovies.filter(
+          movie => movie.movieId !== deletedMovie.movieId
+        )
+        setSavedMovies(filtered)
+      })
   }
 
-  function handleSearchFormSubmit(event) {
-    event.preventDefault();
-    console.log('Произведен поиск')
+  // обработка обновления информации в Профиле
+  function handleProfileUpdate(userInfo) {
+    const token = storedToken;
+
+    setIsProfileLoading(true)
+    api.setMe(token, userInfo)
+      .then((newUserInfo) => {
+        setCurrentUser(newUserInfo);
+        setProfileMessage({
+          text: `Ваш профиль бы обновлен!`,
+          isSuccess: true,
+        })
+      })
+      .catch((error) => {
+        setProfileMessage({
+          text: `Что пошло не так и получилась ${error}`,
+          isSuccess: false,
+        })
+      })
+      .finally(() => {
+        setIsProfileLoading(false);
+      })
   }
 
-  function handleToggleSwitchChange(selectedState) {
-    console.log(selectedState ? 'Короткометражки выбраны' : 'Короткометражки не выбраны')
+  // Обработка авторизации
+  function handleLogin(loginData) {
+    setIsLoginLoading(true);
+    api.signIn(loginData)
+      .then(({token}) => {
+        setStoredToken(token)
+        setIsLoggedIn(true);
+        setAuthMessage({
+          text: `Вы авторизовались!`,
+          isSuccess: true,
+        })
+        navigate('/movies')
+      })
+      .catch((error) => {
+        setAuthMessage({
+          text: `Что пошло не так и получилась ${error}`,
+          isSuccess: false,
+        })
+      })
+      .finally(() => {
+        setIsLoginLoading(false);
+      })
   }
 
-  function handleProfileUpdate(param) {
-    const {name, email} = param;
-    console.log(`Профиль бы обновлен с данными ${[name, email]}`)
+  // обработка регистрации
+  function handleRegistration(userData) {
+    const {email, password} = userData
+
+    setIsRegistrationLoading(true)
+    api.signUp(userData)
+      .then(() => {
+        handleLogin({email, password})
+      })
+      .catch((error) => {
+        setAuthMessage({
+          text: `Что пошло не так и получилась ${error}`,
+          isSuccess: false,
+        })
+      })
+      .finally(() => setIsRegistrationLoading(false))
   }
 
   function handleLogOut() {
+    // сбрасывем стейт-переменные
     setIsLoggedIn(false);
+    setSavedMovies([])
+    // очищаем локальную базу (работа useLocalStorage() переменных)
+    localStorage.clear();
+    // переводим пользователя на стартовую страницу
     navigate('/')
-    console.log('Вы вышли из профиля')
-  }
-
-  function handleLogin(param) {
-    const {email, password} = param;
-    setIsLoggedIn(true);
-    navigate('/movies')
-    console.log(`Вы вошли с данными ${[email, password]}, ура!`)
-  }
-
-  function handleRegistration(param) {
-    const {name, email, password} = param;
-    navigate('/signin')
-    console.log(`Вы зарегистрированы с данными ${[name, email, password]}, ура!`)
   }
 
   function handleNotFoundNavigation() {
@@ -93,6 +187,7 @@ function App() {
             isLoginLoading
               ? <Preloader
                 isVisible={isLoginLoading}
+                isCentered={true}
               />
               : <>
                 {
@@ -116,6 +211,8 @@ function App() {
                     element={
                       <Login
                         onLogin={handleLogin}
+                        isLoading={isLoginLoading}
+                        messageState={[authMessage, setAuthMessage]}
                         title={'Рады видеть!'}
                         buttonTitle={'Войти'}
                       />
@@ -124,6 +221,8 @@ function App() {
                     path={'/signup'}
                     element={
                       <Registration
+                        isLoading={isRegistrationLoading}
+                        messageState={[authMessage, setAuthMessage]}
                         onLogin={handleRegistration}
                         title={'Добро пожаловать!'}
                         buttonTitle={'Зарегистрироваться'}
@@ -135,6 +234,8 @@ function App() {
                       <ProtectedRoute
                         component={Profile}
                         isLoggedIn={isLoggedIn}
+                        isLoading={isProfileLoading}
+                        messageState={[profileMessage, setProfileMessage]}
                         onSubmit={handleProfileUpdate}
                         onLogOut={handleLogOut}
                       />
@@ -145,12 +246,11 @@ function App() {
                     element={
                       <ProtectedRoute
                         component={Movies}
-                        movies={movies}
                         isLoggedIn={isLoggedIn}
-                        onMovieSave={handleMovieSave}
+                        savedMovieList={savedMovies}
+                        // onMovieSave={handleMovieSave}
+                        onMovieSave={handleMovieLike}
                         onMovieDelete={handleMovieDelete}
-                        onSearchSubmit={handleSearchFormSubmit}
-                        onToggleSwitchChange={handleToggleSwitchChange}
                       />
                     }
                   />
@@ -159,12 +259,10 @@ function App() {
                     element={
                       <ProtectedRoute
                         component={SavedMovies}
-                        movies={movies}
                         isLoggedIn={isLoggedIn}
-                        onMovieSave={handleMovieSave}
+                        savedMovieList={savedMovies}
+                        // onMovieSave={handleMovieSave}
                         onMovieDelete={handleMovieDelete}
-                        onSearchSubmit={handleSearchFormSubmit}
-                        onToggleSwitchChange={handleToggleSwitchChange}
                       />
                     }
                   />
